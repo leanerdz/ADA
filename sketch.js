@@ -95,17 +95,17 @@ function rectIsInRect(){} // Mettre les bons parametres
 function keyPressed() {
   let keyIndex = -1;
   if (key === 'q'){
-    heroX -= 5; 
+    heroX -= world1TileSize; 
   }
   if (key === 'd'){
-    heroX += 5;
+    heroX += world1TileSize;
   }
 
   if (key === 'z'){
-    heroY -= 5; 
+    heroY -= world1TileSize; 
   }
   if (key === 's'){
-    heroY += 5;
+    heroY += world1TileSize;
   }
    
 }
