@@ -81,19 +81,19 @@ function checkCollision(gameBoard,tileSize) {
   for (let y = 0; y < gameBoard.length; y++) {
     currentLine = gameBoard[y];
     for (let x = 0; x < currentLine.length; x++) {
-      currentTileValue = currentLine[x];
-      index = [currentLine][currentTileValue];
-      
+      currentTileValue = currentLine[x];      
       // Position de la tuile
       // x*tileSize, y*tileSize, tileSize, tileSize
       // heroX, heroY
       rectIsInRect()
     }
   }
-  console.log(index);
+  //récupère la case dans laquelle est mon perso
+  console.log(heroX/world1TileSize);
+  console.log(heroY/world1TileSize);
 }
 
-function pointIsInRect(){} // Mettre les bons parametres
+function pointIsInRect(hX, hY){} // Mettre les bons parametres
 function rectIsInRect(){} // Mettre les bons parametres
 
 function keyPressed() {
