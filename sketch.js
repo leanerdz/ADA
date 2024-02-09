@@ -75,18 +75,22 @@ function drawWorld(gameBoard,tileDictionnary,tileSize) {
 
 
 function checkCollision(gameBoard,tileSize) {
-
+  let currentLine;
+  let currentTileValue;
+  let index;
   for (let y = 0; y < gameBoard.length; y++) {
-    const currentLine = gameBoard[y];
+    currentLine = gameBoard[y];
     for (let x = 0; x < currentLine.length; x++) {
-      const currentTileValue = currentLine[x];
+      currentTileValue = currentLine[x];
+      index = [currentLine][currentTileValue];
+      
       // Position de la tuile
       // x*tileSize, y*tileSize, tileSize, tileSize
       // heroX, heroY
       rectIsInRect()
     }
   }
-
+  console.log(index);
 }
 
 function pointIsInRect(){} // Mettre les bons parametres
@@ -113,6 +117,8 @@ function keyPressed() {
 // Appelé en continue après le setup
 function draw() {
 
+  checkCollision(worlds[currentWorld], 
+                worldsTileSizes[currentWorld]);
 
   drawWorld(worlds[currentWorld],
             tileDictionnaries[currentWorld],
