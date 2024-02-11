@@ -77,7 +77,6 @@ function drawWorld(gameBoard,tileDictionnary,tileSize) {
 function checkCollision(gameBoard,tileSize) {
   let currentLine;
   let currentTileValue;
-  let index;
   for (let y = 0; y < gameBoard.length; y++) {
     currentLine = gameBoard[y];
     for (let x = 0; x < currentLine.length; x++) {
