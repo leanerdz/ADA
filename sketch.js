@@ -75,49 +75,69 @@ function drawWorld(gameBoard,tileDictionnary,tileSize) {
 
 
 function checkCollision(gameBoard,tileSize) {
-  let currentLine;
-  let currentTileValue;
   for (let y = 0; y < gameBoard.length; y++) {
-    currentLine = gameBoard[y];
+    const currentLine = gameBoard[y];
     for (let x = 0; x < currentLine.length; x++) {
-      currentTileValue = currentLine[x];      
-      // Position de la tuile
-      // x*tileSize, y*tileSize, tileSize, tileSize
-      // heroX, heroY
-      rectIsInRect()
+      const currentTileValue = currentLine[x];    
+      console.log(currentTileValue)  
+      if (currentTileValue === 0 || currentTileValue === 1 || currentTileValue === 2){
+        if(rectIsInRect(x*tileSize-tileSize, y*tileSize-tileSize, heroX, heroY, tileSize*2, tileSize*2)){
+          return true 
+        }
+      }
     }
   }
-  //récupère la case dans laquelle est mon perso
-  console.log(heroX/world1TileSize);
-  console.log(heroY/world1TileSize);
+
 }
 
-function pointIsInRect(hX, hY){} // Mettre les bons parametres
-function rectIsInRect(){} // Mettre les bons parametres
+function rectIsInRect(xP, yP, x, y, widthP, heightP){
+    if (x > xP && x < xP + widthP) {
+        if (y > yP && y < yP + heightP) {
+            return true;
+        }
+    }
+    return false;
+};
+
 
 function keyPressed() {
   let keyIndex = -1;
+  let path = 10;
   if (key === 'q'){
-    heroX -= world1TileSize; 
-  }
+    heroX -= path; 
+    if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      heroX += path
+    }
+  } 
+  
   if (key === 'd'){
-    heroX += world1TileSize;
-  }
-
+    heroX += path;
+    if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      heroX -= path
+    }
+  } 
+  
   if (key === 'z'){
-    heroY -= world1TileSize; 
-  }
+    heroY -= path; 
+    if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      heroY+= path
+    }
+  } 
+  
   if (key === 's'){
-    heroY += world1TileSize;
-  }
-   
+    heroY += path;
+    if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      heroY -= path
+    }
+  } 
 }
+
 
 // Appelé en continue après le setup
 function draw() {
 
-  checkCollision(worlds[currentWorld], 
-                worldsTileSizes[currentWorld]);
+  //checkCollision(worlds[currentWorld], 
+  //              worldsTileSizes[currentWorld]);
 
   drawWorld(worlds[currentWorld],
             tileDictionnaries[currentWorld],
