@@ -31,8 +31,8 @@ let worlds = []
 let tileDictionnaries = []
 let worldsTileSizes = []
 let hero
-let heroWidth = 40
-let heroHeight = 40
+let heroWidth = world1TileSize
+let heroHeight = world1TileSize
 let heroX = 3*world1TileSize
 let heroY = 6*world1TileSize
 
@@ -112,21 +112,18 @@ function keyPressed() {
       heroX += path
     }
   } 
-  
   if (key === 'd'){
     heroX += path;
     if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
       heroX -= path
     }
   } 
-  
   if (key === 'z'){
     heroY -= path; 
     if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
       heroY+= path
     }
   } 
-  
   if (key === 's'){
     heroY += path;
     if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
@@ -138,9 +135,6 @@ function keyPressed() {
 
 // Appelé en continue après le setup
 function draw() {
-
-  //checkCollision(worlds[currentWorld], 
-  //              worldsTileSizes[currentWorld]);
 
   drawWorld(worlds[currentWorld],
             tileDictionnaries[currentWorld],
