@@ -116,28 +116,28 @@ function rectIsInRect(xP, yP, x, y, widthP, heightP){
 };
 
 
-function keyPressed() {
+const checkKeys = () => {
   let keyIndex = -1;
-  let path = world1TileSize;
-  if (key === 'q'){
+  let path = 5;
+  if (keyIsDown(LEFT_ARROW)){
     heroX -= path; 
     if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
       heroX += path
     }
   } 
-  if (key === 'd'){
+  if (keyIsDown(RIGHT_ARROW)){
     heroX += path;
     if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
       heroX -= path
     }
   } 
-  if (key === 'z'){
+  if (keyIsDown(UP_ARROW)){
     heroY -= path; 
     if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
       heroY+= path
     }
   } 
-  if (key === 's'){
+  if (keyIsDown(DOWN_ARROW)){
     heroY += path;
     if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
       heroY -= path
@@ -146,8 +146,10 @@ function keyPressed() {
 }
 
 
+
 // Appelé en continue après le setup
 function draw() {
+  checkKeys();
   drawWorld(worlds[currentWorld], tileDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
   image(hero, heroX, heroY, heroWidth, heroHeight);
   drawFront(world2Board, world2TileDictionnary, world2TileSize);
