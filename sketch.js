@@ -1,4 +1,4 @@
-let world1TileDictionnary = {}
+let world1TileDictionnary = {};
 let world1Board = [
   [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
   [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
@@ -9,32 +9,46 @@ let world1Board = [
   [6,12,2,12,12,2,2,2,2,12,2,2,2,2,12,12,12,12,12,0],
   [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
   [6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
-]
-let world1TileSize = 64
+];
+let world1TileSize = 64;
 
-let world2TileDictionnary = {}
+let world2TileDictionnary = {};
 let world2Board = [
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+];
+let world2TileSize = 64;
+
+let world3TileDictionnary = {};
+let world3Board = [
   [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
   [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
   [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,2,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
+  [6,12,12,12,12,12,12,12,12,12,12,12,2,12,12,12,12,12,12,0],
+  [6,12,12,12,12,12,12,12,12,12,2,2,2,2,2,2,12,12,12,0],
+  [6,12,12,12,12,12,12,12,12,2,2,2,2,2,2,2,2,2,2,0],
+  [6,12,12,12,12,12,12,2,2,2,2,2,2,2,2,2,2,2,2,0],
+  [6,12,12,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0],
   [6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
-]
-let world2TileSize = 64
-let currentWorld = 0
+];
+let world3TileSize = 64;
+let currentWorld = 0;
 
-let worlds = [] 
-let tileDictionnaries = []
-let worldsTileSizes = []
-let hero
-let heroWidth = world1TileSize
-let heroHeight = world1TileSize
-let heroX = 3*world1TileSize
-let heroY = 6*world1TileSize
+let worlds = [] ;
+let tileDictionnaries = [];
+let worldsTileSizes = [];
+let hero;
+let heroWidth = world1TileSize;
+let heroHeight = world1TileSize;
+let heroX = 3*world1TileSize;
+let heroY = 6*world1TileSize;
 
 // Appelée une fois
 function setup() {
@@ -59,12 +73,23 @@ function setup() {
                     1:loadImage('assets/herbe.jpg'),
                     2:loadImage('assets/House.png'),
                     3:loadImage('assets/lune.jpg')
-    }
+                    }
+
+  world3TileDictionnary = { 
+                    0: loadImage('assets/arbres.png'),
+                    4: loadImage('assets/arbres_haut.png'),
+                    5: loadImage('assets/arbres_bas.png'),
+                    6: loadImage('assets/arbres_cote.png'),
+                    12:loadImage('assets/sol.png'),
+                    1:loadImage('assets/herbe.jpg'),
+                    2:loadImage('assets/House.png'),
+                    3:loadImage('assets/lune.jpg')
+                    }
 
   hero = loadImage('assets/hero2.png');
-  worlds = [world1Board]
-  tileDictionnaries = [world1TileDictionnary]
-  worldsTileSizes = [world1TileSize]
+  worlds = [world1Board, world3Board]
+  tileDictionnaries = [world1TileDictionnary, world3TileDictionnary]
+  worldsTileSizes = [world1TileSize,world3TileSize]
 }
 
 function drawWorld(gameBoard,tileDictionnary,tileSize) {
@@ -89,6 +114,92 @@ function drawFront(gameBoard,tileDictionnary,tileSize) {
   }
 }
 
+function pointIsInRect(xP,yP,xR,yR,wR,hR){
+
+  if( (xP > xR && xP < xR + wR) && ( yP > yR && yP < yR + hR) )
+  {
+    return true;
+  }else{
+    return false;
+  }
+
+}
+function rectIsInRect(xP,yP,wP,hP,xR,yR,wR,hR){
+  // Arrivée par la gauche
+  if (xP + wP > xR){
+    if (pointIsInRect(xP+wP, yP + hP/2,xR,yR,wR,hR)) {
+      print("Par la gauche et le centre");
+      return true;
+    }
+    if (pointIsInRect(xP+wP, yP,xR,yR,wR,hR)){
+      print("Par la gauche et le bas");
+      return true;
+    }
+    
+    if (pointIsInRect(xP+wP, yP + hP,xR,yR,wR,hR)){
+      print("Par la gauche et le haut");
+      return true;
+    }
+    
+    
+  }
+
+  // Arrivée par la droite
+  if (xP < xR + wR){
+    if (pointIsInRect(xP, yP + hP/2,xR,yR,wR,hR)){
+      print("Par la droite et le centre");
+      return true;
+    }
+    /*
+    if (pointIsInRect(xP, yP + hP,xR,yR,wR,hR)){
+      print("Par la droite et le haut");
+      return true;
+    }
+    if (pointIsInRect(xP, yP,xR,yR,wR,hR)){
+      print("Par la droite et le bas");
+      return true;
+    }
+    */
+  }
+
+   // Arrivée par le bas
+   if (yP < yR + hR){
+
+    if (pointIsInRect(xP + wP/2, yP+hP/2, xR,yR,wR,hR)){
+      print("Par la bas et le centre : Effet tête du personnage qui passe sur la maison");
+      return true;
+    }
+
+    /*
+    if (pointIsInRect(xP + wP, yP, xR,yR,wR,hR)){
+      print("Par la bas et la gauche");
+      return true;
+    }
+    if (pointIsInRect(xP, yP,xR,yR,wR,hR)){
+      print("Par le bas et la droite");
+      return true;
+    }
+    */
+   }
+
+   // Arrivée par le haut
+   if (yP + hP > yR){
+    if (pointIsInRect(xP + wP / 2, yP+hP,xR,yR,wR,hR)){
+      print("Par le haut et le centre");
+      return true;
+    }
+    /*
+    if (pointIsInRect(xP, yP+hP, xR,yR,wR,hR)){
+      print("Par le haut et la gauche");
+      return true;
+    }
+    if (pointIsInRect(xP + wP, yP+hP,xR,yR,wR,hR)){
+      print("Par le bas et la droite");
+      return true;
+    }*/
+   }
+
+};
 
 function checkCollision(gameBoard,tileSize) {
   for (let y = 0; y < gameBoard.length; y++) {
@@ -97,7 +208,7 @@ function checkCollision(gameBoard,tileSize) {
       const currentTileValue = currentLine[x];    
       console.log(currentTileValue)  
       if (currentTileValue === 0 || currentTileValue === 1 || currentTileValue === 2 || currentTileValue === 4|| currentTileValue === 5|| currentTileValue === 6){
-        if(rectIsInRect(x*tileSize-tileSize, y*tileSize-tileSize, heroX, heroY, heroWidth,heroHeight)){
+        if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
           return true 
         }
       }
@@ -106,57 +217,141 @@ function checkCollision(gameBoard,tileSize) {
 
 }
 
-function rectIsInRect(xP, yP, x, y, widthP, heightP){
-    if (x > xP && x < xP + widthP) {
-        if (y > yP && y < yP + heightP) {
-            return true;
-        }
-    }
-    return false;
-};
 
 
-const checkKeys = () => {
-  let keyIndex = -1;
+const checkKeys = (currentMap) => {
   let path = 5;
-  if (keyIsDown(LEFT_ARROW)){
-    heroX -= path; 
-    if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
-      heroX += path
-    }
-  } 
-  if (keyIsDown(RIGHT_ARROW)){
-    heroX += path;
-    if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
-      heroX -= path
-    }
-  } 
-  if (keyIsDown(UP_ARROW)){
-    heroY -= path; 
-    if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
-      heroY+= path
-    }
-  } 
-  if (keyIsDown(DOWN_ARROW)){
-    heroY += path;
-    if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
-      heroY -= path
-    }
-  } 
+  if(currentMap === 1){
+    if (keyIsDown(LEFT_ARROW)){
+      heroX -= path; 
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+        heroX += path
+      }
+    } 
+    if (keyIsDown(RIGHT_ARROW)){
+      heroX += path;
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+        heroX -= path
+      }
+    } 
+  }
+  if (currentMap ===0){
+    if (keyIsDown(LEFT_ARROW)){
+      heroX -= path; 
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+        heroX += path
+      }
+    } 
+    if (keyIsDown(RIGHT_ARROW)){
+      heroX += path;
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+        heroX -= path
+      }
+    } 
+    if (keyIsDown(UP_ARROW)){
+      heroY -= path; 
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+        heroY+= path
+      }
+    } 
+    if (keyIsDown(DOWN_ARROW)){
+      heroY += path;
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+        heroY -= path
+      }
+    } 
+  }
+  
 }
-
 
 
 // Appelé en continue après le setup
 function draw() {
-  checkKeys();
+  checkKeys(currentWorld);
   drawWorld(worlds[currentWorld], tileDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
   image(hero, heroX, heroY, heroWidth, heroHeight);
   drawFront(world2Board, world2TileDictionnary, world2TileSize);
-
+  
 }
 
 // Choix graphiques finaux 
 // Wireframes 
 //logo chartre graphique 
 // Passer perso derrière qqch, tete pas bloqué par la maison, point and click (menu, taverne), créer deux mondes, prototypes de menu, monde de dessus, monde point and click. Intégrer les sprites des disigners. 
+
+
+// function pointIsInRect(xP, yP, xR, yR, widthR, heightR){
+//     if (xR > xP && xR < xP + widthR) {
+//         if (yR > yP && yR < yP + heightR) {
+//             return true;
+//         }
+//     }
+//     return false;
+// };
+// function rectIsInRect(xP, yP, widthP, heightP,xR, yR, widthR, heightR){
+//   // detection arrivée par la gauche 
+//   if(xP + widthP > xR ){
+//     // dectecter si point haut droit est dans la tuile 
+//     if(pointIsInRect(xP + widthP, yP, xR, yR, widthR, heightR)){
+//       console.log(true)
+//       return true; 
+//     }
+//     // dectecter si point bas droit est dans la tuile 
+//     if(pointIsInRect(xP + widthP, yP+ heightP, xR, yR, widthR, heightR)){
+//       console.log(true)
+//       return true; 
+//     }
+//    // detection arrivée par la droite 
+//   }else if (xP> xR + widthR){
+//     // dectecter si point haut gauche est dans la tuile 
+//     if(pointIsInRect(xP, yP, xR+widthR, yR, widthR, heightR)){
+//       console.log(true)
+//       return true; 
+//     }
+//     // dectecter si point bas gauche est dans la tuile 
+//     if(pointIsInRect(xP, yP, xR+widthR, yR+heightR, widthR, heightR)){
+//       console.log(true)
+//       return true; 
+//     }
+//     // detection arrivée par le bas
+//   }else if (yP+heightP > yR){
+//     // dectecter si point haut gauche est dans la tuile 
+//     if(pointIsInRect(xP, yP, xR+widthR, yR+heightR, widthR, heightR)){
+//       console.log(true)
+//       return true; 
+//     }
+//     // dectecter si point haut droit est dans la tuile 
+//     if(pointIsInRect(xP + widthP, yP, xR, yR, widthR, heightR)){
+//       console.log(true)
+//       return true; 
+//     }
+//     // detection arrivée par le haut 
+//   }else if (yP > yR+heightR){
+//     // dectecter si point bas gauche est dans la tuile 
+//     if(pointIsInRect(xP, yP, xR+widthR, yR+heightR, widthR, heightR)){
+//       console.log(true)
+//       return true; 
+//     }
+//     // dectecter si point bas droit est dans la tuile 
+//     if(pointIsInRect(xP + widthP, yP+heightP, xR, yR, widthR, heightR)){
+//       console.log(true)
+//       return true; 
+//     }
+//   }else {
+//     console.log(false)
+//     return false;
+//   }
+// };
+
+
+
+//       ⬇   ⬇   ⬇
+//      ––––––––––––
+// | ➡ |            |⬅    
+// |   |            |
+// |   |            |          
+// | ➡ |            |⬅       
+// |   |            |       
+// |   |            |      
+//   ➡ –––––––––––– ⬅
+//       ⬆   ⬆   ⬆
