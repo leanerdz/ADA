@@ -5,7 +5,7 @@ let world1Board = [
   [6,12,2,2,2,2,2,2,2,2,2,2,12,2,12,12,12,12,12,0],
   [6,12,2,12,12,12,2,12,12,12,12,12,12,2,12,12,12,12,12,0],
   [6,12,12,12,12,12,12,12,12,12,12,12,12,2,12,12,12,12,12,0],
-  [6,12,2,12,12,12,12,12,12,12,2,12,12,2,12,12,12,12,12,0],
+  [6,12,2,12,12,12,12,12,12,12,2,12,12,2,12,12,7,12,12,0],
   [6,12,2,12,12,2,2,2,2,12,2,2,2,2,12,12,12,12,12,0],
   [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
   [6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
@@ -15,12 +15,12 @@ let world1TileSize = 64;
 let world2TileDictionnary = {};
 let world2Board = [
   [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,16,15,18,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,17,14,19,12,12],
   [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
   [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
-  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,12],
-  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,12,12,12,12],
-  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
-  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,12,12],
   [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
   [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
 ];
@@ -47,7 +47,7 @@ let worldsTileSizes = [];
 let hero;
 let heroWidth = 55;
 let heroHeight = 55;
-let heroX = 3*world1TileSize;
+let heroX = 4*world1TileSize;
 let heroY = 6*world1TileSize;
 
 // Appelée une fois
@@ -58,6 +58,7 @@ function setup() {
                     4:loadImage('assets/arbres_haut.png'),
                     5:loadImage('assets/arbres_bas.png'),
                     6:loadImage('assets/arbres_cote.png'),
+                    7:loadImage('assets/socle.jpg'),
                     12:loadImage('assets/sol.png'),
                     1:loadImage('assets/herbe.jpg'),
                     2:loadImage('assets/House.png'),
@@ -70,6 +71,10 @@ function setup() {
                     5: loadImage('assets/arbres_bas.png'),
                     6: loadImage('assets/arbres_cote.png'),
                     13: loadImage('assets/tree.png'),
+                    14: loadImage('assets/socle.png'),
+                    15: loadImage('assets/croisement.png'),
+                    16: loadImage('assets/gauche.png'),
+                    17: loadImage('assets/droit.png'),
                     12: createImage(1, 1),
                     1:loadImage('assets/herbe.jpg'),
                     2:loadImage('assets/House.png'),
@@ -171,14 +176,14 @@ function rectIsInRect(xP,yP,wP,hP,xR,yR,wR,hR){
     }
 
     
-    if (pointIsInRect(xP + wP, yP, xR,yR,wR,hR)){
-      console.log("Par la bas et la gauche");
-      return true;
-    }
-    if (pointIsInRect(xP, yP,xR,yR,wR,hR)){
-      console.log("Par le bas et la droite");
-      return true;
-    }
+    // if (pointIsInRect(xP + wP, yP, xR,yR,wR,hR)){
+    //   console.log("Par la bas et la gauche");
+    //   return true;
+    // }
+    // if (pointIsInRect(xP, yP,xR,yR,wR,hR)){
+    //   console.log("Par le bas et la droite");
+    //   return true;
+    // }
     
    }
 
@@ -207,7 +212,7 @@ function checkCollision(gameBoard,tileSize) {
     for (let x = 0; x < currentLine.length; x++) {
       const currentTileValue = currentLine[x];    
       console.log(currentTileValue)  
-      if (currentTileValue === 0 || currentTileValue === 1 || currentTileValue === 2 || currentTileValue === 4|| currentTileValue === 5|| currentTileValue === 6){
+      if (currentTileValue === 0 || currentTileValue === 1 || currentTileValue === 2 || currentTileValue === 4|| currentTileValue === 5|| currentTileValue === 6 || currentTileValue === 7){
         if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
           return true 
         }
@@ -274,7 +279,4 @@ function draw() {
   
 }
 
-// Choix graphiques finaux 
-// Wireframes 
-//logo chartre graphique 
-// Passer perso derrière qqch, tete pas bloqué par la maison, point and click (menu, taverne), créer deux mondes, prototypes de menu, monde de dessus, monde point and click. Intégrer les sprites des disigners. 
+
