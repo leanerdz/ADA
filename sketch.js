@@ -17,10 +17,10 @@ let world2Board = [
   [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
   [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
   [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,12,12,12,12],
   [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
-  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
-  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
-  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,13,12,12],
   [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
   [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
 ];
@@ -45,8 +45,8 @@ let worlds = [] ;
 let tileDictionnaries = [];
 let worldsTileSizes = [];
 let hero;
-let heroWidth = world1TileSize;
-let heroHeight = world1TileSize;
+let heroWidth = 55;
+let heroHeight = 55;
 let heroX = 3*world1TileSize;
 let heroY = 6*world1TileSize;
 
@@ -69,7 +69,8 @@ function setup() {
                     4: loadImage('assets/arbres_haut.png'),
                     5: loadImage('assets/arbres_bas.png'),
                     6: loadImage('assets/arbres_cote.png'),
-                    12:loadImage(''),
+                    13: loadImage('assets/tree.png'),
+                    12: createImage(1, 1),
                     1:loadImage('assets/herbe.jpg'),
                     2:loadImage('assets/House.png'),
                     3:loadImage('assets/lune.jpg')
@@ -125,19 +126,19 @@ function pointIsInRect(xP,yP,xR,yR,wR,hR){
 
 }
 function rectIsInRect(xP,yP,wP,hP,xR,yR,wR,hR){
-  // Arrivée par la gauche
+ // Arrivée par la gauche
   if (xP + wP > xR){
-    if (pointIsInRect(xP+wP, yP + hP/2,xR,yR,wR,hR)) {
-      print("Par la gauche et le centre");
-      return true;
-    }
+    // if (pointIsInRect(xP+wP, yP + hP/2,xR,yR,wR,hR)) {
+    //   console.log("Par la gauche et le centre");
+    //   return true;
+    // }
     if (pointIsInRect(xP+wP, yP,xR,yR,wR,hR)){
-      print("Par la gauche et le bas");
+      console.log("Par la gauche et le bas");
       return true;
     }
     
     if (pointIsInRect(xP+wP, yP + hP,xR,yR,wR,hR)){
-      print("Par la gauche et le haut");
+      console.log("Par la gauche et le haut");
       return true;
     }
     
@@ -146,60 +147,59 @@ function rectIsInRect(xP,yP,wP,hP,xR,yR,wR,hR){
 
   // Arrivée par la droite
   if (xP < xR + wR){
-    if (pointIsInRect(xP, yP + hP/2,xR,yR,wR,hR)){
-      print("Par la droite et le centre");
-      return true;
-    }
-    /*
+    // if (pointIsInRect(xP, yP + hP/2,xR,yR,wR,hR)){
+    //   console.log("Par la droite et le centre");
+    //   return true;
+    // }
+    
     if (pointIsInRect(xP, yP + hP,xR,yR,wR,hR)){
-      print("Par la droite et le haut");
+      console.log("Par la droite et le haut");
       return true;
     }
     if (pointIsInRect(xP, yP,xR,yR,wR,hR)){
-      print("Par la droite et le bas");
+      console.log("Par la droite et le bas");
       return true;
     }
-    */
   }
 
    // Arrivée par le bas
    if (yP < yR + hR){
 
     if (pointIsInRect(xP + wP/2, yP+hP/2, xR,yR,wR,hR)){
-      print("Par la bas et le centre : Effet tête du personnage qui passe sur la maison");
+      console.log("Par la bas et le centre : Effet tête du personnage qui passe sur la maison");
       return true;
     }
 
-    /*
+    
     if (pointIsInRect(xP + wP, yP, xR,yR,wR,hR)){
-      print("Par la bas et la gauche");
+      console.log("Par la bas et la gauche");
       return true;
     }
     if (pointIsInRect(xP, yP,xR,yR,wR,hR)){
-      print("Par le bas et la droite");
+      console.log("Par le bas et la droite");
       return true;
     }
-    */
+    
    }
 
    // Arrivée par le haut
    if (yP + hP > yR){
-    if (pointIsInRect(xP + wP / 2, yP+hP,xR,yR,wR,hR)){
-      print("Par le haut et le centre");
-      return true;
-    }
-    /*
+    // if (pointIsInRect(xP + wP / 2, yP+hP,xR,yR,wR,hR)){
+    //   console.log("Par le haut et le centre");
+    //   return true;
+    // }
+    
     if (pointIsInRect(xP, yP+hP, xR,yR,wR,hR)){
-      print("Par le haut et la gauche");
+      console.log("Par le haut et la gauche");
       return true;
     }
     if (pointIsInRect(xP + wP, yP+hP,xR,yR,wR,hR)){
-      print("Par le bas et la droite");
+      console.log("Par le bas et la droite");
       return true;
-    }*/
+    }
    }
 
-};
+}
 
 function checkCollision(gameBoard,tileSize) {
   for (let y = 0; y < gameBoard.length; y++) {
@@ -278,80 +278,3 @@ function draw() {
 // Wireframes 
 //logo chartre graphique 
 // Passer perso derrière qqch, tete pas bloqué par la maison, point and click (menu, taverne), créer deux mondes, prototypes de menu, monde de dessus, monde point and click. Intégrer les sprites des disigners. 
-
-
-// function pointIsInRect(xP, yP, xR, yR, widthR, heightR){
-//     if (xR > xP && xR < xP + widthR) {
-//         if (yR > yP && yR < yP + heightR) {
-//             return true;
-//         }
-//     }
-//     return false;
-// };
-// function rectIsInRect(xP, yP, widthP, heightP,xR, yR, widthR, heightR){
-//   // detection arrivée par la gauche 
-//   if(xP + widthP > xR ){
-//     // dectecter si point haut droit est dans la tuile 
-//     if(pointIsInRect(xP + widthP, yP, xR, yR, widthR, heightR)){
-//       console.log(true)
-//       return true; 
-//     }
-//     // dectecter si point bas droit est dans la tuile 
-//     if(pointIsInRect(xP + widthP, yP+ heightP, xR, yR, widthR, heightR)){
-//       console.log(true)
-//       return true; 
-//     }
-//    // detection arrivée par la droite 
-//   }else if (xP> xR + widthR){
-//     // dectecter si point haut gauche est dans la tuile 
-//     if(pointIsInRect(xP, yP, xR+widthR, yR, widthR, heightR)){
-//       console.log(true)
-//       return true; 
-//     }
-//     // dectecter si point bas gauche est dans la tuile 
-//     if(pointIsInRect(xP, yP, xR+widthR, yR+heightR, widthR, heightR)){
-//       console.log(true)
-//       return true; 
-//     }
-//     // detection arrivée par le bas
-//   }else if (yP+heightP > yR){
-//     // dectecter si point haut gauche est dans la tuile 
-//     if(pointIsInRect(xP, yP, xR+widthR, yR+heightR, widthR, heightR)){
-//       console.log(true)
-//       return true; 
-//     }
-//     // dectecter si point haut droit est dans la tuile 
-//     if(pointIsInRect(xP + widthP, yP, xR, yR, widthR, heightR)){
-//       console.log(true)
-//       return true; 
-//     }
-//     // detection arrivée par le haut 
-//   }else if (yP > yR+heightR){
-//     // dectecter si point bas gauche est dans la tuile 
-//     if(pointIsInRect(xP, yP, xR+widthR, yR+heightR, widthR, heightR)){
-//       console.log(true)
-//       return true; 
-//     }
-//     // dectecter si point bas droit est dans la tuile 
-//     if(pointIsInRect(xP + widthP, yP+heightP, xR, yR, widthR, heightR)){
-//       console.log(true)
-//       return true; 
-//     }
-//   }else {
-//     console.log(false)
-//     return false;
-//   }
-// };
-
-
-
-//       ⬇   ⬇   ⬇
-//      ––––––––––––
-// | ➡ |            |⬅    
-// |   |            |
-// |   |            |          
-// | ➡ |            |⬅       
-// |   |            |       
-// |   |            |      
-//   ➡ –––––––––––– ⬅
-//       ⬆   ⬆   ⬆
