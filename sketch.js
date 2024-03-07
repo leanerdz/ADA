@@ -1,44 +1,70 @@
 let world1TileDictionnary = {};
 let world1Board = [
-  [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
+  [0,0,0,0,0,0,0,10,14,14,14,14,14,14,12,0,0,0,0,0],
+  [0,0,0,0,0,0,0,11,15,16,14,14,17,15,13,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,10,17,15,13,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,10,12,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,20,18,12,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,10,17,19,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,10,12,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,10,12,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,10,12,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,10,12,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,10,12,0,0,0,0,0,0,0,0,0,0],
+
 ];
 let world1TileSize = 64;
 
 let world2TileDictionnary = {};
 let world2Board = [
-  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
-  [12,21,22,23,12,12,12,31,32,33,34,12,12,12,12,12,12,12,12,12],
-  [12,24,25,26,12,12,12,35,36,37,38,12,12,12,12,12,12,12,12,12],
-  [12,27,28,29,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
-  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
-  [12,12,12,12,12,12,12,41,42,12,12,12,12,12,12,12,12,12,12,12],
-  [12,12,12,12,12,12,12,43,44,45,12,12,12,12,12,12,12,12,12,12],
-  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
-  [12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12],
+  [10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,20,21,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,22,23,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,20,21,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,22,23,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 ];
 let world2TileSize = 64;
 
 let world3TileDictionnary = {};
 let world3Board = [
-  [4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,12,12,2,12,12,12,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,12,2,2,2,2,2,2,12,12,12,0],
-  [6,12,12,12,12,12,12,12,12,2,2,2,2,2,2,2,2,2,2,0],
-  [6,12,12,12,12,12,12,2,2,2,2,2,2,2,2,2,2,2,2,0],
-  [6,12,12,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,0],
-  [6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5],
+  [0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 ];
 let world3TileSize = 64;
+
+let world4TileDictionnary = {};
+let world4Board = [
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+
+];
+let world4TileSize = 64;
+
+
 let currentWorld = 0;
 
 let worlds = [] ;
@@ -54,68 +80,67 @@ let heroY = 6*world1TileSize;
 function setup() {
   createCanvas(world1Board[0].length*world1TileSize,world1Board.length*world1TileSize);
   world1TileDictionnary = { 
-                    0:loadImage('assets/arbres.png'),
-                    4:loadImage('assets/arbres_haut.png'),
-                    5:loadImage('assets/arbres_bas.png'),
-                    6:loadImage('assets/arbres_cote.png'),
-                    7:loadImage('assets/socle.png'),
-                    12:loadImage('assets/sol.png'),
-                    1:loadImage('assets/herbe.jpg'),
-                    2:loadImage('assets/House.png'),
-                    3:loadImage('assets/lune.jpg')
+                    0:loadImage('designs-des-designers/Herbe.png'),
+                    10:loadImage('designs-des-designers/eau/cote_riviere3.png'),
+                    11:loadImage('designs-des-designers/eau/exterieur_virage6.png'),
+                    12:loadImage('designs-des-designers/eau/cote_riviere4.png'),
+                    13:loadImage('designs-des-designers/eau/exterieur_virage8.png'),
+                    14:loadImage('designs-des-designers/eau/eau.png'),
+                    15:loadImage('designs-des-designers/eau/cote_riviere2.png'),
+                    16:loadImage('designs-des-designers/eau/interieur_virage.png'),
+                    17:loadImage('designs-des-designers/eau/interieur_virage4.png'),
+                    18:loadImage('designs-des-designers/eau/interieur_virage2.png'),
+                    19:loadImage('designs-des-designers/eau/exterieur_virage5.png'),
+                    20:loadImage('designs-des-designers/eau/exterieur_virage.png'),
+
+
                     }
 
   world2TileDictionnary = { 
-                    0: loadImage('assets/arbres.png'),
-                    4: loadImage('assets/arbres_haut.png'),
-                    5: loadImage('assets/arbres_bas.png'),
-                    6: loadImage('assets/arbres_cote.png'),
-                    21: loadImage('designs-des-designers/observatoire 1.png'),
-                    22: loadImage('designs-des-designers/observatoire 2.png'),
-                    23: loadImage('designs-des-designers/observatoire 3.png'),
-                    24: loadImage('designs-des-designers/observatoire 4.png'),
-                    25: loadImage('designs-des-designers/observatoire 5.png'),
-                    26: loadImage('designs-des-designers/observatoire 6.png'),
-                    27: loadImage('designs-des-designers/observatoire 7.png'),
-                    28: loadImage('designs-des-designers/observatoire 8.png'),
-                    29: loadImage('designs-des-designers/observatoire 9.png'),
-                    31: loadImage('designs-des-designers/garage1.png'),
-                    32: loadImage('designs-des-designers/garage2.png'),
-                    33: loadImage('designs-des-designers/garage3.png'),
-                    34: loadImage('designs-des-designers/garage4.png'),
-                    35: loadImage('designs-des-designers/garage5.png'),
-                    36: loadImage('designs-des-designers/garage6.png'),
-                    37: loadImage('designs-des-designers/garage7.png'),
-                    38: loadImage('designs-des-designers/garage8.png'),
-                    41: loadImage('designs-des-designers/maison1.png'),
-                    42: loadImage('designs-des-designers/maison2.png'),
-                    43: loadImage('designs-des-designers/maison3.png'),
-                    44: loadImage('designs-des-designers/maison4.png'),
-                    45: loadImage('designs-des-designers/maison5.png'),
-                    12:createImage(1, 1),
-                    1:loadImage('assets/herbe.jpg'),
-                    2:loadImage('assets/House.png'),
-                    3:loadImage('assets/lune.jpg')
+                    0: createImage(1,1),
+                    10:loadImage('designs-des-designers/arbre_entier.png'),
+                    20:loadImage('designs-des-designers/wesh.png'),
+                    21:loadImage('designs-des-designers/2eme_plan_pont.png'),
+                    22:loadImage('designs-des-designers/3eme_plan_pont.png'),
+                    23:loadImage('designs-des-designers/4eme_plan_pont.png'),
                     }
 
   world3TileDictionnary = { 
-                    0: loadImage('assets/arbres.png'),
-                    4: loadImage('assets/arbres_haut.png'),
-                    5: loadImage('assets/arbres_bas.png'),
-                    6: loadImage('assets/arbres_cote.png'),
-                    12:loadImage('assets/sol.png'),
-                    1:loadImage('assets/herbe.jpg'),
-                    2:loadImage('assets/House.png'),
-                    3:loadImage('assets/lune.jpg')
+                    0: createImage(1,1),
+                    1: createImage(1,1),
+                    }
+  world4TileDictionnary = { 
+                    0: createImage(1,1),
                     }
 
   hero = loadImage('assets/hero2.png');
-  worlds = [world1Board, world3Board]
-  tileDictionnaries = [world1TileDictionnary, world3TileDictionnary]
-  worldsTileSizes = [world1TileSize,world3TileSize]
+  worlds = [world1Board]
+  tileDictionnaries = [world1TileDictionnary]
+  worldsTileSizes = [world1TileSize]
 }
 
 function drawWorld(gameBoard,tileDictionnary,tileSize) {
+  for (let y = 0; y < gameBoard.length; y++) {
+    const currentLine = gameBoard[y];
+    for (let x = 0; x < currentLine.length; x++) {
+      const currentTileValue = currentLine[x];
+      let currentImageName = tileDictionnary[currentTileValue];
+      image(currentImageName, x*tileSize, y*tileSize, tileSize, tileSize);
+    }
+  }
+}
+
+function drawElements(gameBoard,tileDictionnary,tileSize) {
+  for (let y = 0; y < gameBoard.length; y++) {
+    const currentLine = gameBoard[y];
+    for (let x = 0; x < currentLine.length; x++) {
+      const currentTileValue = currentLine[x];
+      let currentImageName = tileDictionnary[currentTileValue];
+      image(currentImageName, x*tileSize, y*tileSize, tileSize, tileSize);
+    }
+  }
+}
+function drawColisions(gameBoard,tileDictionnary,tileSize) {
   for (let y = 0; y < gameBoard.length; y++) {
     const currentLine = gameBoard[y];
     for (let x = 0; x < currentLine.length; x++) {
@@ -229,7 +254,7 @@ function checkCollision(gameBoard,tileSize) {
     for (let x = 0; x < currentLine.length; x++) {
       const currentTileValue = currentLine[x];    
       console.log(currentTileValue)  
-      if (currentTileValue === 0 || currentTileValue === 1 || currentTileValue === 2 || currentTileValue === 4|| currentTileValue === 5|| currentTileValue === 6 || currentTileValue === 7){
+      if (currentTileValue === 1){
         if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
           return true 
         }
@@ -246,13 +271,13 @@ const checkKeys = (currentMap) => {
   if(currentMap === 1){
     if (keyIsDown(LEFT_ARROW)){
       heroX -= path; 
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroX += path
       }
     } 
     if (keyIsDown(RIGHT_ARROW)){
       heroX += path;
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroX -= path
       }
     } 
@@ -260,25 +285,25 @@ const checkKeys = (currentMap) => {
   if (currentMap ===0){
     if (keyIsDown(LEFT_ARROW)){
       heroX -= path; 
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroX += path
       }
     } 
     if (keyIsDown(RIGHT_ARROW)){
       heroX += path;
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroX -= path
       }
     } 
     if (keyIsDown(UP_ARROW)){
       heroY -= path; 
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroY+= path
       }
     } 
     if (keyIsDown(DOWN_ARROW)){
       heroY += path;
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroY -= path
       }
     } 
@@ -291,8 +316,10 @@ const checkKeys = (currentMap) => {
 function draw() {
   checkKeys(currentWorld);
   drawWorld(worlds[currentWorld], tileDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
+  drawElements(world2Board, world2TileDictionnary, world2TileSize);
+  drawColisions(world3Board, world3TileDictionnary, world3TileSize);
   image(hero, heroX, heroY, heroWidth, heroHeight);
-  drawFront(world2Board, world2TileDictionnary, world2TileSize);
+  drawFront(world3Board, world3TileDictionnary, world3TileSize);
   
 }
 
