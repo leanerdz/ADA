@@ -63,16 +63,19 @@ let currentWorld = 0;
 let worlds = [world1Board] ;
 let tileDictionnaries = [world1TileDictionnary];
 let collisions = [world1Collisions];
+let collisonsDictionnaries = [world1CollisionDico];
 let transparency = [world1Tansparency];
+let transparencyDictionnaries = [world1TransparencyDico];
 let front  = [world1Front];
+let frontDico = [world1FrontDico]
 let worldsTileSizes = [world1TileSize];
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Hero//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
 let heroSpeed = 5;
-let heroWidth = 55;
-let heroHeight = 55;
+let heroWidth = 64;
+let heroHeight = 128;
 let heroX = 17*world1TileSize;
 let heroY = 8*world1TileSize;
 let myHeroRight = [];
@@ -131,13 +134,13 @@ function setup() {
                   world1FrontDico = { 
                     0: createImage(1,1),
                   }
-  hero0 = loadImage('assets/dogRight1.png'); 
+  hero0 = loadImage('assets/perso_cote_01.png'); 
   myHeroRight.push(hero0);
-  hero1 = loadImage('assets/dogRight2.png'); 
+  hero1 = loadImage('assets/perso_cote_02.png'); 
   myHeroRight.push(hero1);
-  hero2 = loadImage('assets/dogRight3.png'); 
+  hero2 = loadImage('assets/perso_cote_03.png'); 
   myHeroRight.push(hero2);
-  hero3 = loadImage('assets/dogRight4.png'); 
+  hero3 = loadImage('assets/perso_cote_04.png'); 
   myHeroRight.push(hero3);
   
   currentHeroImage = hero0;
@@ -331,7 +334,7 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(LEFT_ARROW)){
       movementCounter += 1;
       heroX -= path; 
-      if(checkCollision(world1Collisions,worldsTileSizes[currentWorld])){
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
         heroX += path
       }
       if (movementCounter >= 15 / heroSpeed){
@@ -347,7 +350,7 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(RIGHT_ARROW)){
       movementCounter += 1;
       heroX += path;
-      if(checkCollision(world1Collisions,worldsTileSizes[currentWorld])){
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
         heroX -= path
       }
       if (movementCounter >= 15 / heroSpeed){
@@ -365,7 +368,7 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(LEFT_ARROW)){
       movementCounter += 1;
       heroX -= path; 
-      if(checkCollision(world1Collisions,worldsTileSizes[currentWorld])){
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
         heroX += path
       }
       if (movementCounter >= 15 / heroSpeed){
@@ -381,7 +384,7 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(RIGHT_ARROW)){
       movementCounter += 1;
       heroX += path;
-      if(checkCollision(world1Collisions,worldsTileSizes[currentWorld])){
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
         heroX -= path
       }
       if (movementCounter >= 15 / heroSpeed){
@@ -397,7 +400,7 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(UP_ARROW)){
       movementCounter += 1;
       heroY -= path; 
-      if(checkCollision(world1Collisions,worldsTileSizes[currentWorld])){
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
         heroY+= path
       }
       if (movementCounter >= 15 / heroSpeed){
@@ -413,7 +416,7 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(DOWN_ARROW)){
       movementCounter += 1;
       heroY += path;
-      if(checkCollision(world1Collisions,worldsTileSizes[currentWorld])){
+      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
         heroY -= path
       }
       if (movementCounter >= 15 / heroSpeed){
@@ -435,10 +438,10 @@ const checkKeys = (currentMap) => {
 function draw() {
   checkKeys(currentWorld);
   drawWorld(worlds[currentWorld], tileDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
-  drawElements(world1Tansparency, world1TransparencyDico, world1TileSize);
-  drawColisions(world1Collisions, world1CollisionDico, world1TileSize);
+  drawElements(transparency[currentWorld], transparencyDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
+  drawColisions(collisions[currentWorld], collisonsDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
   image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-  drawFront(world1Front, world1FrontDico, world1TileSize);
+  drawFront(front[currentWorld], frontDico[currentWorld], worldsTileSizes[currentWorld]);
   
 }
 
@@ -560,7 +563,7 @@ function draw() {
 
 
 
-// 10:loadImage('designs-des-designers/arbre_entier.png'),
+//                     10:loadImage('designs-des-designers/arbre_entier.png'),
 //                     20:loadImage('designs-des-designers/wesh.png'),
 //                     21:loadImage('designs-des-designers/2eme_plan_pont.png'),
 //                     22:loadImage('designs-des-designers/3eme_plan_pont.png'),
