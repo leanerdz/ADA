@@ -154,10 +154,10 @@ function setup() {
 
   currentHeroImage = hero0;
 
-  myHeroLeft.push(loadImage('animations/dogLeft1.png'));
-  myHeroLeft.push(loadImage('animations/dogLeft2.png')); 
-  myHeroLeft.push(loadImage('animations/dogLeft3.png')); 
-  myHeroLeft.push(loadImage('animations/dogLeft4.png'));
+  myHeroLeft.push(loadImage('animations/perso_gauche_01.png'));
+  myHeroLeft.push(loadImage('animations/perso_gauche_02.png')); 
+  myHeroLeft.push(loadImage('animations/perso_gauche_03.png')); 
+  myHeroLeft.push(loadImage('animations/perso_gauche_04.png'));
 
   myHeroTop.push(loadImage('animations/perso_marche_dos_01.png'));
   myHeroTop.push(loadImage('animations/perso_marche_dos_02.png')); 
