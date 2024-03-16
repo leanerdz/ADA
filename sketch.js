@@ -5,46 +5,36 @@
 
 let world1TileDictionnary = {};
 let world1Board = [
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,32,30],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,37,39,30],
-  [0,0,0,21,21,21,25,0,0,0,0,0,0,0,0,0,37,39,30,30],
-  [0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,32,30,30,30],
-  [0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,32,30,30,30],
-  [0,0,0,0,0,0,20,0,0,0,0,0,0,0,0,0,35,38,30,30],
-  [0,0,0,0,0,0,23,21,21,21,21,25,0,0,0,0,0,35,38,30],
-  [0,0,0,0,0,0,0,0,0,0,0,23,21,21,21,21,21,25,32,30],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,23,32,30],
+  [0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,0,0,32,30],
+  [0,1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,1,37,39,30],
+  [0,1,1,21,21,21,25,0,0,1,0,1,0,1,0,0,37,39,30,30],
+  [0,0,1,0,0,1,20,0,1,0,1,0,0,1,0,1,32,30,30,30],
+  [0,1,1,1,0,0,20,0,1,0,1,0,1,0,1,1,32,30,30,30],
+  [0,0,1,0,1,0,20,0,0,0,0,1,0,0,0,0,35,38,30,30],
+  [0,1,0,1,0,0,23,21,21,21,21,25,0,0,0,0,0,35,38,30],
+  [0,1,0,0,1,0,0,0,0,0,0,23,21,21,21,21,21,25,32,30],
+  [0,0,1,0,0,1,0,1,0,0,0,0,1,0,0,1,0,23,32,30],
 ];
 let world1TileSize = 64;
 
-let world1TransparencyDico = {};
-let world1Tansparency = [
-  [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0,0],
-  [10,10,1,2,10,10,10,10,10,10,10,10,10,10,10,10,10,0,0,0],
-  [10,10,3,4,5,0,0,10,10,10,10,10,10,10,10,10,0,0,0,0],
-  [10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,0,0,0,0],
-  [10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,0,0,0,0],
-  [10,10,10,10,10,10,0,10,10,10,10,10,10,10,10,10,0,0,0,0],
-  [10,10,10,10,10,10,0,0,0,0,0,0,10,10,10,10,10,0,0,0],
+let world2TileDictionnary = {};
+let world2Board = [
+  [11,11,11,11,10,10,10,10,10,10,10,10,11,11,11,11,10,11,0,0],
+  [10,10,1,2,11,11,11,11,11,11,11,11,10,10,10,10,11,0,0,0],
+  [11,11,3,4,5,0,0,10,10,10,10,10,11,11,11,11,0,0,0,0],
+  [10,10,10,10,10,10,0,11,11,11,11,11,10,10,10,10,0,0,0,0],
+  [11,11,11,11,11,11,0,10,10,10,10,10,11,11,11,11,0,0,0,0],
+  [10,10,10,10,10,10,0,11,11,11,11,11,10,10,10,10,0,0,0,0],
+  [11,11,11,11,11,11,0,0,0,0,0,0,11,11,11,11,0,0,0,0],
   [10,10,10,10,10,10,10,10,10,10,10,0,0,0,0,0,0,0,6,7],
-  [10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,0,8,9],
+  [11,11,11,11,11,11,11,11,11,11,11,0,0,0,0,0,0,0,8,9],
 ];
+let world2TileSize = 64;
 
-let world1CollisionDico = {};
-let world1Collisions = [
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-  [0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1],
-  [0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1],
-  [0,0,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1],
-  [0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1],
-  [0,0,0,0,0,1,0,1,1,1,1,1,1,0,0,0,0,0,0,1],
-  [0,0,0,0,0,1,0,0,0,0,0,0,1,1,1,1,1,1,1,1],
-  [0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,2],
-  [0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,2],
-];
-
-let world1FrontDico = {};
-let world1Front = [
+let world3TileDictionnary = {};
+let world3Board = [
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
@@ -56,32 +46,46 @@ let world1Front = [
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 
 ];
+let world3TileSize = 64;
+
+let world4TileDictionnary = {};
+let world4Board = [
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,10,10,10,10,10,10,0,0,0],
+
+];
+let world4TileSize = 64;
 
 
 let currentWorld = 0;
 
-let worlds = [world1Board] ;
-let tileDictionnaries = [world1TileDictionnary];
-let collisions = [world1Collisions];
-let collisonsDictionnaries = [world1CollisionDico];
-let transparency = [world1Tansparency];
-let transparencyDictionnaries = [world1TransparencyDico];
-let front  = [world1Front];
-let frontDico = [world1FrontDico]
-let worldsTileSizes = [world1TileSize];
+let worlds = [] ;
+let tileDictionnaries = [];
+let worldsTileSizes = [];
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Hero//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 
 let heroSpeed = 5;
-let heroWidth = 64;
-let heroHeight = 128;
+let heroWidth = 47;
+let heroHeight = 94;
 let heroX = 17*world1TileSize;
-let heroY = 8*world1TileSize;
+let heroY = 7*world1TileSize;
 let myHeroRight = [];
 let myHeroLeft = [];
 let myHeroTop = [];
 let myHeroBack = [];
+let myHeroDiagoBackRight = [];
+let myHeroDiagoBackLeft = [];
 let currentIndex = 0;
 let movementCounter = 0;
 let currentHeroImage = 0;
@@ -91,74 +95,91 @@ let currentHeroImage = 0;
 function setup() {
   createCanvas(world1Board[0].length*world1TileSize,world1Board.length*world1TileSize);
   world1TileDictionnary = { 
-                    0:loadImage('designs-des-designers/Herbe.png'),
-                    20:loadImage('designs-des-designers/chemin1.png'),
-                    21:loadImage('designs-des-designers/chemin2.png'),
-                    23:loadImage('designs-des-designers/chemin3.png'),
-                    24:loadImage('designs-des-designers/chemin4.png'),
-                    25:loadImage('designs-des-designers/chemin5.png'),
-                    30:loadImage('designs-des-designers/eau/eau.png'),
-                    31:loadImage('designs-des-designers/eau/cote_riviere2.png'),
-                    32:loadImage('designs-des-designers/eau/cote_riviere3.png'),
-                    33:loadImage('designs-des-designers/eau/cote_riviere4.png'),
-                    34:loadImage('designs-des-designers/eau/exterieur_virage.png'),
-                    35:loadImage('designs-des-designers/eau/exterieur_virage6.png'),
-                    36:loadImage('designs-des-designers/eau/exterieur_virage8.png'),
-                    37:loadImage('designs-des-designers/eau/exterieur_virage4.png'),
-                    38:loadImage('designs-des-designers/eau/interieur_virage.png'),
-                    39:loadImage('designs-des-designers/eau/interieur_virage2.png'),
-                    40:loadImage('designs-des-designers/eau/interieur_virage4.png'),
-                    41:loadImage('designs-des-designers/eau/exterieur_virage5.png'),
-                  }
-                  
-  world1TransparencyDico = { 
-                    0: createImage(1,1),
-                    1:loadImage('designs-des-designers/maison1.png'),
-                    2:loadImage('designs-des-designers/maison2.png'),
-                    3:loadImage('designs-des-designers/maison3.png'),
-                    4:loadImage('designs-des-designers/maison4.png'),
-                    5:loadImage('designs-des-designers/maison5.png'),
-                    6:loadImage('designs-des-designers/wesh.png'),
-                    7:loadImage('designs-des-designers/2eme_plan_pont.png'),
-                    8:loadImage('designs-des-designers/3eme_plan_pont.png'),
-                    9:loadImage('designs-des-designers/4eme_plan_pont.png'),
-                    10:loadImage('designs-des-designers/arbre_entier.png'),
-                    
-                  }
-                  
-                  world1CollisionDico = { 
+    0:loadImage('designs-des-designers/herbe.png'),
+    1:loadImage('designs-des-designers/herbeMotif.png'),
+    20:loadImage('designs-des-designers/chemin1.png'),
+    21:loadImage('designs-des-designers/chemin2.png'),
+    23:loadImage('designs-des-designers/chemin3.png'),
+    24:loadImage('designs-des-designers/chemin4.png'),
+    25:loadImage('designs-des-designers/chemin5.png'),
+    30:loadImage('designs-des-designers/eau/eau.png'),
+    31:loadImage('designs-des-designers/eau/cote_riviere2.png'),
+    32:loadImage('designs-des-designers/eau/cote_riviere3.png'),
+    33:loadImage('designs-des-designers/eau/cote_riviere4.png'),
+    34:loadImage('designs-des-designers/eau/exterieur_virage.png'),
+    35:loadImage('designs-des-designers/eau/exterieur_virage6.png'),
+    36:loadImage('designs-des-designers/eau/exterieur_virage8.png'),
+    37:loadImage('designs-des-designers/eau/exterieur_virage4.png'),
+    38:loadImage('designs-des-designers/eau/interieur_virage.png'),
+    39:loadImage('designs-des-designers/eau/interieur_virage2.png'),
+    40:loadImage('designs-des-designers/eau/interieur_virage4.png'),
+    41:loadImage('designs-des-designers/eau/exterieur_virage5.png'),
+  }
+
+  world2TileDictionnary = { 
+    0: createImage(1,1),
+    1:loadImage('designs-des-designers/maison1.png'),
+    2:loadImage('designs-des-designers/maison2.png'),
+    3:loadImage('designs-des-designers/maison3.png'),
+    4:loadImage('designs-des-designers/maison4.png'),
+    5:loadImage('designs-des-designers/maison5.png'),
+    6:loadImage('designs-des-designers/wesh.png'),
+    7:loadImage('designs-des-designers/2eme_plan_pont.png'),
+    8:loadImage('designs-des-designers/3eme_plan_pont.png'),
+    9:loadImage('designs-des-designers/4eme_plan_pont.png'),
+    10:loadImage('designs-des-designers/arbre_1.png'),
+    11:loadImage('designs-des-designers/arbre_2.png'),
+    
+  }
+
+  world3TileDictionnary = { 
                     0: createImage(1,1),
                     1: createImage(1,1),
                     2: createImage(1,1),
-                  }
-                  world1FrontDico = { 
+  }
+
+  world4TileDictionnary = { 
                     0: createImage(1,1),
-                  }
-  hero0 = loadImage('assets/perso_cote_01.png'); 
+                    10:loadImage('designs-des-designers/arbre_1.png'),
+                    11:loadImage('designs-des-designers/arbre_2.png'),
+  }
+  hero0 = loadImage('animations/perso_cote_01.png'); 
   myHeroRight.push(hero0);
-  hero1 = loadImage('assets/perso_cote_02.png'); 
+  hero1 = loadImage('animations/perso_cote_02.png'); 
   myHeroRight.push(hero1);
-  hero2 = loadImage('assets/perso_cote_03.png'); 
+  hero2 = loadImage('animations/perso_cote_03.png'); 
   myHeroRight.push(hero2);
-  hero3 = loadImage('assets/perso_cote_04.png'); 
+  hero3 = loadImage('animations/perso_cote_04.png'); 
   myHeroRight.push(hero3);
-  
+
   currentHeroImage = hero0;
-  
-  myHeroLeft.push(loadImage('assets/dogLeft1.png'));
-  myHeroLeft.push(loadImage('assets/dogLeft2.png')); 
-  myHeroLeft.push(loadImage('assets/dogLeft3.png')); 
-  myHeroLeft.push(loadImage('assets/dogLeft4.png'));
-  
-  myHeroTop.push(loadImage('assets/dogTop1.png'));
-  myHeroTop.push(loadImage('assets/dogTop2.png')); 
-  myHeroTop.push(loadImage('assets/dogTop3.png')); 
-  myHeroTop.push(loadImage('assets/dogTop4.png'));
-  
-  myHeroBack.push(loadImage('assets/dogBack1.png'));
-  myHeroBack.push(loadImage('assets/dogBack2.png')); 
-  myHeroBack.push(loadImage('assets/dogBack3.png')); 
-  myHeroBack.push(loadImage('assets/dogBack4.png'));
+
+  myHeroLeft.push(loadImage('animations/dogLeft1.png'));
+  myHeroLeft.push(loadImage('animations/dogLeft2.png')); 
+  myHeroLeft.push(loadImage('animations/dogLeft3.png')); 
+  myHeroLeft.push(loadImage('animations/dogLeft4.png'));
+
+  myHeroTop.push(loadImage('animations/perso_marche_dos_01.png'));
+  myHeroTop.push(loadImage('animations/perso_marche_dos_02.png')); 
+  myHeroTop.push(loadImage('animations/perso_marche_dos_03.png')); 
+  myHeroTop.push(loadImage('animations/perso_marche_dos_04.png'));
+
+  myHeroBack.push(loadImage('animations/perso_principal_01.png'));
+  myHeroBack.push(loadImage('animations/perso_principal_02.png')); 
+  myHeroBack.push(loadImage('animations/perso_principal_03.png')); 
+  myHeroBack.push(loadImage('animations/perso_principal_04.png'));
+
+  myHeroDiagoBackLeft.push(loadImage('animations/diagonale_gauche_01.png'));
+  myHeroDiagoBackLeft.push(loadImage('animations/diagonale_gauche_02.png')); 
+  myHeroDiagoBackLeft.push(loadImage('animations/diagonale_gauche_03.png')); 
+  myHeroDiagoBackLeft.push(loadImage('animations/diagonale_gauche_04.png'));
+
+  myHeroDiagoBackRight.push(loadImage('animations/diagonale_droite_01.png'));
+  myHeroDiagoBackRight.push(loadImage('animations/diagonale_droite_02.png')); 
+  myHeroDiagoBackRight.push(loadImage('animations/diagonale_droite_03.png')); 
+  myHeroDiagoBackRight.push(loadImage('animations/diagonale_droite_04.png'));
+
+
   worlds = [world1Board]
   tileDictionnaries = [world1TileDictionnary]
   worldsTileSizes = [world1TileSize]
@@ -208,43 +229,43 @@ function drawFront(gameBoard,tileDictionnary,tileSize) {
 }
 
 function pointIsInRect(xP,yP,xR,yR,wR,hR){
-  
+
   if( (xP > xR && xP < xR + wR) && ( yP > yR && yP < yR + hR) )
   {
     return true;
   }else{
     return false;
   }
-  
+
 }
 function rectIsInRect(xP,yP,wP,hP,xR,yR,wR,hR){
-  // Arrivée par la gauche
+ // Arrivée par la gauche
   if (xP + wP > xR){
     // if (pointIsInRect(xP+wP, yP + hP/2,xR,yR,wR,hR)) {
-      //   console.log("Par la gauche et le centre");
-      //   return true;
-      // }
-      if (pointIsInRect(xP+wP, yP,xR,yR,wR,hR)){
-        console.log("Par la gauche et le bas");
-        return true;
-      }
-      
-      if (pointIsInRect(xP+wP, yP + hP,xR,yR,wR,hR)){
-        console.log("Par la gauche et le haut");
-        return true;
-      }
-      
-      
+    //   console.log("Par la gauche et le centre");
+    //   return true;
+    // }
+    if (pointIsInRect(xP+wP, yP,xR,yR,wR,hR)){
+      console.log("Par la gauche et le bas");
+      return true;
     }
     
-    // Arrivée par la droite
-    if (xP < xR + wR){
-      // if (pointIsInRect(xP, yP + hP/2,xR,yR,wR,hR)){
-        //   console.log("Par la droite et le centre");
-        //   return true;
-        // }
-        
-        if (pointIsInRect(xP, yP + hP,xR,yR,wR,hR)){
+    if (pointIsInRect(xP+wP, yP + hP,xR,yR,wR,hR)){
+      console.log("Par la gauche et le haut");
+      return true;
+    }
+    
+    
+  }
+
+  // Arrivée par la droite
+  if (xP < xR + wR){
+    // if (pointIsInRect(xP, yP + hP/2,xR,yR,wR,hR)){
+    //   console.log("Par la droite et le centre");
+    //   return true;
+    // }
+    
+    if (pointIsInRect(xP, yP + hP,xR,yR,wR,hR)){
       console.log("Par la droite et le haut");
       return true;
     }
@@ -253,35 +274,35 @@ function rectIsInRect(xP,yP,wP,hP,xR,yR,wR,hR){
       return true;
     }
   }
-  
-  // Arrivée par le bas
-  if (yP < yR + hR){
-    
+
+   // Arrivée par le bas
+   if (yP < yR + hR){
+
     if (pointIsInRect(xP + wP/2, yP+hP/2, xR,yR,wR,hR)){
       console.log("Par la bas et le centre : Effet tête du personnage qui passe sur la maison");
       return true;
     }
-    
+
     
     // if (pointIsInRect(xP + wP, yP, xR,yR,wR,hR)){
-      //   console.log("Par la bas et la gauche");
-      //   return true;
-      // }
-      // if (pointIsInRect(xP, yP,xR,yR,wR,hR)){
-        //   console.log("Par le bas et la droite");
-        //   return true;
-        // }
-        
-      }
-      
-      // Arrivée par le haut
-      if (yP + hP > yR){
-        // if (pointIsInRect(xP + wP / 2, yP+hP,xR,yR,wR,hR)){
-          //   console.log("Par le haut et le centre");
-          //   return true;
-          // }
-          
-          if (pointIsInRect(xP, yP+hP, xR,yR,wR,hR)){
+    //   console.log("Par la bas et la gauche");
+    //   return true;
+    // }
+    // if (pointIsInRect(xP, yP,xR,yR,wR,hR)){
+    //   console.log("Par le bas et la droite");
+    //   return true;
+    // }
+    
+   }
+
+   // Arrivée par le haut
+   if (yP + hP > yR){
+    // if (pointIsInRect(xP + wP / 2, yP+hP,xR,yR,wR,hR)){
+    //   console.log("Par le haut et le centre");
+    //   return true;
+    // }
+    
+    if (pointIsInRect(xP, yP+hP, xR,yR,wR,hR)){
       console.log("Par le haut et la gauche");
       return true;
     }
@@ -289,8 +310,8 @@ function rectIsInRect(xP,yP,wP,hP,xR,yR,wR,hR){
       console.log("Par le bas et la droite");
       return true;
     }
-  }
-  
+   }
+
 }
 
 function checkCollision(gameBoard,tileSize) {
@@ -304,12 +325,9 @@ function checkCollision(gameBoard,tileSize) {
           return true 
         }
       }
-      if (currentTileValue === 2){
-        console.log("Changer de monde !")
-      }
     }
   }
-  
+
 }
 
 function keyReleased(){
@@ -334,13 +352,13 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(LEFT_ARROW)){
       movementCounter += 1;
       heroX -= path; 
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroX += path
       }
       if (movementCounter >= 15 / heroSpeed){
         currentIndex += 1;
         if (currentIndex === myHeroLeft.length){
-          currentIndex = 0;
+            currentIndex = 0;
         }
         currentHeroImage = myHeroLeft[currentIndex];
         movementCounter = 0;
@@ -350,13 +368,13 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(RIGHT_ARROW)){
       movementCounter += 1;
       heroX += path;
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroX -= path
       }
       if (movementCounter >= 15 / heroSpeed){
         currentIndex += 1;
         if (currentIndex === myHeroRight.length){
-          currentIndex = 0;
+            currentIndex = 0;
         }
         currentHeroImage = myHeroRight[currentIndex];
         movementCounter = 0;
@@ -368,13 +386,13 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(LEFT_ARROW)){
       movementCounter += 1;
       heroX -= path; 
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroX += path
       }
       if (movementCounter >= 15 / heroSpeed){
         currentIndex += 1;
         if (currentIndex === myHeroLeft.length){
-          currentIndex = 0;
+            currentIndex = 0;
         }
         currentHeroImage = myHeroLeft[currentIndex];
         movementCounter = 0;
@@ -384,13 +402,13 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(RIGHT_ARROW)){
       movementCounter += 1;
       heroX += path;
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroX -= path
       }
       if (movementCounter >= 15 / heroSpeed){
         currentIndex += 1;
         if (currentIndex === myHeroRight.length){
-          currentIndex = 0;
+            currentIndex = 0;
         }
         currentHeroImage = myHeroRight[currentIndex];
         movementCounter = 0;
@@ -400,36 +418,68 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(UP_ARROW)){
       movementCounter += 1;
       heroY -= path; 
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroY+= path
       }
       if (movementCounter >= 15 / heroSpeed){
-        currentIndex += 1;
-        if (currentIndex === myHeroTop.length){
-          currentIndex = 0;
-        }
-        currentHeroImage = myHeroTop[currentIndex];
-        movementCounter = 0;
-        print(currentIndex);
+          currentIndex += 1;
+          if (currentIndex === myHeroTop.length){
+              currentIndex = 0;
+          }
+          currentHeroImage = myHeroTop[currentIndex];
+          movementCounter = 0;
+          print(currentIndex);
       }
     } 
     if (keyIsDown(DOWN_ARROW)){
       movementCounter += 1;
       heroY += path;
-      if(checkCollision(worlds[currentWorld],worldsTileSizes[currentWorld])){
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
         heroY -= path
       }
       if (movementCounter >= 15 / heroSpeed){
         currentIndex += 1;
         if (currentIndex === myHeroBack.length){
-          currentIndex = 0;
+            currentIndex = 0;
         }
         currentHeroImage = myHeroBack[currentIndex];
         movementCounter = 0;
         print(currentIndex);
       }
+    if (keyIsDown(UP_ARROW) && keyIsDown(LEFT_ARROW)){
+      movementCounter += 1;
+      heroY += path;
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
+        heroY -= path
+      }
+      if (movementCounter >= 15 / heroSpeed){
+        currentIndex += 1;
+        if (currentIndex === myHeroDiagoBackLeft.length){
+            currentIndex = 0;
+        }
+        currentHeroImage = myHeroDiagoBackLeft[currentIndex];
+        movementCounter = 0;
+        print(currentIndex);
+      }
+    } 
+    if (keyIsDown(UP_ARROW) && keyIsDown(RIGHT_ARROW)){
+      movementCounter += 1;
+      heroY += path;
+      if(checkCollision(world3Board,worldsTileSizes[currentWorld])){
+        heroY -= path
+      }
+      if (movementCounter >= 15 / heroSpeed){
+        currentIndex += 1;
+        if (currentIndex === myHeroDiagoBackRight.length){
+            currentIndex = 0;
+        }
+        currentHeroImage = myHeroDiagoBackRight[currentIndex];
+        movementCounter = 0;
+        print(currentIndex);
+      }
     } 
   }
+}
   
 }
 
@@ -438,135 +488,9 @@ const checkKeys = (currentMap) => {
 function draw() {
   checkKeys(currentWorld);
   drawWorld(worlds[currentWorld], tileDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
-  drawElements(transparency[currentWorld], transparencyDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
-  drawColisions(collisions[currentWorld], collisonsDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
+  drawElements(world2Board, world2TileDictionnary, world2TileSize);
+  drawColisions(world3Board, world3TileDictionnary, world3TileSize);
   image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-  drawFront(front[currentWorld], frontDico[currentWorld], worldsTileSizes[currentWorld]);
+  drawFront(world4Board, world4TileDictionnary, world4TileSize);
   
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 21:loadImage('designs-des-designers/côté chemin 1.png'),
-// 22:loadImage('designs-des-designers/côté chemin 2.png'),
-// 23:loadImage('designs-des-designers/côté chemin 3.png'),
-// 24:loadImage('designs-des-designers/côté chemin 4.png'),
-// 25:loadImage('designs-des-designers/etrerieur virage 2.png'),
-// 26:loadImage('designs-des-designers/intérieur virage 2.png'),
-// 27:loadImage('designs-des-designers/intérieur virage 3.png'),
-// 28:loadImage('designs-des-designers/intérieur virage 4.png'),
-
-// let world1TileDictionnary = {};
-// let world1Board = [
-//   [0,0,0,0,0,0,0,10,14,14,14,14,14,14,12,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,11,15,16,14,14,17,15,13,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,10,17,15,13,25,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,10,12,21,23,26,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,20,18,12,0,28,27,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,10,17,19,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,10,12,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,10,12,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,10,12,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,10,12,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,10,12,0,0,0,0,0,0,0,0,0,0],
-
-// ];
-// let world1TileSize = 64;
-
-// let world2TileDictionnary = {};
-// let world2Board = [
-//   [10,10,10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [10,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [10,0,0,0,0,0,0,0,0,20,21,24,24,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,22,23,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,20,21,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,22,23,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-// ];
-// let world2TileSize = 64;
-
-// let world3TileDictionnary = {};
-// let world3Board = [
-//   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-//   [1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,1],
-//   [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-//   [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-//   [1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,1],
-//   [1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1],
-//   [1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1],
-//   [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-//   [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-//   [1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,1],
-//   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-// ];
-// let world3TileSize = 64;
-
-// let world4TileDictionnary = {};
-// let world4Board = [
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-//   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-
-// ];
-// let world4TileSize = 64;
-
-// 10:loadImage('designs-des-designers/eau/cote_riviere3.png'),
-// 11:loadImage('designs-des-designers/eau/exterieur_virage6.png'),
-// 12:loadImage('designs-des-designers/eau/cote_riviere4.png'),
-// 13:loadImage('designs-des-designers/eau/exterieur_virage8.png'),
-// 14:loadImage('designs-des-designers/eau/eau.png'),
-// 15:loadImage('designs-des-designers/eau/cote_riviere2.png'),
-// 16:loadImage('designs-des-designers/eau/interieur_virage.png'),
-// 17:loadImage('designs-des-designers/eau/interieur_virage4.png'),
-// 18:loadImage('designs-des-designers/eau/interieur_virage2.png'),
-// 19:loadImage('designs-des-designers/eau/exterieur_virage5.png'),
-// 20:loadImage('designs-des-designers/eau/exterieur_virage.png'),
-// 21:loadImage('designs-des-designers/côté chemin 4.png'),
-// 22:loadImage('designs-des-designers/etrerieur virage 2.png'),
-// 23:loadImage('designs-des-designers/intérieur virage 4.png'),
-// 24:loadImage('designs-des-designers/côté chemin 2.png'),
-// 25:loadImage('designs-des-designers/côté chemin 3.png'),
-// 26:loadImage('designs-des-designers/intérieur virage 3.png'),
-// 27:loadImage('designs-des-designers/intérieur virage 2.png'),
-// 28:loadImage('designs-des-designers/côté chemin 1.png'),
-// 30:loadImage('designs-des-designers/observatoire 1.png'),
-// 31:loadImage('designs-des-designers/observatoire 2.png'),
-// 32:loadImage('designs-des-designers/observatoire 3.png'),
-// 33:loadImage('designs-des-designers/observatoire 4.png'),
-// 34:loadImage('designs-des-designers/observatoire 5.png'),
-// 35:loadImage('designs-des-designers/observatoire 6.png'),
-// 36:loadImage('designs-des-designers/observatoire 7.png'),
-// 37:loadImage('designs-des-designers/observatoire 8.png'),
-// 38:loadImage('designs-des-designers/observatoire 9.png'),
-
-
-
-//                     10:loadImage('designs-des-designers/arbre_entier.png'),
-//                     20:loadImage('designs-des-designers/wesh.png'),
-//                     21:loadImage('designs-des-designers/2eme_plan_pont.png'),
-//                     22:loadImage('designs-des-designers/3eme_plan_pont.png'),
-//                     23:loadImage('designs-des-designers/4eme_plan_pont.png'),
-//                     24:loadImage('designs-des-designers/côté chemin mer.png'),
-//                     25:loadImage('designs-des-designers/interieur_virage_mer2.png'),
