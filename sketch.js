@@ -95,7 +95,7 @@ let currentHeroImage = 0;
 function setup() {
   createCanvas(world1Board[0].length*world1TileSize,world1Board.length*world1TileSize);
   world1TileDictionnary = { 
-    0:loadImage('designs-des-designers/herbeTile.png.png'),
+    0:loadImage('designs-des-designers/herbeTile.png'),
     1:loadImage('designs-des-designers/herbeMotif.png'),
     20:loadImage('designs-des-designers/chemin1.png'),
     21:loadImage('designs-des-designers/chemin2.png'),
