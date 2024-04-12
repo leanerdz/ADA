@@ -1,0 +1,103 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "world1.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "tile-sheet-fusee-atelier.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tile-sheet-obersevatoire.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tile_sheet_eau.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tile_sheet_maison_mamie.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tile_sheet_mobilier_urbain.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tile_sheet_sols.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "world1.tmx": {
+            "scale": 0.4566,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 612.1331581252738,
+                "y": 364.6517739816031
+            }
+        },
+        "world2.tmx": {
+            "scale": 0.4409,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 645.2710365162168,
+                "y": 332.27489226581986
+            }
+        },
+        "world3.tmx": {
+            "scale": 0.33,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 659.090909090909,
+                "y": 313.6363636363636
+            }
+        },
+        "world4.tmx": {
+            "scale": 0.4553,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 653.4153305512849,
+                "y": 321.76586865802767
+            }
+        }
+    },
+    "last.exportedFilePath": "/Users/loisetleane/Desktop/ADA/designs-des-designers/tile_sheets",
+    "last.imagePath": "/Users/loisetleane/Desktop/ADA/designs-des-designers/tile_sheets",
+    "map.height": 9,
+    "map.lastUsedExportFilter": "All Files (*)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 64,
+    "map.tileWidth": 64,
+    "map.width": 20,
+    "openFiles": [
+        "world1.tmx",
+        "world2.tmx",
+        "world3.tmx",
+        "world4.tmx",
+        "tile-sheet-fusee-atelier.tsx"
+    ],
+    "project": "ADA.tiled-project",
+    "recentFiles": [
+        "tile-sheet-fusee-atelier.tsx",
+        "world4.tmx",
+        "world3.tmx",
+        "world2.tmx",
+        "world1.tmx",
+        "tile-sheet-obersevatoire.tsx",
+        "tile_sheet_sols.tsx",
+        "tile_sheet_eau.tsx",
+        "tile_sheet_maison_mamie.tsx",
+        "tile_sheet_mobilier_urbain.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
+    "tileset.tileSize": {
+        "height": 64,
+        "width": 64
+    }
+}
