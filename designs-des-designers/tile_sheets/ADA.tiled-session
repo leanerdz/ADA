@@ -77,16 +77,15 @@
         "world1.tmx",
         "world2.tmx",
         "world3.tmx",
-        "world4.tmx",
-        "tile-sheet-fusee-atelier.tsx"
+        "world4.tmx"
     ],
     "project": "ADA.tiled-project",
     "recentFiles": [
-        "tile-sheet-fusee-atelier.tsx",
         "world4.tmx",
         "world3.tmx",
         "world2.tmx",
         "world1.tmx",
+        "tile-sheet-fusee-atelier.tsx",
         "tile-sheet-obersevatoire.tsx",
         "tile_sheet_sols.tsx",
         "tile_sheet_eau.tsx",

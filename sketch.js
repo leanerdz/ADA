@@ -570,60 +570,60 @@ function keyPressed(){
 
 // Appelé en continue après le setup
 
+// function draw() {
+//   if (diapoVisible) {
+//     if (currentDiapo < diapos.length) { 
+//       if (diapos[currentDiapo]) { 
+//         image(diapos[currentDiapo], 0, 0, diapoW, diapoH);    
+
+//       }
+//       //diapoVisible = false; 
+      
+//     }else {
+//       diapoVisible = false;
+//        currentDiapo = 0;
+//       background(255);
+//        console.log(currentDiapo);
+//       drawWorld(worlds[currentWorld], tileDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
+//       //drawElements(world1BoardLayer2, layer2Dictionnary, world2TileSize);
+//       drawColisions(world1BoardLayer3, layer3Dictionnary, world3TileSize);
+//       image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
+//       drawFront(world1BoardLayer4, layer4Dictionnary, world4TileSize);
+//      }
+//   } 
+
+//   checkKeys(currentWorld);
+// }
+
+
 function draw() {
+   checkKeys(currentWorld);
   if (diapoVisible) {
-    if (currentDiapo < diapos.length) { 
+    if (currentDiapo < diapos.length) {
       if (diapos[currentDiapo]) { 
-        image(diapos[currentDiapo], 0, 0, diapoW, diapoH);    
+        image(diapos[currentDiapo], 0, 0,diapoW,diapoH);
+        checkKeys(currentWorld);
 
       }
-      //diapoVisible = false; 
-      
-    }else {
+    } 
+    if (currentDiapo >= diapos.length) {
+      checkKeys(currentWorld);
       diapoVisible = false;
-       currentDiapo = 0;
+      currentDiapo = 0;
       background(255);
-       console.log(currentDiapo);
+      console.log(currentDiapo);
       drawWorld(worlds[currentWorld], tileDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
-      //drawElements(world1BoardLayer2, layer2Dictionnary, world2TileSize);
+      drawElements(world1BoardLayer2, layer2Dictionnary, world2TileSize);
       drawColisions(world1BoardLayer3, layer3Dictionnary, world3TileSize);
       image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
       drawFront(world1BoardLayer4, layer4Dictionnary, world4TileSize);
-     }
-  } 
+    }
+  }
+    //image(inventaire[currentInventaire],100,0,426,123);
 
   checkKeys(currentWorld);
+
 }
-
-
-// function draw() {
-//   // checkKeys(currentWorld);
-//   if (diapoVisible) {
-//     if (currentDiapo < diapos.length) {
-//       if (diapos[currentDiapo]) { 
-//         image(diapos[currentDiapo], 0, 0,diapoW,diapoH);
-//         // checkKeys(currentWorld);
-
-//       }
-//     } 
-//     if (currentDiapo >= diapos.length) {
-//       // checkKeys(currentWorld);
-//       diapoVisible = false;
-//       currentDiapo = 0;
-//       // background(255);
-//       console.log(currentDiapo);
-//     //   drawWorld(worlds[currentWorld], tileDictionnaries[currentWorld], worldsTileSizes[currentWorld]);
-//     //   drawElements(world1BoardLayer2, layer2Dictionnary, world2TileSize);
-//     //   drawColisions(world1BoardLayer3, layer3Dictionnary, world3TileSize);
-//     //   image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-//     //   drawFront(world1BoardLayer4, layer4Dictionnary, world4TileSize);
-//     }
-//   }
-//     //image(inventaire[currentInventaire],100,0,426,123);
-
-//   checkKeys(currentWorld);
-
-// }
 
 
 // if(currentMap === 1){
@@ -643,6 +643,9 @@ function draw() {
 //       print(currentIndex);
 //     }
 //   } 
+
+
+
 //   if (keyIsDown(RIGHT_ARROW)){
 //     movementCounter += 1;
 //     heroX += path;
