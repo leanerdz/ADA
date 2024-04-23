@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 1//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
-
+//import {  } from "module";
 
 let layer1Dictionnary = {};
 let world1BoardLayer1 = [
@@ -19,17 +19,17 @@ let world1TileSize = 64;
 
 let layer2Dictionnary = {};
 let world1BoardLayer2 = [
-  [0, 0, 19, 20, 21, 22, 23, 24, 0, 0, 0, 0, 31109, 31110, 0, 0, 31112, 31113, 0, 0],
-  [60, 61, 25, 26, 27, 28, 29, 30, 31008, 31009, 0, 0, 31210, 31211, 31008, 31009, 31213, 31214, 0, 0],
-  [62, 63, 31, 32, 33, 34, 35, 36, 31109, 31110, 0, 0, 0, 0, 31109, 31110, 0, 0, 0, 0],
-  [65, 66, 37, 38, 39, 40, 41, 42, 31210, 31211, 0, 0, 0, 0, 31210, 31211, 0, 0, 0, 0],
-  [0, 0, 43, 44, 45, 46, 47, 30605, 31011, 31012, 0, 0, 0, 30604, 30605, 31011, 31012, 0, 0, 0],
-  [0, 0, 48, 49, 50, 51, 30705, 30706, 31112, 31113, 0, 0, 0, 30705, 30706, 31112, 31113, 0, 0, 0],
-  [30604, 30605, 20912, 20912, 20912, 20912, 30806, 30807, 31213, 31214, 0, 0, 0, 30806, 30807, 31213, 31214, 0, 0, 0],
-  [30705, 30706, 0, 20912, 20912, 0, 309, 309, 0, 0, 0, 0, 0, 410, 410, 0, 0, 0, 30808, 30809,]
-  [30806, 30807, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 30909, 30910],
-
+  [0, 0, 19, 20, 21, 22, 23, 24, 0, 0, 0, 0, 12, 13, 0, 0, 62, 63, 0, 0],
+  [60, 61, 25, 26, 27, 28, 29, 30, 10, 11, 0, 0, 14, 15, 10, 11, 64, 65, 0, 0],
+  [62, 63, 31, 32, 33, 34, 35, 36, 12, 13, 0, 0, 0, 0, 12, 13, 0, 0, 0, 0],
+  [64, 65, 37, 38, 39, 40, 41, 42, 14, 15, 0, 0, 0, 0, 14, 15, 0, 0, 0, 0],
+  [0, 0, 43, 44, 45, 46, 71, 72, 60, 61, 0, 0, 0, 71, 72, 60, 61, 0, 0, 0],
+  [0, 0, 47, 48, 49, 50, 73, 74, 62, 63, 0, 0, 0, 73, 74, 62, 63, 0, 0, 0],
+  [71, 72, 0, 0, 0, 0, 75, 76, 64, 65, 0, 0, 0, 75, 76, 64, 65, 0, 0, 0],
+  [73, 74, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 81, 82],
+  [75, 76, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 85, 86],
 ];
+
 let world2TileSize = 64;
 
 let layer3Dictionnary = {};
@@ -43,7 +43,6 @@ let world1BoardLayer3 = [
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-
 ];
 let world3TileSize = 64;
 
@@ -170,6 +169,20 @@ function setup() {
     63:loadImage('designs-des-designers/arbre/arbe_4.png'),
     64:loadImage('designs-des-designers/arbre/arbe_5.png'),
     65:loadImage('designs-des-designers/arbre/arbe_6.png'),
+    71:loadImage('designs-des-designers/lampadaire/lampadaire_01.png'),
+    72:loadImage('designs-des-designers/lampadaire/lampadaire_02.png'),
+    73:loadImage('designs-des-designers/lampadaire/lampadaire_03.png'),
+    74:loadImage('designs-des-designers/lampadaire/lampadaire_04.png'),
+    75:loadImage('designs-des-designers/lampadaire/lampadaire_05.png'),
+    76:loadImage('designs-des-designers/lampadaire/lampadaire_06.png'),
+    81:loadImage('designs-des-designers/pont/pont_01.png'),
+    82:loadImage('designs-des-designers/pont/pont_02.png'),
+    83:loadImage('designs-des-designers/pont/pont_03.png'),
+    84:loadImage('designs-des-designers/pont/pont_04.png'),
+    85:loadImage('designs-des-designers/pont/pont_05.png'),
+    86:loadImage('designs-des-designers/pont/pont_06.png'),
+    87:loadImage('designs-des-designers/pont/pont_07.png'),
+    88:loadImage('designs-des-designers/pont/pont_08.png'),
     19:loadImage('designs-des-designers/maison_mamie/maison_mamie_01.png'),
     20:loadImage('designs-des-designers/maison_mamie/maison_mamie_02.png'),
     21:loadImage('designs-des-designers/maison_mamie/maison_mamie_03.png'),
@@ -449,12 +462,14 @@ function keyReleased(){
   if (keyCode === DOWN_ARROW){
     currentIndex = 0;
   }
+  if (keyCode === 32){
+    currentDiapo++;
+  }
   return false;
 }
 
 const checkKeys = (currentMap) => {
   let path = 5;
-  
   if (currentMap ===0){
     if (keyIsDown(LEFT_ARROW)){
       movementCounter += 1;
@@ -549,6 +564,7 @@ const checkKeys = (currentMap) => {
         currentHeroImage = myHeroDiagoBackRight[currentIndex];
         movementCounter = 0;
         print(currentIndex);
+        checkKeys(currentWorld);
       }
     // if (keyIsDown(32) ){
     //   currentDiapo++;
@@ -558,15 +574,15 @@ const checkKeys = (currentMap) => {
 }
 }
 
-function keyPressed(){
-  if (keyCode === 32){
-    currentDiapo++;
-  }
-  // if (keyCode === LEFT_ARROW){
-  //   currentDiapo--;
-  //   //console.log(currentDiapo);
-  // }
-}
+// function keyPressed(){
+//   if (keyCode === 32){
+//     currentDiapo++;
+//   }
+//   // if (keyCode === LEFT_ARROW){
+//   //   currentDiapo--;
+//   //   //console.log(currentDiapo);
+//   // }
+// }
 
 // Appelé en continue après le setup
 
