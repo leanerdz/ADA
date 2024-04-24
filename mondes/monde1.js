@@ -25,7 +25,6 @@ let world1BoardLayer2 = [
   [75, 76, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 85, 86],
 ];
 
-let world2TileSize = 64;
 
 let layer3Dictionnary = {};
 let world1BoardLayer3 = [
@@ -40,7 +39,6 @@ let world1BoardLayer3 = [
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 
 ];
-let world3TileSize = 64;
 
 let layer4Dictionnary = {};
 let world1BoardLayer4 = [
@@ -56,4 +54,5 @@ let world1BoardLayer4 = [
 
 
 ];
-let world4TileSize = 64;
+
+export { layer1Dictionnary, world1BoardLayer1, world1TileSize, layer2Dictionnary,world1BoardLayer2, world2TileSize, layer3Dictionnary, world1BoardLayer3, world3TileSize, layer4Dictionnary, world1BoardLayer4, world4TileSize };
