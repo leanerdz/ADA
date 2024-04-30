@@ -1,7 +1,9 @@
+//import { layer1Dictionnary, world1BoardLayer1, world1TileSize, layer2Dictionnary,world1BoardLayer2, worldsTileSizes[currentWorld], layer3Dictionnary, world1BoardLayer3, worldsTileSizes[currentWorld], layer4Dictionnary, world1BoardLayer4, worldsTileSizes[currentWorld] } from "/mondes/monde1.js";
+
+
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 1//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
-//import { layer1Dictionnary, world1BoardLayer1, world1TileSize, layer2Dictionnary,world1BoardLayer2, worldsTileSizes[currentWorld], layer3Dictionnary, world1BoardLayer3, worldsTileSizes[currentWorld], layer4Dictionnary, world1BoardLayer4, worldsTileSizes[currentWorld] } from "/mondes/monde1.js";
 
 let layer1Dictionnary = {};
 let world1BoardLayer1 = [
@@ -32,15 +34,16 @@ let world1BoardLayer2 = [
 
 let layer3Dictionnary = {};
 let world1BoardLayer3 = [
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1],
+  [1,1,1,0,0,0,1,1,1,1,0,0,1,1,1,1,1,1,1,1],
+  [1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2],
+  [1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2],
+  [1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 ];
 let layer4Dictionnary = {};
 let world1BoardLayer4 = [
@@ -57,7 +60,67 @@ let world1BoardLayer4 = [
 
 ];
 
-let currentWorld = 0;
+////////////////////////////////////////////////////////////////////
+//////////////////////////Monde 2//////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+let world2layer1Dictionnary = {};
+let world2BoardLayer1 = [
+  [52,38,0,1,0,1,0,1,1,27,25,0,0,0,0,0,0,0,0,0],
+  [51,33,0,1,0,0,0,1,0,27,25,0,1,0,0,1,0,1,0,0],
+  [30,35,1,0,0,0,1,0,0,27,25,0,0,0,1,0,0,0,0,0],
+  [30,35,0,0,1,0,0,1,0,27,25,0,21,28,28,28,28,20,1,0],
+  [52,38,0,1,0,0,0,0,1,27,25,0,27,29,29,29,29,25,0,0],
+  [35,0,0,0,0,0,0,1,0,27,25,1,23,26,26,26,43,25,1,0],
+  [35,0,1,0,0,1,0,0,0,27,25,0,0,0,0,0,27,25,0,1],
+  [35,28,28,28,28,28,28,28,28,40,40,28,28,28,28,28,40,25,1,0],
+  [35,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,24,1,1]
+];
+let world2TileSize = 64;
+
+let world2layer2Dictionnary = {};
+let world2BoardLayer2 = [
+  [0, 0, 19, 20, 21, 22, 23, 24, 0, 0, 0, 0, 12, 13, 0, 0, 62, 63, 0, 0],
+  [60, 61, 25, 26, 27, 28, 29, 30, 10, 11, 0, 0, 14, 15, 10, 11, 64, 65, 0, 0],
+  [62, 63, 31, 32, 33, 34, 35, 36, 12, 13, 0, 0, 0, 0, 12, 13, 0, 0, 0, 0],
+  [64, 65, 37, 38, 39, 40, 41, 42, 14, 15, 0, 0, 0, 0, 14, 15, 0, 0, 0, 0],
+  [0, 0, 43, 44, 45, 46, 71, 72, 60, 61, 0, 0, 0, 71, 72, 60, 61, 0, 0, 0],
+  [0, 0, 47, 48, 49, 50, 73, 74, 62, 63, 0, 0, 0, 73, 74, 62, 63, 0, 0, 0],
+  [71, 72, 0, 0, 0, 0, 75, 76, 64, 65, 0, 0, 0, 75, 76, 64, 65, 0, 0, 0],
+  [73, 74, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 81, 82],
+  [75, 76, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 85, 86],
+];
+
+let world2layer3Dictionnary = {};
+let world2BoardLayer3 = [
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+];
+let world2layer4Dictionnary = {};
+let world2BoardLayer4 = [
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+
+
+];
+
+
+
+let currentWorld = 1;
 
 let worldsLayer1 = [] ;
 let worldsLayer2 = [] ;
@@ -232,6 +295,92 @@ function setup() {
   layer4Dictionnary = { 
                     0: createImage(1,1),
   }
+
+
+  world2layer1Dictionnary = { 
+    0:loadImage('designs-des-designers/sols/herbe.png'),
+    1:loadImage('designs-des-designers/sols/herbeMotif.png'),
+    20:loadImage('designs-des-designers/sols/chemin11.png'),
+    21:loadImage('designs-des-designers/sols/chemin12.png'),
+    23:loadImage('designs-des-designers/sols/chemin13.png'),
+    24:loadImage('designs-des-designers/sols/chemin14.png'),
+    25:loadImage('designs-des-designers/sols/chemin15.png'),
+    26:loadImage('designs-des-designers/sols/chemin16.png'),
+    27:loadImage('designs-des-designers/sols/chemin17.png'),
+    28:loadImage('designs-des-designers/sols/chemin18.png'),
+    29:loadImage('designs-des-designers/sols/chemin19.png'),
+    40:loadImage('designs-des-designers/sols/chemin20.png'),
+    41:loadImage('designs-des-designers/sols/chemin21.png'),
+    42:loadImage('designs-des-designers/sols/chemin22.png'),
+    43:loadImage('designs-des-designers/sols/chemin23.png'),
+    30:loadImage('designs-des-designers/eau/eau1.png'),
+    31:loadImage('designs-des-designers/eau/eau2.png'),
+    32:loadImage('designs-des-designers/eau/eau3.png'),
+    33:loadImage('designs-des-designers/eau/eau4.png'),
+    34:loadImage('designs-des-designers/eau/eau5.png'),
+    35:loadImage('designs-des-designers/eau/eau6.png'),
+    36:loadImage('designs-des-designers/eau/eau7.png'),
+    37:loadImage('designs-des-designers/eau/eau8.png'),
+    38:loadImage('designs-des-designers/eau/eau9.png'),
+    39:loadImage('designs-des-designers/eau/eau10.png'),
+    52:loadImage('designs-des-designers/eau/eau11.png'),
+    50:loadImage('designs-des-designers/eau/eau12.png'),
+    51:loadImage('designs-des-designers/eau/eau13.png'),
+  }
+
+  world2layer2Dictionnary = { 
+    0: createImage(1,1),
+    10:loadImage('designs-des-designers/sapin/sapin_1.png'),
+    11:loadImage('designs-des-designers/sapin/sapin_2.png'),
+    12:loadImage('designs-des-designers/sapin/sapin_3.png'),
+    13:loadImage('designs-des-designers/sapin/sapin_4.png'),
+    14:loadImage('designs-des-designers/sapin/sapin_5.png'),
+    15:loadImage('designs-des-designers/sapin/sapin_6.png'),
+    60:loadImage('designs-des-designers/arbre/arbe_1.png'),
+    61:loadImage('designs-des-designers/arbre/arbe_2.png'),
+    62:loadImage('designs-des-designers/arbre/arbe_3.png'),
+    63:loadImage('designs-des-designers/arbre/arbe_4.png'),
+    64:loadImage('designs-des-designers/arbre/arbe_5.png'),
+    65:loadImage('designs-des-designers/arbre/arbe_6.png'),
+    21:loadImage('designs-des-designers/lampadaire/lampadaire_01.png'),
+    22:loadImage('designs-des-designers/lampadaire/lampadaire_02.png'),
+    23:loadImage('designs-des-designers/lampadaire/lampadaire_03.png'),
+    24:loadImage('designs-des-designers/lampadaire/lampadaire_04.png'),
+    25:loadImage('designs-des-designers/lampadaire/lampadaire_05.png'),
+    26:loadImage('designs-des-designers/lampadaire/lampadaire_06.png'),
+    31:loadImage('designs-des-designers/pont/pont_01.png'),
+    32:loadImage('designs-des-designers/pont/pont_02.png'),
+    33:loadImage('designs-des-designers/pont/pont_03.png'),
+    34:loadImage('designs-des-designers/pont/pont_04.png'),
+    35:loadImage('designs-des-designers/pont/pont_05.png'),
+    36:loadImage('designs-des-designers/pont/pont_06.png'),
+    37:loadImage('designs-des-designers/pont/pont_07.png'),
+    38:loadImage('designs-des-designers/pont/pont_08.png'),
+    41:loadImage('designs-des-designers/fusee_entière/fusee_1.png'),
+    42:loadImage('designs-des-designers/fusee_entière/fusee_2.png'),
+    43:loadImage('designs-des-designers/fusee_entière/fusee_3.png'),
+    44:loadImage('designs-des-designers/fusee_entière/fusee_4.png'),
+    45:loadImage('designs-des-designers/fusee_entière/fusee_5.png'),
+    46:loadImage('designs-des-designers/fusee_entière/fusee_6.png'),
+    51:loadImage('designs-des-designers/atelier/atelier_01.png'),
+    52:loadImage('designs-des-designers/atelier/atelier_02.png'),
+    53:loadImage('designs-des-designers/atelier/atelier_03.png'),
+    54:loadImage('designs-des-designers/atelier/atelier_04.png'),
+    55:loadImage('designs-des-designers/atelier/atelier_05.png'),
+    56:loadImage('designs-des-designers/atelier/atelier_06.png'),
+    
+    
+  }
+
+  world2layer3Dictionnary = { 
+                    0: createImage(1,1),
+                    1: createImage(1,1),
+                    2: createImage(1,1),
+  }
+
+  world2layer4Dictionnary = { 
+                    0: createImage(1,1),
+  }
   hero0 = loadImage('animations/perso_cote_01.png'); 
   myHeroRight.push(hero0);
   hero1 = loadImage('animations/perso_cote_02.png'); 
@@ -269,15 +418,15 @@ function setup() {
   myHeroDiagoBackRight.push(loadImage('animations/diagonale_droite_04.png'));
 
 
-  worldsLayer1 = [world1BoardLayer1]
-  worldsLayer2 = [world1BoardLayer2]
-  worldsLayer3 = [world1BoardLayer3]
-  worldsLayer4 = [world1BoardLayer4]
-  tileDictionnariesLayer1 = [layer1Dictionnary]
-  tileDictionnariesLayer2 = [layer2Dictionnary]
-  tileDictionnariesLayer3 = [layer3Dictionnary]
-  tileDictionnariesLayer4 = [layer4Dictionnary]
-  worldsTileSizes = [world1TileSize]
+  worldsLayer1 = [world1BoardLayer1,world2BoardLayer1]
+  worldsLayer2 = [world1BoardLayer2,world2BoardLayer2]
+  worldsLayer3 = [world1BoardLayer3,world2BoardLayer3]
+  worldsLayer4 = [world1BoardLayer4,world2BoardLayer4]
+  tileDictionnariesLayer1 = [layer1Dictionnary,world2layer1Dictionnary]
+  tileDictionnariesLayer2 = [layer2Dictionnary,world2layer2Dictionnary]
+  tileDictionnariesLayer3 = [layer3Dictionnary,world2layer3Dictionnary]
+  tileDictionnariesLayer4 = [layer4Dictionnary,world2layer4Dictionnary]
+  worldsTileSizes = [world1TileSize,world2TileSize]
 }
 
 function drawWorld(gameBoard,tileDictionnary,tileSize) {
@@ -420,32 +569,44 @@ function checkCollision(gameBoard,tileSize) {
           return true 
         }
       }
+      if (currentTileValue === 2){
+        if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
+          console.log("Changer monde ")
+          currentWorld = 1;
+        }
+      }
     }
   }
 
 }
 
 function keyReleased(){
+  console.log("HelloWorld");
   if (keyCode === RIGHT_ARROW){
     currentIndex = 0;
-    movementCounter += 1;
-      heroX += path;
-      if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
-        heroX -= path
-      }
-      if (movementCounter >= 15 / heroSpeed){
-        currentIndex += 1;
-        if (currentIndex === myHeroRight.length){
-            currentIndex = 0;
-        }
-        currentHeroImage = myHeroRight[currentIndex];
-        movementCounter = 0;
-        print(currentIndex);
-      }
   }
   if (keyCode === LEFT_ARROW){
+    console.log('leftArrow');
     currentIndex = 0;
-    movementCounter += 1;
+  }
+  if (keyCode === UP_ARROW){
+    currentIndex = 0;
+  }
+  if (keyCode === DOWN_ARROW){
+    currentIndex = 0;
+  }
+  if (keyCode === 32){
+    currentDiapo++;
+  }
+  return false;
+}
+
+
+const checkKeys = (currentMap) => {
+  let path = 5;
+  if (currentMap ===0){
+    if (keyIsDown(LEFT_ARROW)){
+      movementCounter += 1;
       heroX -= path; 
       if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
         heroX += path
@@ -453,187 +614,131 @@ function keyReleased(){
       if (movementCounter >= 15 / heroSpeed){
         currentIndex += 1;
         if (currentIndex === myHeroLeft.length){
-            currentIndex = 0;
+          currentIndex = 0;
         }
         currentHeroImage = myHeroLeft[currentIndex];
         movementCounter = 0;
-        print(currentIndex);
-      }
-  }
-  if (keyCode === UP_ARROW){
-    currentIndex = 0;
-    movementCounter += 1;
-    heroY -= path; 
-    if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
-      heroY+= path
-    }
-    if (movementCounter >= 15 / heroSpeed){
-      currentIndex += 1;
-      if (currentIndex === myHeroTop.length){
-          currentIndex = 0;
-      }
-      currentHeroImage = myHeroTop[currentIndex];
-      movementCounter = 0;
-      print(currentIndex);
-    }
-  }
-  if (keyCode === DOWN_ARROW){
-    currentIndex = 0;
-    movementCounter += 1;
-    heroY += path;
-    if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
-      heroY -= path
-    }
-    if (movementCounter >= 15 / heroSpeed){
-      currentIndex += 1;
-      if (currentIndex === myHeroBack.length){
-          currentIndex = 0;
-      }
-      currentHeroImage = myHeroBack[currentIndex];
-      movementCounter = 0;
-      print(currentIndex);
-    }
-  }
-  if (keyCode === 32){
-    currentDiapo++;
-  }
-
-  return false;
-}
-
-//const checkKeys = (currentMap) => {
-//   let path = 5;
-//   if (currentMap ===0){
-//     if (keyIsDown(LEFT_ARROW)){
-//       movementCounter += 1;
-//       heroX -= path; 
-//       if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
-//         heroX += path
-//       }
-//       if (movementCounter >= 15 / heroSpeed){
-//         currentIndex += 1;
-//         if (currentIndex === myHeroLeft.length){
-//             currentIndex = 0;
-//         }
-//         currentHeroImage = myHeroLeft[currentIndex];
-//         movementCounter = 0;
-//         print(currentIndex);
-//       }
-//     } 
-//     if (keyIsDown(RIGHT_ARROW)){
-//       movementCounter += 1;
-//       heroX += path;
-//       if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
-//         heroX -= path
-//       }
-//       if (movementCounter >= 15 / heroSpeed){
-//         currentIndex += 1;
-//         if (currentIndex === myHeroRight.length){
-//             currentIndex = 0;
-//         }
-//         currentHeroImage = myHeroRight[currentIndex];
-//         movementCounter = 0;
-//         print(currentIndex);
-//       }
-//     } 
-//     if (keyIsDown(UP_ARROW)){
-//       movementCounter += 1;
-//       heroY -= path; 
-//       if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
-//         heroY+= path
-//       }
-//       if (movementCounter >= 15 / heroSpeed){
-//           currentIndex += 1;
-//           if (currentIndex === myHeroTop.length){
-//               currentIndex = 0;
-//           }
-//           currentHeroImage = myHeroTop[currentIndex];
-//           movementCounter = 0;
-//           print(currentIndex);
-//       }
-//     } 
-//     if (keyIsDown(DOWN_ARROW)){
-//       movementCounter += 1;
-//       heroY += path;
-//       if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
-//         heroY -= path
-//       }
-//       if (movementCounter >= 15 / heroSpeed){
-//         currentIndex += 1;
-//         if (currentIndex === myHeroBack.length){
-//             currentIndex = 0;
-//         }
-//         currentHeroImage = myHeroBack[currentIndex];
-//         movementCounter = 0;
-//         print(currentIndex);
-//       }
-//     }
-//     if (keyIsDown(UP_ARROW) && keyIsDown(LEFT_ARROW)){
-//       movementCounter += 1;
-//       heroY += path;
-//       if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
-//         heroY -= path
-//       }
-//       if (movementCounter >= 15 / heroSpeed){
-//         currentIndex += 1;
-//         if (currentIndex === myHeroDiagoBackLeft.length){
-//             currentIndex = 0;
-//         }
-//         currentHeroImage = myHeroDiagoBackLeft[currentIndex];
-//         movementCounter = 0;
-//         print(currentIndex);
-//       }
-//     } 
-//     if (keyIsDown(UP_ARROW) && keyIsDown(RIGHT_ARROW)){
-//       movementCounter += 1;
-//       heroY += path;
-//       if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
-//         heroY -= path
-//       }
-//       if (movementCounter >= 15 / heroSpeed){
-//         currentIndex += 1;
-//         if (currentIndex === myHeroDiagoBackRight.length){
-//             currentIndex = 0;
-//         }
-//         currentHeroImage = myHeroDiagoBackRight[currentIndex];
-//         movementCounter = 0;
-//         print(currentIndex);
-//       } 
-//     }
-
-//   }
- //}
-
-
-function draw() {
-  //checkKeys(currentWorld);
-  if (diapoVisible) {
-    if (currentDiapo < diapos.length) {
-      if (diapos[currentDiapo]) { 
-        image(diapos[currentDiapo], 0, 0,diapoW,diapoH);
-        //checkKeys(currentWorld);
-        
       }
     } 
-    if (currentDiapo >= diapos.length) {
-      diapoVisible = false;
-      currentDiapo = 0;
-      background(255);
-      console.log(currentDiapo);
-      drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
-      drawElements(worldsLayer2[currentWorld], tileDictionnariesLayer2[currentWorld], worldsTileSizes[currentWorld]);
-      drawColisions(worldsLayer3[currentWorld], tileDictionnariesLayer3[currentWorld], worldsTileSizes[currentWorld]);
-      image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-      drawFront(worldsLayer4[currentWorld], tileDictionnariesLayer4[currentWorld], worldsTileSizes[currentWorld]);
-      //checkKeys(currentWorld);
+    if (keyIsDown(RIGHT_ARROW)){
+      movementCounter += 1;
+      heroX += path;
+      if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
+        heroX -= path
+      }
+      if (movementCounter >= 15 / heroSpeed){
+        currentIndex += 1;
+        if (currentIndex === myHeroRight.length){
+          currentIndex = 0;
+        }
+        currentHeroImage = myHeroRight[currentIndex];
+        movementCounter = 0;
+      }
+    } 
+    if (keyIsDown(UP_ARROW)){
+      movementCounter += 1;
+      heroY -= path; 
+      if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
+        heroY+= path
+      }
+      if (movementCounter >= 15 / heroSpeed){
+        currentIndex += 1;
+        if (currentIndex === myHeroTop.length){
+          currentIndex = 0;
+        }
+          currentHeroImage = myHeroTop[currentIndex];
+          movementCounter = 0;
+        }
+      } 
+      if (keyIsDown(DOWN_ARROW)){
+        movementCounter += 1;
+        heroY += path;
+        if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
+          heroY -= path
+        }
+      if (movementCounter >= 15 / heroSpeed){
+        currentIndex += 1;
+        if (currentIndex === myHeroBack.length){
+          currentIndex = 0;
+        }
+        currentHeroImage = myHeroBack[currentIndex];
+        movementCounter = 0;
+      }
     }
-  }
-    //image(inventaire[currentInventaire],100,0,426,123);
-
-    //checkKeys(currentWorld);
+    if (keyIsDown(UP_ARROW) && keyIsDown(LEFT_ARROW)){
+      movementCounter += 1;
+      heroY += path;
+      if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
+        heroY -= path
+      }
+      if (movementCounter >= 15 / heroSpeed){
+        currentIndex += 1;
+        if (currentIndex === myHeroDiagoBackLeft.length){
+          currentIndex = 0;
+        }
+        currentHeroImage = myHeroDiagoBackLeft[currentIndex];
+        movementCounter = 0;
+      }
+    } 
+    if (keyIsDown(UP_ARROW) && keyIsDown(RIGHT_ARROW)){
+      movementCounter += 1;
+      heroY += path;
+      if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
+        heroY -= path
+      }
+      if (movementCounter >= 15 / heroSpeed){
+        currentIndex += 1;
+        if (currentIndex === myHeroDiagoBackRight.length){
+          currentIndex = 0;
+        }
+        currentHeroImage = myHeroDiagoBackRight[currentIndex];
+        movementCounter = 0;
+      } 
+    }
     
   }
-  
+}
+
+function draw() {
+  background(255);
+  //console.log(currentDiapo);
+  drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
+  drawElements(worldsLayer2[currentWorld], tileDictionnariesLayer2[currentWorld], worldsTileSizes[currentWorld]);
+  drawColisions(worldsLayer3[currentWorld], tileDictionnariesLayer3[currentWorld], worldsTileSizes[currentWorld]);
+  image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
+  drawFront(worldsLayer4[currentWorld], tileDictionnariesLayer4[currentWorld], worldsTileSizes[currentWorld]);
+  checkKeys(currentWorld);
+}
+
+//function draw() {
+  // //checkKeys(currentWorld);
+  // if (diapoVisible) {
+  //   if (currentDiapo < diapos.length) {
+  //     if (diapos[currentDiapo]) { 
+  //       image(diapos[currentDiapo], 0, 0,diapoW,diapoH);
+  //       //checkKeys(currentWorld);
+        
+  //     }
+  //   } 
+  //   if (currentDiapo >= diapos.length) {
+  //     diapoVisible = false;
+  //     currentDiapo = 0;
+  //     background(255);
+  //     console.log(currentDiapo);
+  //     drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
+  //     drawElements(worldsLayer2[currentWorld], tileDictionnariesLayer2[currentWorld], worldsTileSizes[currentWorld]);
+  //     drawColisions(worldsLayer3[currentWorld], tileDictionnariesLayer3[currentWorld], worldsTileSizes[currentWorld]);
+  //     image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
+  //     drawFront(worldsLayer4[currentWorld], tileDictionnariesLayer4[currentWorld], worldsTileSizes[currentWorld]);
+  //     //checkKeys(currentWorld);
+  //   }
+  // }
+  //   //image(inventaire[currentInventaire],100,0,426,123);
+
+  //   //checkKeys(currentWorld);
+    
+  // }
+
   // function keyPressed(){
   //   if (keyCode === 32){
   //     currentDiapo++;
