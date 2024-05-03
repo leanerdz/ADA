@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "world1.tmx",
+    "activeFile": "world5.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -32,28 +32,32 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "tilesheet_garage.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "world1.tmx": {
             "scale": 0.713,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 348.5273492286115,
-                "y": 341.5147265077138
+                "x": 638.8499298737727,
+                "y": 279.8036465638149
             }
         },
         "world2.tmx": {
             "scale": 0.4409,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 640.7348605125878,
-                "y": 289.1812202313449
+                "x": 695.1689725561351,
+                "y": 452.48355636198687
             }
         },
         "world3.tmx": {
-            "scale": 0.33,
+            "scale": 0.5089,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 640.9090909090909,
-                "y": 289.3939393939394
+                "x": 657.3000589506778,
+                "y": 352.7215562978974
             }
         },
         "world4.tmx": {
@@ -62,6 +66,14 @@
             "viewCenter": {
                 "x": 640.2372062376455,
                 "y": 288.8205578739293
+            }
+        },
+        "world5.tmx": {
+            "scale": 0.4535,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 525.909592061742,
+                "y": 162.07276736493935
             }
         }
     },
@@ -77,14 +89,18 @@
         "world1.tmx",
         "world2.tmx",
         "world3.tmx",
-        "world4.tmx"
+        "world4.tmx",
+        "world5.tmx",
+        "tilesheet_garage.tsx"
     ],
     "project": "ADA.tiled-project",
     "recentFiles": [
-        "world4.tmx",
-        "world3.tmx",
-        "world2.tmx",
         "world1.tmx",
+        "world2.tmx",
+        "world3.tmx",
+        "world4.tmx",
+        "tilesheet_garage.tsx",
+        "world5.tmx",
         "tile-sheet-fusee-atelier.tsx",
         "tile-sheet-obersevatoire.tsx",
         "tile_sheet_sols.tsx",

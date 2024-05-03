@@ -7,7 +7,7 @@
  <tileset firstgid="10202" source="tile_sheet_eau.tsx"/>
  <tileset firstgid="20403" source="tile_sheet_maison_mamie.tsx"/>
  <tileset firstgid="30604" source="tile_sheet_mobilier_urbain.tsx"/>
- <layer id="1" name="layer1" width="20" height="9" visible="0">
+ <layer id="1" name="layer1" width="20" height="9">
   <data encoding="csv">
 607,607,607,607,607,607,607,607,607,607,307,306,607,607,607,607,607,607,10303,10202,
 509,509,607,607,607,607,509,607,607,509,307,306,607,607,607,607,509,509,10303,10202,

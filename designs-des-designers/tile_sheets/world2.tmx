@@ -4,7 +4,7 @@
  <tileset firstgid="10202" source="tile_sheet_eau.tsx"/>
  <tileset firstgid="20403" source="tile_sheet_mobilier_urbain.tsx"/>
  <tileset firstgid="30604" source="tile-sheet-fusee-atelier.tsx"/>
- <layer id="1" name=" " width="20" height="9" visible="0">
+ <layer id="1" name=" " width="20" height="9">
   <data encoding="csv">
 10505,10306,607,509,607,509,607,509,509,307,306,607,607,607,607,607,607,607,607,607,
 10406,10205,607,509,607,607,607,509,607,307,306,607,509,607,607,509,607,509,607,607,

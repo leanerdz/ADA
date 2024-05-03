@@ -1,6 +1,3 @@
-//import { layer1Dictionnary, world1BoardLayer1, world1TileSize, layer2Dictionnary,world1BoardLayer2, worldsTileSizes[currentWorld], layer3Dictionnary, world1BoardLayer3, worldsTileSizes[currentWorld], layer4Dictionnary, world1BoardLayer4, worldsTileSizes[currentWorld] } from "/mondes/monde1.js";
-
-
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 1//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -34,7 +31,7 @@ let world1BoardLayer2 = [
 
 let layer3Dictionnary = {};
 let world1BoardLayer3 = [
-  [1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1],
@@ -73,35 +70,37 @@ let world2BoardLayer1 = [
   [52,38,0,1,0,0,0,0,1,27,25,0,27,29,29,29,29,25,0,0],
   [35,0,0,0,0,0,0,1,0,27,25,1,23,26,26,26,43,25,1,0],
   [35,0,1,0,0,1,0,0,0,27,25,0,0,0,0,0,27,25,0,1],
-  [35,28,28,28,28,28,28,28,28,40,40,28,28,28,28,28,40,25,1,0],
+  [35,28,28,28,28,28,28,28,28,40,41,28,28,28,28,28,40,25,1,0],
   [35,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,26,24,1,1]
 ];
 let world2TileSize = 64;
 
 let world2layer2Dictionnary = {};
 let world2BoardLayer2 = [
-  [0, 0, 19, 20, 21, 22, 23, 24, 0, 0, 0, 0, 12, 13, 0, 0, 62, 63, 0, 0],
-  [60, 61, 25, 26, 27, 28, 29, 30, 10, 11, 0, 0, 14, 15, 10, 11, 64, 65, 0, 0],
-  [62, 63, 31, 32, 33, 34, 35, 36, 12, 13, 0, 0, 0, 0, 12, 13, 0, 0, 0, 0],
-  [64, 65, 37, 38, 39, 40, 41, 42, 14, 15, 0, 0, 0, 0, 14, 15, 0, 0, 0, 0],
-  [0, 0, 43, 44, 45, 46, 71, 72, 60, 61, 0, 0, 0, 71, 72, 60, 61, 0, 0, 0],
-  [0, 0, 47, 48, 49, 50, 73, 74, 62, 63, 0, 0, 0, 73, 74, 62, 63, 0, 0, 0],
-  [71, 72, 0, 0, 0, 0, 75, 76, 64, 65, 0, 0, 0, 75, 76, 64, 65, 0, 0, 0],
-  [73, 74, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 81, 82],
-  [75, 76, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 85, 86],
+  [0,0,0,0,62,63,12,13,0,0,0,23,24,0,0,0,0,0,0,0],
+  [0,0,10,11,64,65,14,15,0,0,0,25,26,0,0,0,0,0,0,0],
+  [0,0,12,13,0,0,0,0,0,0,0,0,0,41,42,0,0,0,0,0],
+  [0,0,14,15,0,0,0,0,0,0,0,0,0,43,44,51,52,53,0,0],
+  [0,0,21,22,0,21,22,0,0,0,0,0,0,45,46,54,55,56,0,0],
+  [0,0,23,24,0,23,24,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,25,26,0,25,26,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [33,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [37,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 ];
 
 let world2layer3Dictionnary = {};
 let world2BoardLayer3 = [
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [1,1,1,1,1,1,1,1,1,3,3,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,0,0,0,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,1,0,0,0,0,0,0,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,1,0,0,0,0,0,0,1,1],
+  [0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1,1],
+  [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+  [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+
 ];
 let world2layer4Dictionnary = {};
 let world2BoardLayer4 = [
@@ -113,9 +112,118 @@ let world2BoardLayer4 = [
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+];
+////////////////////////////////////////////////////////////////////
+//////////////////////////Monde 3//////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+let world3layer1Dictionnary = {};
+let world3BoardLayer1 = [
+[35,0,0,1,0,0,1,0,1,27,25,0,0,0,0,0,0,0,0,0],
+[51,33,28,28,28,28,28,28,28,40,25,0,0,1,0,1,0,0,1,0],
+[30,35,26,26,26,26,26,26,26,43,25,1,0,0,1,0,1,1,1,0],
+[30,35,1,0,1,0,0,1,0,27,25,0,0,0,0,0,0,0,0,0],
+[30,35,0,0,0,0,1,1,1,27,41,28,28,28,28,28,28,28,28,28],
+[52,38,0,1,0,0,0,0,1,27,42,26,26,26,26,26,26,26,26,26],
+[51,32,33,0,1,1,0,0,0,27,25,0,1,0,1,0,1,0,0,0],
+[52,37,38,0,0,0,0,1,0,27,25,0,0,0,0,1,0,0,1,1],
+[35,1,1,1,0,1,0,1,0,27,25,1,0,0,0,0,1,0,1,0]
+];
+let world3TileSize = 64;
+
+let world3layer2Dictionnary = {};
+let world3BoardLayer2 = [
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[32,33,34,0,0,0,0,0,0,0,0,21,22,0,0,0,0,0,0,0],
+[36,37,38,0,0,0,0,0,0,0,0,23,24,0,0,0,0,0,0,0],
+[0,0,0,0,11,12,0,0,0,0,0,25,26,0,0,0,0,0,0,0],
+[0,0,0,0,13,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,15,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,4,0,0,0,0],
+[0,0,0,0,1,2,11,12,0,0,0,0,0,0,5,6,0,0,0,0]
+];
+
+let world3layer3Dictionnary = {};
+let world3BoardLayer3 = [
+  [1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
+  [0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1],
+  [0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0],
+  [1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,6],
+  [1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,6],
+  [1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+];
+let world3layer4Dictionnary = {};
+let world3BoardLayer4 = [
   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+];
 
+////////////////////////////////////////////////////////////////////
+//////////////////////////Monde 4//////////////////////////////////
+////////////////////////////////////////////////////////////////////
 
+let world4layer1Dictionnary = {};
+let world4BoardLayer1 = 
+[[0,0,1,0,1,0,0,1,0,0,1,0,1,0,1,0,0,1,0,1],
+[1,0,1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,0,0],
+[0,0,0,0,1,0,1,0,0,0,1,0,0,0,1,0,1,0,0,1],
+[1,1,0,1,0,0,0,1,1,0,0,0,1,0,1,0,0,0,0,0],
+[28,28,28,28,28,20,0,0,0,0,0,0,1,0,0,0,0,0,1,1],
+[26,26,26,26,43,25,1,1,1,0,0,0,0,0,0,1,0,1,0,0],
+[1,1,0,1,27,25,0,0,0,0,1,0,27,29,25,0,0,1,1,0],
+[0,0,0,0,27,41,28,28,28,28,28,28,40,29,25,0,1,0,1,1],
+[1,0,0,1,23,26,26,26,26,26,26,26,26,26,24,0,1,0,1,1]];
+let world4TileSize = 64;
+
+let world4layer2Dictionnary = {};
+let world4BoardLayer2 = 
+[[11,12,0,0,15,16,13,14,15,16,15,16,101,102,103,15,16,11,12,13],
+[13,14,0,11,12,0,15,16,0,11,12,104,105,106,107,108,0,13,14,15],
+[15,16,0,13,14,0,0,0,0,13,14,109,110,111,112,113,0,15,16,0],
+[0,0,0,15,16,0,0,0,0,15,16,114,115,116,117,118,11,12,0,11],
+[0,0,0,0,0,0,0,0,11,12,0,119,120,121,122,123,13,14,0,13],
+[0,0,0,0,0,0,0,0,13,14,0,124,125,126,127,128,15,16,0,15],
+[0,0,11,12,0,0,0,0,15,16,0,129,130,131,132,133,0,0,11,12],
+[0,0,13,14,0,0,0,0,0,0,0,0,0,0,0,11,12,0,13,14],
+[11,12,15,16,0,0,0,0,0,0,0,0,0,0,0,13,14,0,15,16]];
+
+let world4layer3Dictionnary = {};
+let world4BoardLayer3 = [
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,0,0,1,1,1,1,1,1,0,0,0,1,1,1,1,1],
+  [1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1],
+  [1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+];
+let world4layer4Dictionnary = {};
+let world4BoardLayer4 = [
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 ];
 
 
@@ -140,7 +248,7 @@ let heroSpeed = 5;
 let heroWidth = 47;
 let heroHeight = 94;
 let heroX = 17*world1TileSize;
-let heroY = 7*world1TileSize;
+let heroY = 6*world1TileSize;
 let myHeroRight = [];
 let myHeroLeft = [];
 let myHeroTop = [];
@@ -376,9 +484,193 @@ function setup() {
                     0: createImage(1,1),
                     1: createImage(1,1),
                     2: createImage(1,1),
+                    3: createImage(1,1),
+                    4: createImage(1,1),
   }
 
   world2layer4Dictionnary = { 
+                    0: createImage(1,1),
+  }
+
+  world3layer1Dictionnary = { 
+    0:loadImage('designs-des-designers/sols/herbe.png'),
+    1:loadImage('designs-des-designers/sols/herbeMotif.png'),
+    20:loadImage('designs-des-designers/sols/chemin11.png'),
+    21:loadImage('designs-des-designers/sols/chemin12.png'),
+    23:loadImage('designs-des-designers/sols/chemin13.png'),
+    24:loadImage('designs-des-designers/sols/chemin14.png'),
+    25:loadImage('designs-des-designers/sols/chemin15.png'),
+    26:loadImage('designs-des-designers/sols/chemin16.png'),
+    27:loadImage('designs-des-designers/sols/chemin17.png'),
+    28:loadImage('designs-des-designers/sols/chemin18.png'),
+    29:loadImage('designs-des-designers/sols/chemin19.png'),
+    40:loadImage('designs-des-designers/sols/chemin20.png'),
+    41:loadImage('designs-des-designers/sols/chemin21.png'),
+    42:loadImage('designs-des-designers/sols/chemin22.png'),
+    43:loadImage('designs-des-designers/sols/chemin23.png'),
+    30:loadImage('designs-des-designers/eau/eau1.png'),
+    31:loadImage('designs-des-designers/eau/eau2.png'),
+    32:loadImage('designs-des-designers/eau/eau3.png'),
+    33:loadImage('designs-des-designers/eau/eau4.png'),
+    34:loadImage('designs-des-designers/eau/eau5.png'),
+    35:loadImage('designs-des-designers/eau/eau6.png'),
+    36:loadImage('designs-des-designers/eau/eau7.png'),
+    37:loadImage('designs-des-designers/eau/eau8.png'),
+    38:loadImage('designs-des-designers/eau/eau9.png'),
+    39:loadImage('designs-des-designers/eau/eau10.png'),
+    50:loadImage('designs-des-designers/eau/eau12.png'),
+    51:loadImage('designs-des-designers/eau/eau13.png'),
+    52:loadImage('designs-des-designers/eau/eau11.png'),
+  }
+
+  world3layer2Dictionnary = { 
+    0: createImage(1,1),
+    1:loadImage('designs-des-designers/arbre/arbe_1.png'),
+    2:loadImage('designs-des-designers/arbre/arbe_2.png'),
+    3:loadImage('designs-des-designers/arbre/arbe_3.png'),
+    4:loadImage('designs-des-designers/arbre/arbe_4.png'),
+    5:loadImage('designs-des-designers/arbre/arbe_5.png'),
+    6:loadImage('designs-des-designers/arbre/arbe_6.png'),
+    11:loadImage('designs-des-designers/sapin/sapin_1.png'),
+    12:loadImage('designs-des-designers/sapin/sapin_2.png'),
+    13:loadImage('designs-des-designers/sapin/sapin_3.png'),
+    14:loadImage('designs-des-designers/sapin/sapin_4.png'),
+    15:loadImage('designs-des-designers/sapin/sapin_5.png'),
+    16:loadImage('designs-des-designers/sapin/sapin_6.png'),
+    21:loadImage('designs-des-designers/lampadaire/lampadaire_01.png'),
+    22:loadImage('designs-des-designers/lampadaire/lampadaire_02.png'),
+    23:loadImage('designs-des-designers/lampadaire/lampadaire_03.png'),
+    24:loadImage('designs-des-designers/lampadaire/lampadaire_04.png'),
+    25:loadImage('designs-des-designers/lampadaire/lampadaire_05.png'),
+    26:loadImage('designs-des-designers/lampadaire/lampadaire_06.png'),
+    31:loadImage('designs-des-designers/pont/pont_01.png'),
+    32:loadImage('designs-des-designers/pont/pont_02.png'),
+    33:loadImage('designs-des-designers/pont/pont_03.png'),
+    34:loadImage('designs-des-designers/pont/pont_04.png'),
+    35:loadImage('designs-des-designers/pont/pont_05.png'),
+    36:loadImage('designs-des-designers/pont/pont_06.png'),
+    37:loadImage('designs-des-designers/pont/pont_07.png'),
+    38:loadImage('designs-des-designers/pont/pont_08.png'),
+    41:loadImage('designs-des-designers/fusee_entière/fusee_1.png'),
+    42:loadImage('designs-des-designers/fusee_entière/fusee_2.png'),
+    43:loadImage('designs-des-designers/fusee_entière/fusee_3.png'),
+    44:loadImage('designs-des-designers/fusee_entière/fusee_4.png'),
+    45:loadImage('designs-des-designers/fusee_entière/fusee_5.png'),
+    46:loadImage('designs-des-designers/fusee_entière/fusee_6.png'),
+    51:loadImage('designs-des-designers/atelier/atelier_01.png'),
+    52:loadImage('designs-des-designers/atelier/atelier_02.png'),
+    53:loadImage('designs-des-designers/atelier/atelier_03.png'),
+    54:loadImage('designs-des-designers/atelier/atelier_04.png'),
+    55:loadImage('designs-des-designers/atelier/atelier_05.png'),
+    56:loadImage('designs-des-designers/atelier/atelier_06.png'),
+    
+  }
+
+  world3layer3Dictionnary = { 
+                    0: createImage(1,1),
+                    1: createImage(1,1),
+                    2: createImage(1,1),
+                    5: createImage(1,1),
+                    6: createImage(1,1),
+  }
+
+  world3layer4Dictionnary = { 
+                    0: createImage(1,1),
+  }
+  world4layer1Dictionnary = { 
+    0:loadImage('designs-des-designers/sols/herbe.png'),
+    1:loadImage('designs-des-designers/sols/herbeMotif.png'),
+    20:loadImage('designs-des-designers/sols/chemin11.png'),
+    21:loadImage('designs-des-designers/sols/chemin12.png'),
+    23:loadImage('designs-des-designers/sols/chemin13.png'),
+    24:loadImage('designs-des-designers/sols/chemin14.png'),
+    25:loadImage('designs-des-designers/sols/chemin15.png'),
+    26:loadImage('designs-des-designers/sols/chemin16.png'),
+    27:loadImage('designs-des-designers/sols/chemin17.png'),
+    28:loadImage('designs-des-designers/sols/chemin18.png'),
+    29:loadImage('designs-des-designers/sols/chemin19.png'),
+    40:loadImage('designs-des-designers/sols/chemin20.png'),
+    41:loadImage('designs-des-designers/sols/chemin21.png'),
+    42:loadImage('designs-des-designers/sols/chemin22.png'),
+    43:loadImage('designs-des-designers/sols/chemin23.png'),
+    30:loadImage('designs-des-designers/eau/eau1.png'),
+    31:loadImage('designs-des-designers/eau/eau2.png'),
+    32:loadImage('designs-des-designers/eau/eau3.png'),
+    33:loadImage('designs-des-designers/eau/eau4.png'),
+    34:loadImage('designs-des-designers/eau/eau5.png'),
+    35:loadImage('designs-des-designers/eau/eau6.png'),
+    36:loadImage('designs-des-designers/eau/eau7.png'),
+    37:loadImage('designs-des-designers/eau/eau8.png'),
+    38:loadImage('designs-des-designers/eau/eau9.png'),
+    39:loadImage('designs-des-designers/eau/eau10.png'),
+    50:loadImage('designs-des-designers/eau/eau12.png'),
+    51:loadImage('designs-des-designers/eau/eau13.png'),
+    52:loadImage('designs-des-designers/eau/eau11.png'),
+  }
+
+  world4layer2Dictionnary = { 
+    0: createImage(1,1),
+    1:loadImage('designs-des-designers/arbre/arbe_1.png'),
+    2:loadImage('designs-des-designers/arbre/arbe_2.png'),
+    3:loadImage('designs-des-designers/arbre/arbe_3.png'),
+    4:loadImage('designs-des-designers/arbre/arbe_4.png'),
+    5:loadImage('designs-des-designers/arbre/arbe_5.png'),
+    6:loadImage('designs-des-designers/arbre/arbe_6.png'),
+    11:loadImage('designs-des-designers/sapin/sapin_1.png'),
+    12:loadImage('designs-des-designers/sapin/sapin_2.png'),
+    13:loadImage('designs-des-designers/sapin/sapin_3.png'),
+    14:loadImage('designs-des-designers/sapin/sapin_4.png'),
+    15:loadImage('designs-des-designers/sapin/sapin_5.png'),
+    16:loadImage('designs-des-designers/sapin/sapin_6.png'),
+    21:loadImage('designs-des-designers/lampadaire/lampadaire_01.png'),
+    22:loadImage('designs-des-designers/lampadaire/lampadaire_02.png'),
+    23:loadImage('designs-des-designers/lampadaire/lampadaire_03.png'),
+    24:loadImage('designs-des-designers/lampadaire/lampadaire_04.png'),
+    25:loadImage('designs-des-designers/lampadaire/lampadaire_05.png'),
+    26:loadImage('designs-des-designers/lampadaire/lampadaire_06.png'),
+    101:loadImage('designs-des-designers/observatoire/observatoire_01.png'),
+    102:loadImage('designs-des-designers/observatoire/observatoire_02.png'),
+    103:loadImage('designs-des-designers/observatoire/observatoire_03.png'),
+    104:loadImage('designs-des-designers/observatoire/observatoire_04.png'),
+    105:loadImage('designs-des-designers/observatoire/observatoire_05.png'),
+    106:loadImage('designs-des-designers/observatoire/observatoire_06.png'),
+    107:loadImage('designs-des-designers/observatoire/observatoire_07.png'),
+    108:loadImage('designs-des-designers/observatoire/observatoire_08.png'),
+    109:loadImage('designs-des-designers/observatoire/observatoire_09.png'),
+    110:loadImage('designs-des-designers/observatoire/observatoire_10.png'),
+    111:loadImage('designs-des-designers/observatoire/observatoire_11.png'),
+    112:loadImage('designs-des-designers/observatoire/observatoire_12.png'),
+    113:loadImage('designs-des-designers/observatoire/observatoire_13.png'),
+    114:loadImage('designs-des-designers/observatoire/observatoire_14.png'),
+    115:loadImage('designs-des-designers/observatoire/observatoire_15.png'),
+    116:loadImage('designs-des-designers/observatoire/observatoire_16.png'),
+    117:loadImage('designs-des-designers/observatoire/observatoire_17.png'),
+    118:loadImage('designs-des-designers/observatoire/observatoire_18.png'),
+    119:loadImage('designs-des-designers/observatoire/observatoire_19.png'),
+    120:loadImage('designs-des-designers/observatoire/observatoire_20.png'),
+    121:loadImage('designs-des-designers/observatoire/observatoire_21.png'),
+    122:loadImage('designs-des-designers/observatoire/observatoire_22.png'),
+    123:loadImage('designs-des-designers/observatoire/observatoire_23.png'),
+    124:loadImage('designs-des-designers/observatoire/observatoire_24.png'),
+    125:loadImage('designs-des-designers/observatoire/observatoire_25.png'),
+    126:loadImage('designs-des-designers/observatoire/observatoire_26.png'),
+    127:loadImage('designs-des-designers/observatoire/observatoire_27.png'),
+    128:loadImage('designs-des-designers/observatoire/observatoire_28.png'),
+    129:loadImage('designs-des-designers/observatoire/observatoire_29.png'),
+    130:loadImage('designs-des-designers/observatoire/observatoire_30.png'),
+    131:loadImage('designs-des-designers/observatoire/observatoire_31.png'),
+    132:loadImage('designs-des-designers/observatoire/observatoire_32.png'),
+    133:loadImage('designs-des-designers/observatoire/observatoire_33.png'),  
+    
+  }
+
+  world4layer3Dictionnary = { 
+                    0: createImage(1,1),
+                    1: createImage(1,1),
+                    2: createImage(1,1),
+  }
+
+  world4layer4Dictionnary = { 
                     0: createImage(1,1),
   }
   hero0 = loadImage('animations/perso_cote_01.png'); 
@@ -418,15 +710,15 @@ function setup() {
   myHeroDiagoBackRight.push(loadImage('animations/diagonale_droite_04.png'));
 
 
-  worldsLayer1 = [world1BoardLayer1,world2BoardLayer1]
-  worldsLayer2 = [world1BoardLayer2,world2BoardLayer2]
-  worldsLayer3 = [world1BoardLayer3,world2BoardLayer3]
-  worldsLayer4 = [world1BoardLayer4,world2BoardLayer4]
-  tileDictionnariesLayer1 = [layer1Dictionnary,world2layer1Dictionnary]
-  tileDictionnariesLayer2 = [layer2Dictionnary,world2layer2Dictionnary]
-  tileDictionnariesLayer3 = [layer3Dictionnary,world2layer3Dictionnary]
-  tileDictionnariesLayer4 = [layer4Dictionnary,world2layer4Dictionnary]
-  worldsTileSizes = [world1TileSize,world2TileSize]
+  worldsLayer1 = [world1BoardLayer1,world2BoardLayer1,world3BoardLayer1,world4BoardLayer1]
+  worldsLayer2 = [world1BoardLayer2,world2BoardLayer2,world3BoardLayer2,world4BoardLayer2]
+  worldsLayer3 = [world1BoardLayer3,world2BoardLayer3,world3BoardLayer3,world4BoardLayer3]
+  worldsLayer4 = [world1BoardLayer4,world2BoardLayer4,world3BoardLayer4,world4BoardLayer4]
+  tileDictionnariesLayer1 = [layer1Dictionnary,world2layer1Dictionnary,world3layer1Dictionnary,world4layer1Dictionnary]
+  tileDictionnariesLayer2 = [layer2Dictionnary,world2layer2Dictionnary,world3layer2Dictionnary,world4layer2Dictionnary]
+  tileDictionnariesLayer3 = [layer3Dictionnary,world2layer3Dictionnary,world3layer3Dictionnary,world4layer3Dictionnary]
+  tileDictionnariesLayer4 = [layer4Dictionnary,world2layer4Dictionnary,world3layer4Dictionnary,world4layer4Dictionnary]
+  worldsTileSizes = [world1TileSize,world2TileSize, world3TileSize, world4TileSize]
 }
 
 function drawWorld(gameBoard,tileDictionnary,tileSize) {
@@ -451,6 +743,7 @@ function drawElements(gameBoard,tileDictionnary,tileSize) {
   }
 }
 function drawColisions(gameBoard,tileDictionnary,tileSize) {
+  //console.log("GameBoard", gameBoard);
   for (let y = 0; y < gameBoard.length; y++) {
     const currentLine = gameBoard[y];
     for (let x = 0; x < currentLine.length; x++) {
@@ -563,7 +856,7 @@ function checkCollision(gameBoard,tileSize) {
     const currentLine = gameBoard[y];
     for (let x = 0; x < currentLine.length; x++) {
       const currentTileValue = currentLine[x];    
-      console.log(currentTileValue)  
+      // console.log(currentTileValue)  
       if (currentTileValue === 1){
         if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
           return true 
@@ -573,6 +866,40 @@ function checkCollision(gameBoard,tileSize) {
         if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
           console.log("Changer monde ")
           currentWorld = 1;
+          heroX = 2*world1TileSize;
+          heroY = 7*world1TileSize;
+        }
+      }
+      if (currentTileValue === 3){
+        if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
+          console.log("Changer monde ")
+          currentWorld = 2;
+          heroX = 10*world1TileSize;
+          heroY = 7*world1TileSize;
+        }
+      }
+      if (currentTileValue === 4){
+        if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
+          console.log("Changer monde")
+          currentWorld = 0;
+          heroX = 17*world1TileSize;
+          heroY = 7*world1TileSize;
+        }
+      }
+      // if (currentTileValue === 5){
+      //   if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
+      //     console.log("Changer monde")
+      //     currentWorld = 1;
+      //     heroX = 10*world1TileSize;
+      //     heroY = 2*world1TileSize;
+      //   }
+      // }
+      if (currentTileValue === 6){
+        if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
+          console.log("Changer monde")
+          currentWorld = 3;
+          heroX = 2*world1TileSize;
+          heroY = 4*world1TileSize;
         }
       }
     }
@@ -604,11 +931,11 @@ function keyReleased(){
 
 const checkKeys = (currentMap) => {
   let path = 5;
-  if (currentMap ===0){
+ // if (currentMap ===0){
     if (keyIsDown(LEFT_ARROW)){
       movementCounter += 1;
       heroX -= path; 
-      if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
+      if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
         heroX += path
       }
       if (movementCounter >= 15 / heroSpeed){
@@ -623,7 +950,7 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(RIGHT_ARROW)){
       movementCounter += 1;
       heroX += path;
-      if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
+      if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
         heroX -= path
       }
       if (movementCounter >= 15 / heroSpeed){
@@ -638,7 +965,7 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(UP_ARROW)){
       movementCounter += 1;
       heroY -= path; 
-      if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
+      if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
         heroY+= path
       }
       if (movementCounter >= 15 / heroSpeed){
@@ -653,7 +980,7 @@ const checkKeys = (currentMap) => {
       if (keyIsDown(DOWN_ARROW)){
         movementCounter += 1;
         heroY += path;
-        if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
+        if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
           heroY -= path
         }
       if (movementCounter >= 15 / heroSpeed){
@@ -668,7 +995,7 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(UP_ARROW) && keyIsDown(LEFT_ARROW)){
       movementCounter += 1;
       heroY += path;
-      if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
+      if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
         heroY -= path
       }
       if (movementCounter >= 15 / heroSpeed){
@@ -683,7 +1010,7 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(UP_ARROW) && keyIsDown(RIGHT_ARROW)){
       movementCounter += 1;
       heroY += path;
-      if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
+      if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
         heroY -= path
       }
       if (movementCounter >= 15 / heroSpeed){
@@ -696,6 +1023,12 @@ const checkKeys = (currentMap) => {
       } 
     }
     
+  //}
+}
+
+function drawNPC(cW) {
+  if (currentWorld === 0) {
+    image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
   }
 }
 
@@ -708,6 +1041,7 @@ function draw() {
   image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
   drawFront(worldsLayer4[currentWorld], tileDictionnariesLayer4[currentWorld], worldsTileSizes[currentWorld]);
   checkKeys(currentWorld);
+  //console.log(worldsLayer3[currentWorld])
 }
 
 //function draw() {
