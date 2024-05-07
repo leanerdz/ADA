@@ -286,7 +286,7 @@ let world5BoardLayer4 = [
 
 
 
-let currentWorld = 0;
+let currentWorld = 1;
 
 let worldsLayer1 = [] ;
 let worldsLayer2 = [] ;
