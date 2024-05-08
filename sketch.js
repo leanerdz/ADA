@@ -265,8 +265,8 @@ let world5BoardLayer3 = [
   [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1],
-  [0,0,10,10,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1],
-  [1,0,10,10,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1],
+  [1,0,10,10,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1],
+  [1,0,10,10,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1],
   [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,4,4,1,1,1,1,1,1,1]
@@ -286,7 +286,7 @@ let world5BoardLayer4 = [
 
 
 
-let currentWorld = 0;
+let currentWorld = 1;
 
 let worldsLayer1 = [] ;
 let worldsLayer2 = [] ;
@@ -297,7 +297,6 @@ let tileDictionnariesLayer2 = [];
 let tileDictionnariesLayer3 = [];
 let tileDictionnariesLayer4 = [];
 let worldsTileSizes = [];
-
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Hero//////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -316,7 +315,6 @@ let myHeroDiagoBackLeft = [];
 let currentIndex = 0;
 let movementCounter = 0;
 let currentHeroImage = 0;
-
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Perso/////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -349,16 +347,19 @@ let dialogueMamie;
 let dialogueMamieApres;
 let dialogueMecanicien;
 let dialogueMecanicienApres;
-let currentDialogueMecanicien;
+// let currentDialogueMecanicien;
 let dialogueAstronome;
 let dialogueAstronomeApres;
-let currentDialogueAstronome;
+// let currentDialogueAstronome;
 
 let dialogueMamieFlag = false; 
 let dialogueMamieFlagApres = false; 
 let dialogueMecanoFlag = false; 
 let dialogueAstroFlag = false; 
-let currentDialogueIndex = 0;
+let currentDialogueMamieIndex = 0;
+let currentDialogueMamieIndexApres = 0;
+let currentDialogueMecanoIndex = 0;
+let currentDialogueAstroIndex = 0;
 
 // Appelée une fois
 function setup() {
@@ -368,7 +369,10 @@ function setup() {
   inventaire2 = loadImage('designs-des-designers/inventaire/inventair_03.png');
   inventaire3 = loadImage('designs-des-designers/inventaire/inventair_04.png');
 
-  dialogueMamie = [loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_01.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_01.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_02.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_03.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_04.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_05.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_06.png')]
+  dialogueMamie = [loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_01.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_01.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_02.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_03.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_04.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_05.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_06.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_08.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_09.png')]
+  dialogueMamieApres = [loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_08.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_09.png')]
+  dialogueMecanicien = [loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_02.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_03.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_04.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_05.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_06.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_07.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_08.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_09.png')]
+  dialogueAstronome = [loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_02.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_03.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_04.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_05.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_06.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_07.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_08.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_09.png')]
   layer1Dictionnary = { 
     0:loadImage('designs-des-designers/sols/herbe.png'),
     1:loadImage('designs-des-designers/sols/herbeMotif.png'),
@@ -1146,57 +1150,34 @@ function keyReleased(){
     currentIndex = 0;
   }
   if (keyCode === 32){
-    currentDialogueIndex ++
-    if (currentDialogueIndex === dialogueMamie.length){
-      currentDialogueIndex = 0; 
+    if (dialogueMamieFlag) {
+      currentDialogueMamieIndex++;
+      // if (currentDialogueMamieIndex === dialogueMamie.length) {
+      //   currentDialogueMamieIndex = 0;
+      //   dialogueMamieFlag = false;
+      // }
     }
+    if (dialogueMecanoFlag) {
+      currentDialogueMecanoIndex++;
+      // if (currentDialogueMecanoIndex === dialogueMecanicien.length) {
+      //   currentDialogueMecanoIndex = 0;
+      //   dialogueMecanoFlag = false;
+      // }
+    }
+    if (dialogueAstroFlag) {
+      currentDialogueAstroIndex++;
+      // if (currentDialogueMecanoIndex === dialogueMecanicien.length) {
+      //   currentDialogueMecanoIndex = 0;
+      //   dialogueMecanoFlag = false;
+      // }
+    }
+    
   }
 
   return false;
 }
 
-// function dialogue(gameBoard,tileSize, idPNJ) {
-//   for (let y = 0; y < gameBoard.length; y++) {
-//     const currentLine = gameBoard[y];
-//     for (let x = 0; x < currentLine.length; x++) {
-//       const currentTileValue = currentLine[x];    
-//       if (currentTileValue === idPNJ){
-//         if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
-//           console.log(idPNJ)
-//             image(dialogueMamie[0], 0,0)
-//           // for (let i = 0; i < dialogueMamie.length; i++) {
-//           //   console.log("Hey")
-            
-//           // }
-//         }
-//       }
-//     }
-//   }
-// }
 
-// function keyReleased(){
-//   console.log("HelloWorld");
-//   if (keyCode === RIGHT_ARROW){
-//     currentIndex = 0;
-//   }
-//   if (keyCode === LEFT_ARROW){
-//     console.log('leftArrow');
-//     currentIndex = 0;
-//   }
-//   if (keyCode === UP_ARROW){
-//     currentIndex = 0;
-//   }
-//   if (keyCode === DOWN_ARROW){
-//     currentIndex = 0;
-//   }
-//   if (keyCode === 32){
-//     if (currentWorld === 0) {
-//       dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)
-//     }
-//   }
-  
-//   return false;
-// }
 
 
 const checkKeys = (currentMap) => {
@@ -1292,10 +1273,17 @@ const checkKeys = (currentMap) => {
         movementCounter = 0;
       } 
     }
-    if (keyIsDown(32) && currentWorld === 0 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)){
-      dialogueMamieFlag = true; 
+    if (keyIsDown(32)){
+      if (currentWorld === 0 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
+        dialogueMamieFlag = true;
+      } 
+      if (currentWorld === 4 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
+        dialogueMecanoFlag = true; 
+      } 
+      if (currentWorld === 3 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
+        dialogueAstroFlag = true; 
+      } 
     }
-    //image(dialogueMamie[0],10,10) 
     
   
 }
@@ -1322,12 +1310,23 @@ function draw() {
   image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
   drawFront(worldsLayer4[currentWorld], tileDictionnariesLayer4[currentWorld], worldsTileSizes[currentWorld]);
   checkKeys(currentWorld);
-    if (dialogueMamieFlag) {
-      image(dialogueMamie[currentDialogueIndex], 300, 200);
+    if (dialogueMamieFlag && currentDialogueMamieIndex <= dialogueMamie.length) {
+      image(dialogueMamie[currentDialogueMamieIndex], 300, 200);
     }
-  // image(dialogueMamie[0],10,10) 
+    if (dialogueMecanoFlag && currentDialogueMecanoIndex <= dialogueMecanicien.length) {
+      image(dialogueMecanicien[currentDialogueMecanoIndex], 200, 150);
+    }
+    if (dialogueAstroFlag && currentDialogueAstroIndex <= dialogueAstronome.length) {
+      image(dialogueAstronome[currentDialogueAstroIndex], 800, 200);
+    }
 
-  //console.log(worldsLayer3[currentWorld])
+    // if (dialogueMamieFlagApres) {
+    //   image(dialogueMamieApres[currentDialogueMamieIndexApres], 300, 200);
+    // }
+    // console.log(dialogueMamieApres);
+    //console.log(currentDialogueMecanoIndex);
+
+  // image(dialogueMamie[0],10,10) 
 }
 
 
@@ -1359,8 +1358,65 @@ function draw() {
 
 
 
-
-
+// if (dialogueMamieFlag) {
+    //   currentDialogueMamieIndex ++
+    //   // currentDialogueMamieIndexApres = 0;
+    // }
+    // if (dialogueMecanoFlag) {
+    //   currentDialogueMecanoIndex ++
+    //   // currentDialogueMamieIndexApres = 0;
+    // }
+    // if (currentDialogueMamieIndex === dialogueMamie.length){
+    //   currentDialogueMamieIndex = dialogueMamie.length;
+    //   dialogueMamieFlag = false; 
+    //   dialogueMamieFlagApres = true; 
+    // }
+    // if(dialogueMamieFlagApres){
+    //   currentDialogueMamieIndexApres = 0;
+    //   currentDialogueMamieIndexApres ++;
+    // }
+// function dialogue(gameBoard,tileSize, idPNJ) {
+  //   for (let y = 0; y < gameBoard.length; y++) {
+  //     const currentLine = gameBoard[y];
+  //     for (let x = 0; x < currentLine.length; x++) {
+  //       const currentTileValue = currentLine[x];    
+  //       if (currentTileValue === idPNJ){
+  //         if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
+  //           console.log(idPNJ)
+  //             image(dialogueMamie[0], 0,0)
+  //           // for (let i = 0; i < dialogueMamie.length; i++) {
+  //           //   console.log("Hey")
+              
+  //           // }
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  
+  // function keyReleased(){
+  //   console.log("HelloWorld");
+  //   if (keyCode === RIGHT_ARROW){
+  //     currentIndex = 0;
+  //   }
+  //   if (keyCode === LEFT_ARROW){
+  //     console.log('leftArrow');
+  //     currentIndex = 0;
+  //   }
+  //   if (keyCode === UP_ARROW){
+  //     currentIndex = 0;
+  //   }
+  //   if (keyCode === DOWN_ARROW){
+  //     currentIndex = 0;
+  //   }
+  //   if (keyCode === 32){
+  //     if (currentWorld === 0) {
+  //       dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)
+  //     }
+  //   }
+    
+  //   return false;
+  // }
 // if(currentMap === 1){
 //   if (keyIsDown(LEFT_ARROW)){
 //     movementCounter += 1;
