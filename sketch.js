@@ -1,3 +1,5 @@
+let showWorld = true;
+let redirectionDelay = 1000;
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 1//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -216,7 +218,8 @@ let world4BoardLayer2 =
 [0,0,0,0,0,0,0,0,13,14,0,124,125,126,127,128,15,16,0,15],
 [0,0,11,12,0,0,0,0,15,16,0,129,130,131,132,133,0,0,11,12],
 [0,0,13,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,13,14],
-[0,0,15,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,16]];
+[0,0,15,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,15,16]
+];
 
 let world4layer3Dictionnary = {};
 let world4BoardLayer3 = [
@@ -382,7 +385,23 @@ let currentDialogueMamieIndexApres = 0;
 let currentDialogueMecanoIndex = 0;
 let currentDialogueAstroIndex = 0;
 
-// Appelée une fois
+
+function preload() {
+  bgGarage = loadImage('mini-jeux/garage/garage_sans_batterie.png');
+  buttonActifGarage = loadImage('mini-jeux/garage/bouton_actif.png');
+  buttonNormalGarage = loadImage('mini-jeux/garage/bouton_normal.png');
+  battery = loadImage('mini-jeux/garage/batterie.png');
+  gameEndImg = loadImage('mini-jeux/garage/gagne.png')
+
+
+  star1 = loadImage('mini-jeux/observatoire/etoiles/etoile_1.png');
+  star2 = loadImage('mini-jeux/observatoire/etoiles/etoile_2.png')
+  bgObervatoire = loadImage('mini-jeux/observatoire/observatoire_interieur.png');
+  table = loadImage('mini-jeux/observatoire/table.png')
+  animTable = [loadImage('mini-jeux/observatoire/anim-table/table_anim_1.png'),loadImage('mini-jeux/observatoire/anim-table/table_anim_2.png'),loadImage('mini-jeux/observatoire/anim-table/table_anim_3.png')]
+
+}
+
 function setup() {
   createCanvas(windowWidth, windowHeight);
   inventaire0 = loadImage('designs-des-designers/inventaire/inventair_01.png');
@@ -946,6 +965,46 @@ function setup() {
   tileDictionnariesLayer3 = [layer3Dictionnary,world2layer3Dictionnary,world3layer3Dictionnary,world4layer3Dictionnary,world5layer3Dictionnary]
   tileDictionnariesLayer4 = [layer4Dictionnary,world2layer4Dictionnary,world3layer4Dictionnary,world4layer4Dictionnary,world5layer4Dictionnary]
   worldsTileSizes = [world1TileSize,world2TileSize, world3TileSize, world4TileSize, world5TileSize]
+
+  //Mamie
+
+  posXMamie = 0;
+  posYMamie = 0;
+  widthImgMamie = windowWidth;
+  heightImgmamie = windowHeight;
+  bgmamie = loadImage('mini-jeux/maison-mamie/interieur_maison_mamie.png')
+  chatCuisine = [loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine1.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine2.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine5.png')]
+  chatCanape = [loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape1.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape2.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape5.png')]
+  chatLunettes = [loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes1.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes2.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes3.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes6.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes7.png')]
+  lunettes = loadImage('mini-jeux/maison-mamie/lunette.png')
+  fixedCat1 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe.png')
+  fixedCat21 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe2-1.png')
+  fixedCat22 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe2-2.png')
+  meow1 = loadSound('mini-jeux/maison-mamie/meow1.wav');
+  meow2 = loadSound('mini-jeux/maison-mamie/meow2.wav');
+ coodinatesOfCats = [
+    [800,100,310,310],//Dans la boite 
+    [50,430,413,412],//Sur la commode 
+    [350,250,424,424],//Derrière les rideaux
+  ];
+
+// Garage
+
+  rectXGarage = 540;
+  rectYGarage = 250;
+  boutonsGarage = [buttonNormalGarage,buttonActifGarage]
+
+  //Observatoire 
+    stars =[star1, star2]
+  coordinatesOfStars = [
+    [690, 10, 150, 150],   // 1
+    [760, 60, 150, 150], // 2
+    [860, 80, 150, 150],  // 3
+    [970, 90, 150, 150],// 5
+    [1170, 90, 150, 150],  // 4
+    [1136, 200, 150, 150],  // 6
+    [990, 200, 150, 150]  // 7
+  ];
 }
 
 function drawWorld(gameBoard,tileDictionnary,tileSize) {
@@ -970,7 +1029,6 @@ function drawElements(gameBoard,tileDictionnary,tileSize) {
   }
 }
 function drawColisions(gameBoard,tileDictionnary,tileSize) {
-  //console.log("GameBoard", gameBoard);
   for (let y = 0; y < gameBoard.length; y++) {
     const currentLine = gameBoard[y];
     for (let x = 0; x < currentLine.length; x++) {
@@ -1334,32 +1392,436 @@ function drawNPC(cW) {
     image(mamie, 4*world1TileSize,5*world1TileSize, 36*1.5,78*1.5);
   }
   if (cW === 3) {
-    image(astronome, 12*world1TileSize,5*world1TileSize);
+    image(astronome, 12*world1TileSize,5*world1TileSize,36*1.5,78*1.5);
   }
   if (cW === 4) {
-    image(mecanicien, 2*world1TileSize,4*world1TileSize);
+    image(mecanicien, 2*world1TileSize,5*world1TileSize-32,36*1.5,78*1.5);
   }
 }
 
+////////////////////////////////////////////////////////////////////
+//////////////////////Maison de la Mamie////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+let bgmamie;
+let posXMamie;
+let posYMamie;
+let widthImgMamie;
+let heightImgmamie;
+
+let btClicked = false;
+let cmdClicked = false;
+let rdxClicked = false;
+
+let coodinatesOfCats;
+
+let lunettes;
+
+let chatCuisine;
+let chatCanape;
+let chatLunettes;
+let fixedCat1; 
+let fixedCat21; 
+let fixedCat22; 
+
+let cuisineIndex = 0;
+let canapeIndex = 0;
+let lunettesIndex = 0;
+
+let cuisineTarget = 0;
+let canapeTarget = 0;
+let lunettesTarget = 0;
+
+let delayMamie = 10; 
+let lastUpdateMamie = 0;
+let fixedCatFrame = 0;
+let fixedCatframeRate = 5000000;
+
+let hasWonMamie = false;
+let gameEndImg;
+
+let gameEndDelayMamie = 4000;
+let gameEndTimemamie;
+
+let meow1;
+let meow2;
+
+
+let showMamie = false; 
+
+function clickOnCats() {
+  for (let i = 0; i < coodinatesOfCats.length; i++) {
+    let currentCoords = coodinatesOfCats[i];
+    if (pointIsInRect(mouseX, mouseY, currentCoords[0], currentCoords[1], currentCoords[2], currentCoords[3])) {
+      if (i === 0) {
+        btClicked = true;
+        cuisineIndex = 0;
+        cuisineTarget = coodinatesOfCats[0][0] + 100;
+      }
+      if (i === 1) {
+        cmdClicked = true;
+        canapeIndex = 0;
+        canapeTarget = coodinatesOfCats[1][0] + 100;
+      }
+      if (i === 2) {
+        rdxClicked = true;
+        lunettesIndex = 0;
+        lunettesTarget = coodinatesOfCats[2][0] + 150;        
+      }
+    } else {
+    }
+  }
+}
+
+function animateCat() {
+  if (frameCount - lastUpdateMamie >= delayMamie) { 
+    lastUpdateMamie = frameCount; 
+    if (btClicked) {
+      if (coodinatesOfCats[0][0] < cuisineTarget) {
+        cuisineIndex = (cuisineIndex + 1) % chatCuisine.length;
+        coodinatesOfCats[0][0] += 10;
+      }
+    }
+    if (cmdClicked) {
+      if (coodinatesOfCats[1][0] < canapeTarget) {
+        canapeIndex = (canapeIndex + 1) % chatCanape.length;
+        coodinatesOfCats[1][0] += 10;
+      }
+    }
+    if (rdxClicked) {
+      if (coodinatesOfCats[2][0] < lunettesTarget) {
+        lunettesIndex = (lunettesIndex + 1) % chatLunettes.length;
+        coodinatesOfCats[2][0] += 10;
+        hasWonMamie = true
+      }
+    }
+  }
+  if (btClicked) {
+    image(chatCuisine[cuisineIndex], coodinatesOfCats[0][0], coodinatesOfCats[0][1], coodinatesOfCats[0][2], coodinatesOfCats[0][3]);
+    
+  }
+  if (cmdClicked) {
+    image(chatCanape[canapeIndex], coodinatesOfCats[1][0], coodinatesOfCats[1][1], coodinatesOfCats[1][2], coodinatesOfCats[1][3]);
+  }
+  if (rdxClicked) {
+    image(chatLunettes[lunettesIndex], coodinatesOfCats[2][0], coodinatesOfCats[2][1], coodinatesOfCats[2][2], coodinatesOfCats[2][2]);
+  }
+}
+
+
+
+////////////////////////////////////////////////////////////////////
+//////////////////////////////Garage////////////////////////////////
+////////////////////////////////////////////////////////////////////
+let rectXGarage;
+let rectYGarage;
+let rectWGarage = 95;
+let rectHGarage = 300;
+let battery;
+let batteryState = -10;
+let buttonActifGarage;
+let buttonNormalGarage;
+let boutonsGarage;
+let currentBoutonGarage = 0;
+let bgGarage;
+let mouseEnabledGarage = true;
+
+let hasWonGarage = false;
+
+let gameEndDelayGarage = 500;
+let gameEndTimeGarage;
+
+let showMecanicien = false; 
+
+function mousePressed() {
+  if (currentWorld === 4) {
+    if (mouseEnabledGarage && pointIsInRect(mouseX, mouseY, 530, 100, 500, 500)){
+      batteryState = batteryState - 5;
+      currentBoutonGarage = 1;
+    }
+  }
+  if (currentWorld === 3) {
+    for (let i = 0; i < coordinatesOfStars.length; i++) {
+      let currentCoords = coordinatesOfStars[i];
+      if (pointIsInRect(mouseX, mouseY, currentCoords[0], currentCoords[1], currentCoords[2], currentCoords[3])) {
+        console.log("Star clicked:", i+1);
+        if( i+1 === 1){
+          one = !one; 
+        }
+        if( i+1 === 2){
+          two = !two; 
+        }
+        if( i+1 === 3){
+          three = !three; 
+        }
+        if( i+1 === 4){
+          four = !four; 
+        }
+        if( i+1 === 5){
+          five = !five; 
+        }
+        if( i+1 === 6){
+          six = !six; 
+        }
+        if( i+1 === 7){
+          seven = !seven; 
+        }
+      }
+    }
+  }
+};
+function mouseReleased() {
+  currentBoutonGarage = 0;
+}
+
+function limitGarage() {
+  if (batteryState === -225) {
+    console.log("limite");
+    mouseEnabledGarage = false; 
+    batteryState = -225;
+    hasWonGarage = true;
+  }
+}
+
+function colorChange(){
+  switch (true) {
+    case (batteryState <= 50):
+      fill(255, 0, 0);
+      break;
+    case (batteryState > 50 && batteryState <= 100):
+      fill(255, 171, 0);
+      break;
+    case (batteryState > 100 && batteryState <= 150):
+      fill(247, 255, 0);
+      break;
+    default:
+      fill(0, 255, 0);
+  }
+}
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////Observatoire////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+let coordinatesOfStars;
+let one = false;
+let two = false;
+let three = false;
+let four = false;
+let five = false;
+let six = false;
+let seven = false;
+let bgObervatoire;
+let stars = [];
+let star1;
+let star2;
+let currentFrameObervatoire = 0;
+let frameRateObervatoire = 5;
+
+let table; 
+let hasWonObervatoire = false;
+
+let gameEndDelayObervatoire = 1000;
+let gameEndTimeObervatoire;
+
+let animTable;
+let showAstronome = false; 
+
+
+function linkedStars (){
+  // stroke(3)
+  
+  if(one && two){
+    console.log("One and two linked")
+    stroke(255, 251, 208);
+    line(coordinatesOfStars[0][0] +75, coordinatesOfStars[0][1]+75, coordinatesOfStars[1][0]+75, coordinatesOfStars[1][1]+75);
+  }
+  if(two && three){
+    console.log("two and three linked")
+    stroke(255, 251, 208);
+    line(coordinatesOfStars[1][0]+75, coordinatesOfStars[1][1]+75, coordinatesOfStars[2][0]+75, coordinatesOfStars[2][1]+75);
+  }
+  if(three && four){
+    console.log("three and four linked")
+    stroke(255, 251, 208);
+    line(coordinatesOfStars[2][0]+75, coordinatesOfStars[2][1]+75, coordinatesOfStars[3][0]+75, coordinatesOfStars[3][1]+75);
+  }
+  if(four && five){
+    console.log("four and five linked")
+    stroke(255, 251, 208);
+    line(coordinatesOfStars[3][0]+75, coordinatesOfStars[3][1]+75, coordinatesOfStars[4][0]+75, coordinatesOfStars[4][1]+75);
+  }
+  if(five && six){
+    console.log("five and six linked")
+    stroke(255, 251, 208);
+    line(coordinatesOfStars[4][0]+75, coordinatesOfStars[4][1]+75, coordinatesOfStars[5][0]+75, coordinatesOfStars[5][1]+75);
+  }
+  if(six && seven){
+    console.log("six and seven linked")
+    stroke(255, 251, 208);
+    line(coordinatesOfStars[5][0]+75, coordinatesOfStars[5][1]+75, coordinatesOfStars[6][0]+75, coordinatesOfStars[6][1]+75);
+  }
+  if(seven && four){
+    console.log("seven and four linked")
+    stroke(255, 251, 208);
+    line(coordinatesOfStars[6][0]+75, coordinatesOfStars[6][1]+75, coordinatesOfStars[3][0]+75, coordinatesOfStars[3][1]+75);
+  }
+}
+
+function endGame(){
+  const imageDisplayDelay = 1000; // 1 seconde
+
+  if (hasWonMamie) {
+    if (!gameEndTimemamie) {
+      gameEndTimemamie = millis() + gameEndDelayMamie;
+    }
+    if (millis() >= gameEndTimemamie) {
+      console.log("You won !")
+      image(gameEndImg,80,50)
+      showMamie = false;
+
+      if (millis() >= gameEndTimemamie + redirectionDelay + imageDisplayDelay) {
+        showWorld = true;
+        showMamie = false;
+        currentDialogueMamieIndex++
+      }
+    }
+  }
+  if (hasWonGarage) {
+    if (!gameEndTimeGarage) {
+      gameEndTimeGarage = millis() + gameEndDelayGarage;
+    }
+    if (millis() >= gameEndTimeGarage) {
+      console.log("You won !")
+      image(gameEndImg,80,50)
+
+      if (millis() >= gameEndTimeGarage + redirectionDelay + imageDisplayDelay) {
+        showWorld = true;
+        showMecanicien = false;
+        currentDialogueMecanoIndex++
+      }
+    }
+  }
+  if (one && two && three && four && five && six && seven) {
+    hasWonObervatoire = true;
+    if (!gameEndTimeObervatoire) {
+      gameEndTimeObervatoire = millis() + gameEndDelayObervatoire;
+    }
+    if (millis() >= gameEndTimeObervatoire) {
+      console.log("You won !")
+      image(gameEndImg,80,50)
+
+      if (millis() >= gameEndTimeObervatoire + redirectionDelay + imageDisplayDelay) {
+        showWorld = true;
+        showAstronome = false;
+        currentDialogueAstroIndex
+      }
+    }
+  }
+}
+
+
+function playGames() {
+  if (currentDialogueMamieIndex === 6) {
+    showMamie = true;
+    showWorld = false;
+  }
+  if (currentDialogueMecanoIndex === 6) {
+    showMecanicien = true;
+    showWorld = false;
+  }
+  if (currentDialogueAstroIndex === 6) {
+    showAstronome = true;
+    showWorld = false;
+  }
+}
 function draw() {
-  background(255);
-  //console.log(currentDiapo);
-  drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
-  drawElements(worldsLayer2[currentWorld], tileDictionnariesLayer2[currentWorld], worldsTileSizes[currentWorld]);
-  drawColisions(worldsLayer3[currentWorld], tileDictionnariesLayer3[currentWorld], worldsTileSizes[currentWorld]);
-  drawNPC(currentWorld)
-  image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-  drawFront(worldsLayer4[currentWorld], tileDictionnariesLayer4[currentWorld], worldsTileSizes[currentWorld]);
-  checkKeys(currentWorld);
-  if (dialogueMamieFlag && currentDialogueMamieIndex < dialogueMamie.length) {
-    image(dialogueMamie[currentDialogueMamieIndex], 300, 200);
+  playGames();
+  endGame();
+  if (showWorld) {
+    background(255);
+    //console.log(currentDiapo);
+    drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
+    drawElements(worldsLayer2[currentWorld], tileDictionnariesLayer2[currentWorld], worldsTileSizes[currentWorld]);
+    drawColisions(worldsLayer3[currentWorld], tileDictionnariesLayer3[currentWorld], worldsTileSizes[currentWorld]);
+    drawNPC(currentWorld)
+    image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
+    drawFront(worldsLayer4[currentWorld], tileDictionnariesLayer4[currentWorld], worldsTileSizes[currentWorld]);
+    checkKeys(currentWorld);
+    if (dialogueMamieFlag && currentDialogueMamieIndex < dialogueMamie.length) {
+      image(dialogueMamie[currentDialogueMamieIndex], 300, 200);
+    }
+    if (dialogueMecanoFlag && currentDialogueMecanoIndex < dialogueMecanicien.length) {
+      image(dialogueMecanicien[currentDialogueMecanoIndex], 200, 150);
+    }
+    if (dialogueAstroFlag && currentDialogueAstroIndex < dialogueAstronome.length) {
+      image(dialogueAstronome[currentDialogueAstroIndex], 800, 200);
+    } 
   }
-  if (dialogueMecanoFlag && currentDialogueMecanoIndex < dialogueMecanicien.length) {
-    image(dialogueMecanicien[currentDialogueMecanoIndex], 200, 150);
+////////////////////////////////////////////////////////////////////
+//////////////////////Maison de la Mamie////////////////////////////
+////////////////////////////////////////////////////////////////////
+  if (showMamie) {
+    // background(bgmamie);
+    image(bgmamie, posXMamie,posYMamie,widthImgMamie,height)
+    noFill();
+    noStroke();
+    image(lunettes, 430, 400,202,202)
+    image(fixedCat1, 900, 350,364,363)
+    image(fixedCat21,600,530,532,393);
+    // let currentFixedCat = fixedCatFrame % 2 === 0 ? fixedCat21 : fixedCat22;
+    // image(currentFixedCat,600,530,532,393);
+    // fixedCatFrame = (fixedCatFrame + 1) % (fixedCatframeRate * 2);
+    if (!btClicked) {
+      image(chatCuisine[0], coodinatesOfCats[0][0], coodinatesOfCats[0][1], coodinatesOfCats[0][2], coodinatesOfCats[0][3]);
+    }
+    if (!cmdClicked) {
+      image(chatCanape[0], coodinatesOfCats[1][0], coodinatesOfCats[1][1], coodinatesOfCats[1][2], coodinatesOfCats[1][3]);
+    }
+    if (!rdxClicked) {
+      image(chatLunettes[0], coodinatesOfCats[2][0], coodinatesOfCats[2][1], coodinatesOfCats[2][2], coodinatesOfCats[2][2]);
+    }
+    if (mouseIsPressed) {
+      clickOnCats();
+      meow2.play();
+    }
+    animateCat();
+    endGame();
   }
-  if (dialogueAstroFlag && currentDialogueAstroIndex < dialogueAstronome.length) {
-    image(dialogueAstronome[currentDialogueAstroIndex], 800, 200);
+  if (showMecanicien) {
+    // background(bgGarage);
+    image(bgGarage, posXMamie,posYMamie,widthImgMamie,height)
+    console.log("Battery State:", batteryState);
+    // colorChange();
+    fill(139, 255, 50);
+    noStroke();
+    rect(rectXGarage, rectYGarage + rectHGarage, rectWGarage, batteryState);
+    image(battery, 400, 230, 550, 568)
+    image(boutonsGarage[currentBoutonGarage], 530, 100, 500, 500);
+    limitGarage();
+    endGame();
   }
+
+  if (showAstronome) {
+  image(bgObervatoire, posXMamie,posYMamie,widthImgMamie,height)
+
+  strokeWeight(3);
+  linkedStars();
+
+  for (let i = 0; i < coordinatesOfStars.length; i++) {
+    let currentCoords = coordinatesOfStars[i];
+    let currentStar = currentFrameObervatoire % 2 === 0 ? star1 : star2;
+    image(currentStar, currentCoords[0], currentCoords[1], currentCoords[2], currentCoords[3]);
+  }
+
+  let currentTable = animTable[Math.floor(currentFrameObervatoire / frameRateObervatoire) % animTable.length];
+  image(currentTable, 500, 200, 5616/6, 3733/6);
+  // image(table, 500, 200, 5616/6, 3733/6);
+
+  endGame();
+  currentFrameObervatoire = (currentFrameObervatoire + 1) % (frameRateObervatoire * 2 * animTable.length);
+  }
+  
 }
 
 
