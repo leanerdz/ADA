@@ -106,9 +106,9 @@ let world2BoardLayer3 = [
   [1,1,1,1,1,1,1,1,1,3,3,1,1,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
-  [1,1,1,1,1,1,1,1,1,0,0,1,1,0,0,0,0,0,1,1],
-  [1,1,1,1,1,1,1,1,1,0,0,1,0,0,0,0,0,0,1,1],
-  [1,1,1,1,1,1,1,1,1,0,0,1,0,0,0,0,0,0,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,1,1,12,12,12,12,12,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,1,12,12,12,12,12,12,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,1,12,12,12,12,12,12,1,1],
   [0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1,1],
   [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
   [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
@@ -284,8 +284,8 @@ let world5BoardLayer2 =
 
 let world5layer3Dictionnary = {};
 let world5BoardLayer3 = [
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,13],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,13],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1],
@@ -329,7 +329,7 @@ let heroSpeed = 5;
 let heroWidth = 47;
 let heroHeight = 94;
 let heroX = 17*world1TileSize;
-let heroY = 6*world1TileSize;
+let heroY = 7*world1TileSize;
 let myHeroRight = [];
 let myHeroLeft = [];
 let myHeroTop = [];
@@ -371,10 +371,13 @@ let dialogueMamie;
 let dialogueMamieApres;
 let dialogueMecanicien;
 let dialogueMecanicienApres;
-// let currentDialogueMecanicien;
 let dialogueAstronome;
 let dialogueAstronomeApres;
-// let currentDialogueAstronome;
+
+let plusTard;
+let plusTardMecanoFlag = true;
+let plusTardAstroFlag = true;
+let plusTardFusee;
 
 let dialogueMamieFlag = false; 
 let dialogueMamieFlagApres = false; 
@@ -384,14 +387,19 @@ let currentDialogueMamieIndex = 0;
 let currentDialogueMamieIndexApres = 0;
 let currentDialogueMecanoIndex = 0;
 let currentDialogueAstroIndex = 0;
-
+let gameEndImgMamie;
+let gameEndImgMamieFlag = false;
+let gameEndImgGarage;
+let gameEndImgAstro;
 
 function preload() {
   bgGarage = loadImage('mini-jeux/garage/garage_sans_batterie.png');
   buttonActifGarage = loadImage('mini-jeux/garage/bouton_actif.png');
   buttonNormalGarage = loadImage('mini-jeux/garage/bouton_normal.png');
   battery = loadImage('mini-jeux/garage/batterie.png');
-  gameEndImg = loadImage('mini-jeux/garage/gagne.png')
+  gameEndImgMamie = loadImage('mini-jeux/garage/gagne.png')
+  gameEndImgGarage = loadImage('mini-jeux/garage/gagne.png')
+  gameEndImgAstro = loadImage('mini-jeux/garage/gagne.png')
 
 
   star1 = loadImage('mini-jeux/observatoire/etoiles/etoile_1.png');
@@ -400,10 +408,9 @@ function preload() {
   table = loadImage('mini-jeux/observatoire/table.png')
   animTable = [loadImage('mini-jeux/observatoire/anim-table/table_anim_1.png'),loadImage('mini-jeux/observatoire/anim-table/table_anim_2.png'),loadImage('mini-jeux/observatoire/anim-table/table_anim_3.png')]
 
-}
+  plusTard = loadImage('designs-des-designers/dialoguePlusTard/reviens-plus-tard-dialogue.png')
+  plusTardFusee = loadImage('designs-des-designers/dialoguePlusTard/fusée-reviens-plus-tard.png')
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
   inventaire0 = loadImage('designs-des-designers/inventaire/inventair_01.png');
   inventaire1 = loadImage('designs-des-designers/inventaire/inventair_02.png');
   inventaire2 = loadImage('designs-des-designers/inventaire/inventair_03.png');
@@ -413,6 +420,13 @@ function setup() {
   dialogueMamieApres = [loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_08.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_09.png')]
   dialogueMecanicien = [loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_02.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_03.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_04.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_05.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_06.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_07.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_08.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_09.png')]
   dialogueAstronome = [loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_02.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_03.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_04.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_05.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_06.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_07.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_08.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_09.png')]
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+
+  inventaire =  [inventaire0,inventaire1,inventaire2,inventaire3]
+
   layer1Dictionnary = { 
     0:loadImage('designs-des-designers/sols/herbe.png'),
     1:loadImage('designs-des-designers/sols/herbeMotif.png'),
@@ -607,6 +621,7 @@ function setup() {
                     3: createImage(1,1),
                     4: createImage(1,1),
                     10: createImage(1,1),
+                    12: createImage(1,1),
   }
 
   world2layer4Dictionnary = { 
@@ -695,6 +710,7 @@ function setup() {
                     6: createImage(1,1),
                     7: createImage(1,1),
                     10: createImage(1,1),
+                    12: createImage(1,1),
 
   }
 
@@ -794,6 +810,7 @@ function setup() {
                     2: createImage(1,1),
                     11: createImage(1,1),
                     10: createImage(1,1),
+                    12: createImage(1,1),
   }
 
   world4layer4Dictionnary = { 
@@ -909,6 +926,8 @@ function setup() {
                     5: createImage(1,1),
                     8: createImage(1,1),
                     10: createImage(1,1),
+                    12: createImage(1,1),
+                    13: createImage(1,1),
   }
 
   world5layer4Dictionnary = { 
@@ -1219,6 +1238,14 @@ function checkCollision(gameBoard,tileSize) {
           heroY = 4*world1TileSize;
         }
       }
+      if (currentTileValue === 13){
+        if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
+          console.log("Changer monde")
+          currentWorld = 2;
+          heroX = 2*world1TileSize;
+          heroY = 1.5*world1TileSize;
+        }
+      }
     }
   }
 
@@ -1375,13 +1402,23 @@ const checkKeys = (currentMap) => {
     if (keyIsDown(32)){
       if (currentWorld === 0 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
         dialogueMamieFlag = true;
-      } 
+      }
       if (currentWorld === 4 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
-        dialogueMecanoFlag = true; 
-      } 
+        if (hasWonMamie) {
+          dialogueMecanoFlag = true;
+          plusTardMecanoFlag = false;
+        } else {
+          plusTardMecanoFlag = true;
+        }
+      }
       if (currentWorld === 3 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
-        dialogueAstroFlag = true; 
-      } 
+        if (hasWonMamie && hasWonGarage) {
+          dialogueAstroFlag = true;
+          plusTardAstroFlag = false;
+        } else {
+          plusTardAstroFlag = true;
+        }
+      }
     }
     
   
@@ -1392,7 +1429,7 @@ function drawNPC(cW) {
     image(mamie, 4*world1TileSize,5*world1TileSize, 36*1.5,78*1.5);
   }
   if (cW === 3) {
-    image(astronome, 12*world1TileSize,5*world1TileSize,36*1.5,78*1.5);
+    image(astronome, 13*world1TileSize,5*world1TileSize,36*1.5,78*1.5);
   }
   if (cW === 4) {
     image(mecanicien, 2*world1TileSize,5*world1TileSize-32,36*1.5,78*1.5);
@@ -1438,7 +1475,6 @@ let fixedCatFrame = 0;
 let fixedCatframeRate = 5000000;
 
 let hasWonMamie = false;
-let gameEndImg;
 
 let gameEndDelayMamie = 4000;
 let gameEndTimemamie;
@@ -1677,13 +1713,15 @@ function endGame(){
     }
     if (millis() >= gameEndTimemamie) {
       console.log("You won !")
-      image(gameEndImg,80,50)
+      gameEndImgMamieFlag = true;
+      //image(gameEndImgMamie,80,50)
       showMamie = false;
 
       if (millis() >= gameEndTimemamie + redirectionDelay + imageDisplayDelay) {
+        gameEndImgMamieFlag = false;
         showWorld = true;
         showMamie = false;
-        currentDialogueMamieIndex++
+        console.log('Mamie',hasWonMamie)
       }
     }
   }
@@ -1693,12 +1731,14 @@ function endGame(){
     }
     if (millis() >= gameEndTimeGarage) {
       console.log("You won !")
-      image(gameEndImg,80,50)
+      gameEndImgMamieFlag = true;
+      // image(gameEndImgGarage,80,50)
 
       if (millis() >= gameEndTimeGarage + redirectionDelay + imageDisplayDelay) {
+        gameEndImgMamieFlag = false;
         showWorld = true;
         showMecanicien = false;
-        currentDialogueMecanoIndex++
+        console.log('Garage',hasWonGarage)
       }
     }
   }
@@ -1709,28 +1749,29 @@ function endGame(){
     }
     if (millis() >= gameEndTimeObervatoire) {
       console.log("You won !")
-      image(gameEndImg,80,50)
+      gameEndImgMamieFlag = true;
+      // image(gameEndImgAstro,80,50)
 
       if (millis() >= gameEndTimeObervatoire + redirectionDelay + imageDisplayDelay) {
+        gameEndImgMamieFlag = false;
         showWorld = true;
         showAstronome = false;
-        currentDialogueAstroIndex
+        console.log(hasWonObervatoire)
       }
     }
   }
 }
 
-
 function playGames() {
-  if (currentDialogueMamieIndex === 6) {
+  if (currentDialogueMamieIndex === 7) {
     showMamie = true;
     showWorld = false;
   }
-  if (currentDialogueMecanoIndex === 6) {
+  if (currentDialogueMecanoIndex === 7) {
     showMecanicien = true;
     showWorld = false;
   }
-  if (currentDialogueAstroIndex === 6) {
+  if (currentDialogueAstroIndex === 7) {
     showAstronome = true;
     showWorld = false;
   }
@@ -1740,7 +1781,6 @@ function draw() {
   endGame();
   if (showWorld) {
     background(255);
-    //console.log(currentDiapo);
     drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
     drawElements(worldsLayer2[currentWorld], tileDictionnariesLayer2[currentWorld], worldsTileSizes[currentWorld]);
     drawColisions(worldsLayer3[currentWorld], tileDictionnariesLayer3[currentWorld], worldsTileSizes[currentWorld]);
@@ -1751,12 +1791,28 @@ function draw() {
     if (dialogueMamieFlag && currentDialogueMamieIndex < dialogueMamie.length) {
       image(dialogueMamie[currentDialogueMamieIndex], 300, 200);
     }
-    if (dialogueMecanoFlag && currentDialogueMecanoIndex < dialogueMecanicien.length) {
+    if (plusTardMecanoFlag === true && currentWorld === 4 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !hasWonMamie) {
+      image(plusTard, 200,150)
+    } else if (dialogueMecanoFlag && currentDialogueMecanoIndex < dialogueMecanicien.length) {
       image(dialogueMecanicien[currentDialogueMecanoIndex], 200, 150);
     }
-    if (dialogueAstroFlag && currentDialogueAstroIndex < dialogueAstronome.length) {
+    if (plusTardAstroFlag === true && currentWorld === 3 &&dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !(hasWonMamie && hasWonGarage)) {
+      image(plusTard, 800, 200)
+    } else if (dialogueAstroFlag && currentDialogueAstroIndex < dialogueAstronome.length) {
       image(dialogueAstronome[currentDialogueAstroIndex], 800, 200);
-    } 
+    }
+    let currentImageIndex = 0; 
+
+    if (hasWonMamie) {
+      currentImageIndex = 1;
+    }
+    if (hasWonGarage) {
+      currentImageIndex = 2;
+    }
+    if (hasWonObervatoire) {
+      currentImageIndex = 3;
+    }
+    image(inventaire[currentImageIndex], 400, 560, 300 * 1.3, 100 * 1.3);
   }
 ////////////////////////////////////////////////////////////////////
 //////////////////////Maison de la Mamie////////////////////////////
@@ -1786,7 +1842,7 @@ function draw() {
       meow2.play();
     }
     animateCat();
-    endGame();
+    // endGame();
   }
   if (showMecanicien) {
     // background(bgGarage);
@@ -1821,7 +1877,19 @@ function draw() {
   endGame();
   currentFrameObervatoire = (currentFrameObervatoire + 1) % (frameRateObervatoire * 2 * animTable.length);
   }
+
+  if (gameEndImgMamieFlag) {
+    image(gameEndImgMamie,80,50)
+
+  }
   
+  if (hasWonMamie && hasWonGarage && hasWonObervatoire && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
+    console.log("La Fin du jeu !!!")
+  }else if (hasWonMamie === false && hasWonGarage === false && hasWonObervatoire === false && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
+    image(plusTardFusee, 800, 50)
+  }
+
+
 }
 
 
