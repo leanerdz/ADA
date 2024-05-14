@@ -1812,7 +1812,7 @@ function draw() {
     if (hasWonObervatoire) {
       currentImageIndex = 3;
     }
-    image(inventaire[currentImageIndex], 400, 560, 300 * 1.3, 100 * 1.3);
+    image(inventaire[currentImageIndex], 400, 560, 300 * 1.5, 100 * 1.5);
   }
 ////////////////////////////////////////////////////////////////////
 //////////////////////Maison de la Mamie////////////////////////////
