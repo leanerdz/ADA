@@ -1879,10 +1879,6 @@ function reset() {
   plusTardAstroFlag = true;
   currentInventaire = 0;
 
-  mamie = loadImage('designs-des-designers/animMamie/mamie_01.png');
-  astronome = loadImage('designs-des-designers/astronome/astronome_01.png');
-  mecanicien = loadImage('designs-des-designers/mecanicien/mecanicien_01.png');
-
   path = 5;
   showWorld = true;
   showMamie = false;
@@ -1892,9 +1888,9 @@ function reset() {
   cmdClicked = false;
   rdxClicked = false;
   coodinatesOfCats = [
-    [800,100,310,310],//Dans la boite
-    [50,430,413,412],//Sur la commode
-    [350,250,424,424],//Derrière les rideaux
+    [800,100,310,310],
+    [50,430,413,412],
+    [350,250,424,424],
   ];
   rectXGarage = 540;
   rectYGarage = 250;
@@ -1902,15 +1898,6 @@ function reset() {
   batteryState = 0;
   mouseEnabledGarage = true;
   hasWonGarage = false;
-  coordinatesOfStars = [
-    [690, 10, 150, 150],   // 1
-    [760, 60, 150, 150], // 2
-    [860, 80, 150, 150],  // 3
-    [970, 90, 150, 150],// 5
-    [1170, 90, 150, 150],  // 4
-    [1136, 200, 150, 150],  // 6
-    [990, 200, 150, 150]  // 7
-  ];
   one = false;
   two = false;
   three = false;
