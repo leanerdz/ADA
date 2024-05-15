@@ -1,5 +1,14 @@
 let showWorld = true;
 let redirectionDelay = 1000;
+let cinemDebut;
+let cinemFin;
+
+let menu;
+let currentMenu = 0;
+let prevMenu = 0;
+let menuComplet;
+let menuClickCounter = 0;
+let menuCroix;
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 1//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -96,7 +105,7 @@ let world2BoardLayer2 = [
   [0,0,14,15,0,0,0,0,0,0,0,0,0,81,82,51,52,53,0,0],
   [0,0,21,22,0,21,22,0,0,0,0,0,0,83,84,54,55,56,0,0],
   [0,0,23,24,0,23,24,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,25,26,0,25,26,0,0,0,0,0,0,0,0,0,0,0,0,0],
+  [0,92,25,26,0,25,26,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [33,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
   [37,38,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 ];
@@ -139,8 +148,8 @@ let world3BoardLayer1 = [
 [30,35,1,0,1,0,0,1,0,27,25,0,0,0,0,0,0,0,0,0],
 [30,35,0,0,0,0,1,1,1,27,41,28,28,28,28,28,28,28,28,28],
 [52,38,0,1,0,0,0,0,1,27,42,26,26,26,26,26,26,26,26,26],
-[51,32,33,0,1,1,0,0,0,27,25,0,1,0,1,0,1,0,0,0],
-[52,37,38,0,0,0,0,1,0,27,25,0,0,0,0,1,0,0,1,1],
+[51,32,33,0,0,0,0,0,0,27,25,0,1,0,1,0,1,0,0,0],
+[52,37,38,0,0,0,0,0,0,27,25,0,0,0,0,1,0,0,1,1],
 [35,1,1,1,0,1,1,0,0,27,25,1,0,0,0,0,1,0,1,0],
 [35,1,1,0,0,1,0,0,0,27,25,0,0,0,0,0,0,0,1,0],
 [35,0,0,1,0,0,0,0,0,27,25,0,0,0,0,0,0,0,0,0],
@@ -153,8 +162,8 @@ let world3BoardLayer2 = [
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [32,33,34,0,0,0,0,0,0,0,0,21,22,0,0,0,0,0,0,0],
 [36,37,38,0,0,0,0,0,0,0,0,23,24,0,0,0,0,0,0,0],
-[0,0,0,0,11,12,0,0,0,0,0,25,26,0,0,0,0,0,0,0],
-[0,0,0,0,13,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+[61,62,0,0,11,12,0,0,0,0,0,25,26,0,0,0,0,0,0,0],
+[63,64,0,0,13,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,15,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,4,0,0,0,0],
@@ -336,6 +345,8 @@ let myHeroTop = [];
 let myHeroBack = [];
 let myHeroDiagoBackRight = [];
 let myHeroDiagoBackLeft = [];
+let myHeroDiagoTopRight = [];
+let myHeroDiagoTopLeft = [];
 let currentIndex = 0;
 let movementCounter = 0;
 let currentHeroImage = 0;
@@ -393,6 +404,19 @@ let gameEndImgGarage;
 let gameEndImgAstro;
 
 function preload() {
+
+  bgmamie = loadImage('mini-jeux/maison-mamie/interieur_maison_mamie.png')
+  chatCuisine = [loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine1.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine2.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine5.png')]
+  chatCanape = [loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape1.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape2.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape5.png')]
+  chatLunettes = [loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes1.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes2.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes3.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes6.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes7.png')]
+  lunettes = loadImage('mini-jeux/maison-mamie/lunette.png')
+  fixedCat1 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe.png')
+  fixedCat21 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe2-1.png')
+  fixedCat22 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe2-2.png')
+  meow1 = loadSound('mini-jeux/maison-mamie/meow1.mp3');
+  meow2 = loadSound('mini-jeux/maison-mamie/meow2.mp3');
+
+
   bgGarage = loadImage('mini-jeux/garage/garage_sans_batterie.png');
   buttonActifGarage = loadImage('mini-jeux/garage/bouton_actif.png');
   buttonNormalGarage = loadImage('mini-jeux/garage/bouton_normal.png');
@@ -420,6 +444,24 @@ function preload() {
   dialogueMamieApres = [loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_08.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_09.png')]
   dialogueMecanicien = [loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_02.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_03.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_04.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_05.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_06.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_07.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_08.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_09.png')]
   dialogueAstronome = [loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_02.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_03.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_04.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_05.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_06.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_07.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_08.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_09.png')]
+  //cinemDebut;
+  //cinemFin = createVideo('');
+
+  menu =  [loadImage('designs-des-designers/menu/menu1.png'), loadImage('designs-des-designers/menu/menu2.png')];
+  menuComplet = loadImage('designs-des-designers/menu/menuComplet.png');
+
+  myHeroRight = [loadImage('animations/perso_cote_01.png'),loadImage('animations/perso_cote_02.png'),loadImage('animations/perso_cote_03.png'),loadImage('animations/perso_cote_04.png')]
+  myHeroLeft = [loadImage('animations/perso_gauche_01.png'),loadImage('animations/perso_gauche_02.png'),loadImage('animations/perso_gauche_03.png'),loadImage('animations/perso_gauche_04.png')]
+  myHeroTop = [loadImage('animations/perso_marche_dos_01.png'),loadImage('animations/perso_marche_dos_02.png'),loadImage('animations/perso_marche_dos_03.png'),loadImage('animations/perso_marche_dos_04.png')]
+  myHeroBack = [loadImage('animations/perso_principal_01.png'),loadImage('animations/perso_principal_02.png'), loadImage('animations/perso_principal_03.png'), loadImage('animations/perso_principal_04.png')]
+  myHeroDiagoBackLeft = [loadImage('animations/diagonale_gauche_01.png'),loadImage('animations/diagonale_gauche_02.png'), loadImage('animations/diagonale_gauche_03.png'), loadImage('animations/diagonale_gauche_04.png')]
+  myHeroDiagoBackRight =[loadImage('animations/diagonale_droite_01.png'),loadImage('animations/diagonale_droite_02.png'),loadImage('animations/diagonale_droite_03.png'),loadImage('animations/diagonale_droite_04.png')]
+  myHeroDiagoTopRight = [loadImage('animations/diagonale_avant_05.png'), loadImage('animations/diagonale_avant_06.png'), loadImage('animations/diagonale_avant_07.png'), loadImage('animations/diagonale_avant_08.png'),]
+  myHeroDiagoTopLeft = [loadImage('animations/diagonale_avant_01.png'),loadImage('animations/diagonale_avant_02.png'),loadImage('animations/diagonale_avant_03.png'),loadImage('animations/diagonale_avant_04.png'),]
+
+  mamie = loadImage('designs-des-designers/animMamie/mamie_01.png')
+  astronome = loadImage('designs-des-designers/astronome/astronome_01.png')
+  mecanicien = loadImage('designs-des-designers/mecanicien/mecanicien_01.png')
 }
 
 function setup() {
@@ -610,6 +652,8 @@ function setup() {
     82:loadImage('designs-des-designers/fusee-demontee/fusee-demontee-02.png'),
     83:loadImage('designs-des-designers/fusee-demontee/fusee-demontee-03.png'),
     84:loadImage('designs-des-designers/fusee-demontee/fusee-demontee-04.png'),
+    91:loadImage('designs-des-designers/elements_fixes/panneaux/panneau-droite.png'),
+    92:loadImage('designs-des-designers/elements_fixes/panneaux/panneau-gauche.png'),
     
     
   }
@@ -699,6 +743,20 @@ function setup() {
     54:loadImage('designs-des-designers/atelier/atelier_04.png'),
     55:loadImage('designs-des-designers/atelier/atelier_05.png'),
     56:loadImage('designs-des-designers/atelier/atelier_06.png'),
+    61:loadImage('designs-des-designers/elements_fixes/barque/barque-01.png'),
+    62:loadImage('designs-des-designers/elements_fixes/barque/barque-02.png'),
+    63:loadImage('designs-des-designers/elements_fixes/barque/barque-03.png'),
+    64:loadImage('designs-des-designers/elements_fixes/barque/barque-04.png'),
+    71:loadImage('designs-des-designers/elements_fixes/voiture/voiture-01.png'),
+    72:loadImage('designs-des-designers/elements_fixes/voiture/voiture-02.png'),
+    73:loadImage('designs-des-designers/elements_fixes/voiture/voiture-03.png'),
+    74:loadImage('designs-des-designers/elements_fixes/voiture/voiture-04.png'),
+    75:loadImage('designs-des-designers/elements_fixes/voiture/voiture-05.png'),
+    76:loadImage('designs-des-designers/elements_fixes/voiture/voiture-06.png'),
+    77:loadImage('designs-des-designers/elements_fixes/voiture/voiture-07.png'),
+    78:loadImage('designs-des-designers/elements_fixes/voiture/voiture-08.png'),
+    79:loadImage('designs-des-designers/elements_fixes/buisson/buisson-01.png'),
+    80:loadImage('designs-des-designers/elements_fixes/buisson/buisson-02.png'),
     
   }
 
@@ -935,45 +993,10 @@ function setup() {
   }
 
 
-  hero0 = loadImage('animations/perso_cote_01.png'); 
-  myHeroRight.push(hero0);
-  hero1 = loadImage('animations/perso_cote_02.png'); 
-  myHeroRight.push(hero1);
-  hero2 = loadImage('animations/perso_cote_03.png'); 
-  myHeroRight.push(hero2);
-  hero3 = loadImage('animations/perso_cote_04.png'); 
-  myHeroRight.push(hero3);
+  
+  currentHeroImage = myHeroRight[0];
 
-  currentHeroImage = hero0;
-
-  myHeroLeft.push(loadImage('animations/perso_gauche_01.png'));
-  myHeroLeft.push(loadImage('animations/perso_gauche_02.png')); 
-  myHeroLeft.push(loadImage('animations/perso_gauche_03.png')); 
-  myHeroLeft.push(loadImage('animations/perso_gauche_04.png'));
-
-  myHeroTop.push(loadImage('animations/perso_marche_dos_01.png'));
-  myHeroTop.push(loadImage('animations/perso_marche_dos_02.png')); 
-  myHeroTop.push(loadImage('animations/perso_marche_dos_03.png')); 
-  myHeroTop.push(loadImage('animations/perso_marche_dos_04.png'));
-
-  myHeroBack.push(loadImage('animations/perso_principal_01.png'));
-  myHeroBack.push(loadImage('animations/perso_principal_02.png')); 
-  myHeroBack.push(loadImage('animations/perso_principal_03.png')); 
-  myHeroBack.push(loadImage('animations/perso_principal_04.png'));
-
-  myHeroDiagoBackLeft.push(loadImage('animations/diagonale_gauche_01.png'));
-  myHeroDiagoBackLeft.push(loadImage('animations/diagonale_gauche_02.png')); 
-  myHeroDiagoBackLeft.push(loadImage('animations/diagonale_gauche_03.png')); 
-  myHeroDiagoBackLeft.push(loadImage('animations/diagonale_gauche_04.png'));
-
-  myHeroDiagoBackRight.push(loadImage('animations/diagonale_droite_01.png'));
-  myHeroDiagoBackRight.push(loadImage('animations/diagonale_droite_02.png')); 
-  myHeroDiagoBackRight.push(loadImage('animations/diagonale_droite_03.png')); 
-  myHeroDiagoBackRight.push(loadImage('animations/diagonale_droite_04.png'));
-
-  mamie = loadImage('designs-des-designers/animMamie/mamie_01.png')
-  astronome = loadImage('designs-des-designers/astronome/astronome_01.png')
-  mecanicien = loadImage('designs-des-designers/mecanicien/mecanicien_01.png')
+  
 
   worldsLayer1 = [world1BoardLayer1,world2BoardLayer1,world3BoardLayer1,world4BoardLayer1,world5BoardLayer1]
   worldsLayer2 = [world1BoardLayer2,world2BoardLayer2,world3BoardLayer2,world4BoardLayer2,world5BoardLayer2]
@@ -991,16 +1014,7 @@ function setup() {
   posYMamie = 0;
   widthImgMamie = windowWidth;
   heightImgmamie = windowHeight;
-  bgmamie = loadImage('mini-jeux/maison-mamie/interieur_maison_mamie.png')
-  chatCuisine = [loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine1.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine2.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine5.png')]
-  chatCanape = [loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape1.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape2.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape5.png')]
-  chatLunettes = [loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes1.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes2.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes3.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes6.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes7.png')]
-  lunettes = loadImage('mini-jeux/maison-mamie/lunette.png')
-  fixedCat1 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe.png')
-  fixedCat21 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe2-1.png')
-  fixedCat22 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe2-2.png')
-  meow1 = loadSound('mini-jeux/maison-mamie/meow1.wav');
-  meow2 = loadSound('mini-jeux/maison-mamie/meow2.wav');
+  
  coodinatesOfCats = [
     [800,100,310,310],//Dans la boite 
     [50,430,413,412],//Sur la commode 
@@ -1399,6 +1413,36 @@ const checkKeys = (currentMap) => {
         movementCounter = 0;
       } 
     }
+    if (keyIsDown(DOWN_ARROW) && keyIsDown(RIGHT_ARROW)){
+      movementCounter += 1;
+      heroY += path;
+      if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
+        heroY -= path
+      }
+      if (movementCounter >= 15 / heroSpeed){
+        currentIndex += 1;
+        if (currentIndex === myHeroDiagoTopRight.length){
+          currentIndex = 0;
+        }
+        currentHeroImage = myHeroDiagoTopRight[currentIndex];
+        movementCounter = 0;
+      } 
+    }
+    if (keyIsDown(DOWN_ARROW) && keyIsDown(LEFT_ARROW)){
+      movementCounter += 1;
+      heroY += path;
+      if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
+        heroY -= path
+      }
+      if (movementCounter >= 15 / heroSpeed){
+        currentIndex += 1;
+        if (currentIndex === myHeroDiagoTopLeft.length){
+          currentIndex = 0;
+        }
+        currentHeroImage = myHeroDiagoTopLeft[currentIndex];
+        movementCounter = 0;
+      } 
+    }
     if (keyIsDown(32)){
       if (currentWorld === 0 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
         dialogueMamieFlag = true;
@@ -1568,8 +1612,14 @@ let gameEndDelayGarage = 500;
 let gameEndTimeGarage;
 
 let showMecanicien = false; 
+let showMenu = false;
 
 function mousePressed() {
+  if(pointIsInRect(mouseX, mouseY, 22, 22, 67, 67)){
+    currentMenu = 1;
+    showMenu = true;
+  }
+  
   if (currentWorld === 4) {
     if (mouseEnabledGarage && pointIsInRect(mouseX, mouseY, 530, 100, 500, 500)){
       batteryState = batteryState - 5;
@@ -1608,6 +1658,7 @@ function mousePressed() {
 };
 function mouseReleased() {
   currentBoutonGarage = 0;
+    currentMenu = 0;
 }
 
 function limitGarage() {
@@ -1776,6 +1827,76 @@ function playGames() {
     showWorld = false;
   }
 }
+
+
+function reset() {
+  heroX = 17 * world1TileSize;
+  heroY = 7 * world1TileSize;
+  currentHeroImage = hero0;
+  movementCounter = 0;
+  currentIndex = 0;
+
+  currentWorld = 1;
+  currentDialogueMamieIndex = 0;
+  currentDialogueMamieIndexApres = 0;
+  currentDialogueMecanoIndex = 0;
+  currentDialogueAstroIndex = 0;
+  dialogueMamieFlag = false;
+  dialogueMamieFlagApres = false;
+  dialogueMecanoFlag = false;
+  dialogueAstroFlag = false;
+  plusTardMecanoFlag = true;
+  plusTardAstroFlag = true;
+  inventaire = [inventaire0, inventaire1, inventaire2, inventaire3];
+  currentInventaire = 0;
+
+  mamie = loadImage('designs-des-designers/animMamie/mamie_01.png');
+  astronome = loadImage('designs-des-designers/astronome/astronome_01.png');
+  mecanicien = loadImage('designs-des-designers/mecanicien/mecanicien_01.png');
+
+  path = 5;
+  showWorld = true;
+  showMamie = false;
+  showMecanicien = false;
+  showAstronome = false;
+  btClicked = false;
+  cmdClicked = false;
+  rdxClicked = false;
+  coodinatesOfCats = [
+    [800,100,310,310],//Dans la boite
+    [50,430,413,412],//Sur la commode
+    [350,250,424,424],//Derrière les rideaux
+  ];
+  rectXGarage = 540;
+  rectYGarage = 250;
+  currentBoutonGarage = 0;
+  batteryState = -10;
+  mouseEnabledGarage = true;
+  hasWonGarage = false;
+  coordinatesOfStars = [
+    [690, 10, 150, 150],   // 1
+    [760, 60, 150, 150], // 2
+    [860, 80, 150, 150],  // 3
+    [970, 90, 150, 150],// 5
+    [1170, 90, 150, 150],  // 4
+    [1136, 200, 150, 150],  // 6
+    [990, 200, 150, 150]  // 7
+  ];
+  one = false;
+  two = false;
+  three = false;
+  four = false;
+  five = false;
+  six = false;
+  seven = false;
+  hasWonObervatoire = false;
+  currentFrameObervatoire = 0;
+
+  redirectionDelay = 1000;
+  currentMenu = 0;
+
+}
+
 function draw() {
   playGames();
   endGame();
@@ -1889,16 +2010,15 @@ function draw() {
     image(plusTardFusee, 800, 50)
   }
 
-
+  image(menu[currentMenu], 22, 22);
+  if (showMenu) {
+    image(menuComplet,0,0, widthImgMamie, heightImgmamie, )
+    image(menuComplet,0,0, widthImgMamie, heightImgmamie, )
+    // if (pointIsInRect(mouseX, mouseY, 44, 44, 67, 67)){
+    //   showMenu = false;
+    // }
+  }
 }
-
-
-
-
-
-
-
-
 
 
 
