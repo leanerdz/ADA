@@ -9,6 +9,7 @@ let prevMenu = 0;
 let menuComplet;
 let menuClickCounter = 0;
 let menuCroix;
+let callReset = false;
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 1//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -1619,6 +1620,15 @@ function mousePressed() {
     currentMenu = 1;
     showMenu = true;
   }
+  if(pointIsInRect(mouseX, mouseY, 590,385, 100,90)){
+    meow2.stop();
+  }
+  if (showMenu) {
+    if(pointIsInRect(mouseX, mouseY, 450,240, 400,120)){
+      reset()
+    }
+  }
+
   
   if (currentWorld === 4) {
     if (mouseEnabledGarage && pointIsInRect(mouseX, mouseY, 530, 100, 500, 500)){
@@ -1657,8 +1667,17 @@ function mousePressed() {
   }
 };
 function mouseReleased() {
-  currentBoutonGarage = 0;
-    currentMenu = 0;
+  if (currentWorld === 4) {
+    currentBoutonGarage = 0;
+  }
+  if (showMenu) {
+    if(pointIsInRect(mouseX, mouseY, 22, 22, 67, 67)){
+      currentMenu = 0;
+      menuClickCounter++;
+    }
+  }
+  
+    
 }
 
 function limitGarage() {
@@ -1830,12 +1849,23 @@ function playGames() {
 
 
 function reset() {
+  console.log("Reset function called");
   heroX = 17 * world1TileSize;
   heroY = 7 * world1TileSize;
-  currentHeroImage = hero0;
+  currentHeroImage = myHeroRight[0];
   movementCounter = 0;
   currentIndex = 0;
 
+  showMenu = false;
+  menuClickCounter = 0;
+  hasWonMamie = false;
+  gameEndDelayMamie = 4000;
+  gameEndTimemamie = 0;
+  gameEndDelayGarage = 500;
+  gameEndTimeGarage = 0;
+  gameEndDelayObervatoire = 1000;
+  gameEndTimeObervatoire = 0;
+  
   currentWorld = 1;
   currentDialogueMamieIndex = 0;
   currentDialogueMamieIndexApres = 0;
@@ -1847,7 +1877,6 @@ function reset() {
   dialogueAstroFlag = false;
   plusTardMecanoFlag = true;
   plusTardAstroFlag = true;
-  inventaire = [inventaire0, inventaire1, inventaire2, inventaire3];
   currentInventaire = 0;
 
   mamie = loadImage('designs-des-designers/animMamie/mamie_01.png');
@@ -1870,7 +1899,7 @@ function reset() {
   rectXGarage = 540;
   rectYGarage = 250;
   currentBoutonGarage = 0;
-  batteryState = -10;
+  batteryState = 0;
   mouseEnabledGarage = true;
   hasWonGarage = false;
   coordinatesOfStars = [
@@ -1894,7 +1923,6 @@ function reset() {
 
   redirectionDelay = 1000;
   currentMenu = 0;
-
 }
 
 function draw() {
@@ -2013,10 +2041,14 @@ function draw() {
   image(menu[currentMenu], 22, 22);
   if (showMenu) {
     image(menuComplet,0,0, widthImgMamie, heightImgmamie, )
-    image(menuComplet,0,0, widthImgMamie, heightImgmamie, )
-    // if (pointIsInRect(mouseX, mouseY, 44, 44, 67, 67)){
-    //   showMenu = false;
-    // }
+    // image(menuComplet,0,0, widthImgMamie, heightImgmamie, )
+    if (menuClickCounter === 2){
+      showMenu = false;
+      menuClickCounter = 0;
+    }
+    // rect(590,385, 100,90)
+    // fill(255,0,0)
+    // rect(450,240, 400,120)
   }
 }
 
