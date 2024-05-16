@@ -10,6 +10,12 @@ let menuComplet;
 let menuClickCounter = 0;
 let menuCroix;
 let callReset = false;
+let currentDirPerso = "jour"
+
+let modeNuit;
+let showNuit = false;
+let lampadaireJour;
+let lampadaireNuit;
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 1//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -404,71 +410,48 @@ let gameEndImgMamieFlag = false;
 let gameEndImgGarage;
 let gameEndImgAstro;
 
-function preload() {
+function loadImages() {
+  myHeroRight = [loadImage('animations/'+ currentDirPerso +'/perso_cote_01.png'),
+                loadImage('animations/'+ currentDirPerso +'/perso_cote_02.png'),
+                loadImage('animations/'+ currentDirPerso +'/perso_cote_03.png'),
+                loadImage('animations/'+ currentDirPerso +'/perso_cote_04.png')]
+  myHeroLeft = [loadImage('animations/'+ currentDirPerso +'/perso_gauche_01.png'),
+                loadImage('animations/'+ currentDirPerso +'/perso_gauche_02.png'),
+                loadImage('animations/'+ currentDirPerso +'/perso_gauche_03.png'),
+                loadImage('animations/'+ currentDirPerso +'/perso_gauche_04.png')]
+  myHeroTop = [loadImage('animations/'+ currentDirPerso +'/perso_marche_dos_01.png'),
+              loadImage('animations/'+ currentDirPerso +'/perso_marche_dos_02.png'),
+              loadImage('animations/'+ currentDirPerso +'/perso_marche_dos_03.png'),
+              loadImage('animations/'+ currentDirPerso +'/perso_marche_dos_04.png')]
+  myHeroBack = [loadImage('animations/'+ currentDirPerso +'/perso_principal_01.png'),
+              loadImage('animations/'+ currentDirPerso +'/perso_principal_02.png'), 
+              loadImage('animations/'+ currentDirPerso +'/perso_principal_03.png'), 
+              loadImage('animations/'+ currentDirPerso +'/perso_principal_04.png')]
+  myHeroDiagoBackLeft = [loadImage('animations/'+ currentDirPerso +'/diagonale_gauche_01.png'),
+                        loadImage('animations/'+ currentDirPerso +'/diagonale_gauche_02.png'),
+                        loadImage('animations/'+ currentDirPerso +'/diagonale_gauche_03.png'),
+                        loadImage('animations/'+ currentDirPerso +'/diagonale_gauche_04.png')]
+  myHeroDiagoBackRight =[loadImage('animations/'+ currentDirPerso +'/diagonale_droite_01.png'),
+                        loadImage('animations/'+ currentDirPerso +'/diagonale_droite_02.png'),
+                        loadImage('animations/'+ currentDirPerso +'/diagonale_droite_03.png'),
+                        loadImage('animations/'+ currentDirPerso +'/diagonale_droite_04.png')]
+  myHeroDiagoTopRight = [loadImage('animations/'+ currentDirPerso +'/diagonale_avant_05.png'), 
+                        loadImage('animations/'+ currentDirPerso +'/diagonale_avant_06.png'), 
+                        loadImage('animations/'+ currentDirPerso +'/diagonale_avant_07.png'), 
+                        loadImage('animations/'+ currentDirPerso +'/diagonale_avant_08.png'),]
+  myHeroDiagoTopLeft = [loadImage('animations/'+ currentDirPerso +'/diagonale_avant_01.png'),
+                      loadImage('animations/'+ currentDirPerso +'/diagonale_avant_02.png'),
+                      loadImage('animations/'+ currentDirPerso +'/diagonale_avant_03.png'),
+                      loadImage('animations/'+ currentDirPerso +'/diagonale_avant_04.png'),]
 
-  bgmamie = loadImage('mini-jeux/maison-mamie/interieur_maison_mamie.png')
-  chatCuisine = [loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine1.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine2.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine5.png')]
-  chatCanape = [loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape1.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape2.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape5.png')]
-  chatLunettes = [loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes1.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes2.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes3.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes6.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes7.png')]
-  lunettes = loadImage('mini-jeux/maison-mamie/lunette.png')
-  fixedCat1 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe.png')
-  fixedCat21 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe2-1.png')
-  fixedCat22 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe2-2.png')
-  meow1 = loadSound('mini-jeux/maison-mamie/meow1.mp3');
-  meow2 = loadSound('mini-jeux/maison-mamie/meow2.mp3');
-
-
-  bgGarage = loadImage('mini-jeux/garage/garage_sans_batterie.png');
-  buttonActifGarage = loadImage('mini-jeux/garage/bouton_actif.png');
-  buttonNormalGarage = loadImage('mini-jeux/garage/bouton_normal.png');
-  battery = loadImage('mini-jeux/garage/batterie.png');
-  gameEndImgMamie = loadImage('mini-jeux/garage/gagne.png')
-  gameEndImgGarage = loadImage('mini-jeux/garage/gagne.png')
-  gameEndImgAstro = loadImage('mini-jeux/garage/gagne.png')
-
-
-  star1 = loadImage('mini-jeux/observatoire/etoiles/etoile_1.png');
-  star2 = loadImage('mini-jeux/observatoire/etoiles/etoile_2.png')
-  bgObervatoire = loadImage('mini-jeux/observatoire/observatoire_interieur.png');
-  table = loadImage('mini-jeux/observatoire/table.png')
-  animTable = [loadImage('mini-jeux/observatoire/anim-table/table_anim_1.png'),loadImage('mini-jeux/observatoire/anim-table/table_anim_2.png'),loadImage('mini-jeux/observatoire/anim-table/table_anim_3.png')]
-
-  plusTard = loadImage('designs-des-designers/dialoguePlusTard/reviens-plus-tard-dialogue.png')
-  plusTardFusee = loadImage('designs-des-designers/dialoguePlusTard/fusée-reviens-plus-tard.png')
-
-  inventaire0 = loadImage('designs-des-designers/inventaire/inventair_01.png');
-  inventaire1 = loadImage('designs-des-designers/inventaire/inventair_02.png');
-  inventaire2 = loadImage('designs-des-designers/inventaire/inventair_03.png');
-  inventaire3 = loadImage('designs-des-designers/inventaire/inventair_04.png');
-
-  dialogueMamie = [loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_01.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_01.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_02.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_03.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_04.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_05.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_06.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_08.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_09.png')]
-  dialogueMamieApres = [loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_08.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_09.png')]
-  dialogueMecanicien = [loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_02.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_03.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_04.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_05.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_06.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_07.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_08.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_09.png')]
-  dialogueAstronome = [loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_02.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_03.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_04.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_05.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_06.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_07.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_08.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_09.png')]
-  //cinemDebut;
-  //cinemFin = createVideo('');
-
-  menu =  [loadImage('designs-des-designers/menu/menu1.png'), loadImage('designs-des-designers/menu/menu2.png')];
-  menuComplet = loadImage('designs-des-designers/menu/menuComplet.png');
-
-  myHeroRight = [loadImage('animations/perso_cote_01.png'),loadImage('animations/perso_cote_02.png'),loadImage('animations/perso_cote_03.png'),loadImage('animations/perso_cote_04.png')]
-  myHeroLeft = [loadImage('animations/perso_gauche_01.png'),loadImage('animations/perso_gauche_02.png'),loadImage('animations/perso_gauche_03.png'),loadImage('animations/perso_gauche_04.png')]
-  myHeroTop = [loadImage('animations/perso_marche_dos_01.png'),loadImage('animations/perso_marche_dos_02.png'),loadImage('animations/perso_marche_dos_03.png'),loadImage('animations/perso_marche_dos_04.png')]
-  myHeroBack = [loadImage('animations/perso_principal_01.png'),loadImage('animations/perso_principal_02.png'), loadImage('animations/perso_principal_03.png'), loadImage('animations/perso_principal_04.png')]
-  myHeroDiagoBackLeft = [loadImage('animations/diagonale_gauche_01.png'),loadImage('animations/diagonale_gauche_02.png'), loadImage('animations/diagonale_gauche_03.png'), loadImage('animations/diagonale_gauche_04.png')]
-  myHeroDiagoBackRight =[loadImage('animations/diagonale_droite_01.png'),loadImage('animations/diagonale_droite_02.png'),loadImage('animations/diagonale_droite_03.png'),loadImage('animations/diagonale_droite_04.png')]
-  myHeroDiagoTopRight = [loadImage('animations/diagonale_avant_05.png'), loadImage('animations/diagonale_avant_06.png'), loadImage('animations/diagonale_avant_07.png'), loadImage('animations/diagonale_avant_08.png'),]
-  myHeroDiagoTopLeft = [loadImage('animations/diagonale_avant_01.png'),loadImage('animations/diagonale_avant_02.png'),loadImage('animations/diagonale_avant_03.png'),loadImage('animations/diagonale_avant_04.png'),]
+  lampadaireJour = loadImage('designs-des-designers/lampadaire/lampadaireJour.png')
+  lampadaireNuit = loadImage('designs-des-designers/lampadaire/lampadaireNuit.png')
 
   mamie = loadImage('designs-des-designers/animMamie/mamie_01.png')
   astronome = loadImage('designs-des-designers/astronome/astronome_01.png')
   mecanicien = loadImage('designs-des-designers/mecanicien/mecanicien_01.png')
-}
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-
-  inventaire =  [inventaire0,inventaire1,inventaire2,inventaire3]
+  modeNuit = loadImage('designs-des-designers/nuit/mode_nuit2.png')
 
   layer1Dictionnary = { 
     0:loadImage('designs-des-designers/sols/herbe.png'),
@@ -994,11 +977,62 @@ function setup() {
   }
 
 
+}
+function preload() {
+
+  bgmamie = loadImage('mini-jeux/maison-mamie/interieur_maison_mamie.png')
+  chatCuisine = [loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine1.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine2.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine5.png')]
+  chatCanape = [loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape1.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape2.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape5.png')]
+  chatLunettes = [loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes1.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes2.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes3.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes4.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes5.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes6.png'),loadImage('mini-jeux/maison-mamie/chetLunettes/chetLunettes7.png')]
+  lunettes = loadImage('mini-jeux/maison-mamie/lunette.png')
+  fixedCat1 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe.png')
+  fixedCat21 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe2-1.png')
+  fixedCat22 = loadImage('mini-jeux/maison-mamie/chatfixes/chatFixe2-2.png')
+  meow1 = loadSound('mini-jeux/maison-mamie/meow1.mp3');
+  meow2 = loadSound('mini-jeux/maison-mamie/meow2.mp3');
+
+
+  bgGarage = loadImage('mini-jeux/garage/garage_sans_batterie.png');
+  buttonActifGarage = loadImage('mini-jeux/garage/bouton_actif.png');
+  buttonNormalGarage = loadImage('mini-jeux/garage/bouton_normal.png');
+  battery = loadImage('mini-jeux/garage/batterie.png');
+  gameEndImgMamie = loadImage('mini-jeux/garage/gagne.png')
+  gameEndImgGarage = loadImage('mini-jeux/garage/gagne.png')
+  gameEndImgAstro = loadImage('mini-jeux/garage/gagne.png')
+
+
+  star1 = loadImage('mini-jeux/observatoire/etoiles/etoile_1.png');
+  star2 = loadImage('mini-jeux/observatoire/etoiles/etoile_2.png')
+  bgObervatoire = loadImage('mini-jeux/observatoire/observatoire_interieur.png');
+  table = loadImage('mini-jeux/observatoire/table.png')
+  animTable = [loadImage('mini-jeux/observatoire/anim-table/table_anim_1.png'),loadImage('mini-jeux/observatoire/anim-table/table_anim_2.png'),loadImage('mini-jeux/observatoire/anim-table/table_anim_3.png')]
+
+  plusTard = loadImage('designs-des-designers/dialoguePlusTard/reviens-plus-tard-dialogue.png')
+  plusTardFusee = loadImage('designs-des-designers/dialoguePlusTard/fusée-reviens-plus-tard.png')
+
+  inventaire0 = loadImage('designs-des-designers/inventaire/inventair_01.png');
+  inventaire1 = loadImage('designs-des-designers/inventaire/inventair_02.png');
+  inventaire2 = loadImage('designs-des-designers/inventaire/inventair_03.png');
+  inventaire3 = loadImage('designs-des-designers/inventaire/inventair_04.png');
+
+  dialogueMamie = [loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_01.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_01.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_02.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_03.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_04.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_05.png'),loadImage('designs-des-designers/dialogueMamieEtAda/avant/mamie-ada_06.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_08.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_09.png')]
+  dialogueMamieApres = [loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_08.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_09.png')]
+  dialogueMecanicien = [loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_02.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_03.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_04.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_05.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_06.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_07.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_08.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_09.png')]
+  dialogueAstronome = [loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_02.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_03.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_04.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_05.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_06.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_07.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_08.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_09.png')]
+  //cinemDebut;
+  //cinemFin = createVideo('');
+
+  menu =  [loadImage('designs-des-designers/menu/menu1.png'), loadImage('designs-des-designers/menu/menu2.png')];
+  menuComplet = loadImage('designs-des-designers/menu/menuComplet.png');
+  loadImages();
   
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+
+  inventaire =  [inventaire0,inventaire1,inventaire2,inventaire3]
   currentHeroImage = myHeroRight[0];
-
-  
-
   worldsLayer1 = [world1BoardLayer1,world2BoardLayer1,world3BoardLayer1,world4BoardLayer1,world5BoardLayer1]
   worldsLayer2 = [world1BoardLayer2,world2BoardLayer2,world3BoardLayer2,world4BoardLayer2,world5BoardLayer2]
   worldsLayer3 = [world1BoardLayer3,world2BoardLayer3,world3BoardLayer3,world4BoardLayer3,world5BoardLayer3]
@@ -1029,7 +1063,7 @@ function setup() {
   boutonsGarage = [buttonNormalGarage,buttonActifGarage]
 
   //Observatoire 
-    stars =[star1, star2]
+  stars =[star1, star2]
   coordinatesOfStars = [
     [690, 10, 150, 150],   // 1
     [760, 60, 150, 150], // 2
@@ -1778,6 +1812,8 @@ function endGame(){
   const imageDisplayDelay = 1000; // 1 seconde
 
   if (hasWonMamie) {
+    // currentDirPerso = "nuit"
+    // loadImages();
     if (!gameEndTimemamie) {
       gameEndTimemamie = millis() + gameEndDelayMamie;
     }
@@ -1924,6 +1960,38 @@ function draw() {
     image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
     drawFront(worldsLayer4[currentWorld], tileDictionnariesLayer4[currentWorld], worldsTileSizes[currentWorld]);
     checkKeys(currentWorld);
+    let currentImageIndex = 0; 
+    if (showNuit) {
+      image(modeNuit, 0,0);
+      if (currentWorld === 1) {
+        image(lampadaireNuit, 125, 250)
+        image(lampadaireNuit, 315, 250)
+        image(lampadaireNuit, 700, -70)
+      }
+      if (currentWorld === 0) {
+        image(lampadaireNuit, -5, 376)
+        image(lampadaireNuit, 380, 250)
+        image(lampadaireNuit, 828, 250)
+      }
+      if (currentWorld === 2) {
+        image(lampadaireNuit, 700, 56)
+      }
+      if (currentWorld === 4) {
+        image(lampadaireNuit, 700, 186)
+      }
+    }
+    if (hasWonMamie) {
+      currentImageIndex = 1;
+    }
+    if (hasWonGarage) {
+      currentImageIndex = 2;
+    }
+    if (hasWonObervatoire) {
+      showNuit = true; 
+      currentImageIndex = 3;
+    }
+    
+    image(inventaire[currentImageIndex], 400, 560, 300 * 1.5, 100 * 1.5);
     if (dialogueMamieFlag && currentDialogueMamieIndex < dialogueMamie.length) {
       image(dialogueMamie[currentDialogueMamieIndex], 300, 200);
     }
@@ -1937,18 +2005,7 @@ function draw() {
     } else if (dialogueAstroFlag && currentDialogueAstroIndex < dialogueAstronome.length) {
       image(dialogueAstronome[currentDialogueAstroIndex], 800, 200);
     }
-    let currentImageIndex = 0; 
-
-    if (hasWonMamie) {
-      currentImageIndex = 1;
-    }
-    if (hasWonGarage) {
-      currentImageIndex = 2;
-    }
-    if (hasWonObervatoire) {
-      currentImageIndex = 3;
-    }
-    image(inventaire[currentImageIndex], 400, 560, 300 * 1.5, 100 * 1.5);
+    
   }
 ////////////////////////////////////////////////////////////////////
 //////////////////////Maison de la Mamie////////////////////////////
