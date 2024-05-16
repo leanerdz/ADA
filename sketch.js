@@ -447,9 +447,9 @@ function loadImages() {
   lampadaireJour = loadImage('designs-des-designers/lampadaire/lampadaireJour.png')
   lampadaireNuit = loadImage('designs-des-designers/lampadaire/lampadaireNuit.png')
 
-  mamie = loadImage('designs-des-designers/animMamie/mamie_01.png')
-  astronome = loadImage('designs-des-designers/astronome/astronome_01.png')
-  mecanicien = loadImage('designs-des-designers/mecanicien/mecanicien_01.png')
+  mamie = [loadImage('designs-des-designers/animMamie/mamie_01.png'),loadImage('designs-des-designers/animMamie/mamie_02.png'),loadImage('designs-des-designers/animMamie/mamie_03.png'), loadImage('designs-des-designers/animMamie/mamie_04.png'), loadImage('designs-des-designers/animMamie/mamie_05.png'), loadImage('designs-des-designers/animMamie/mamie_06.png'), loadImage('designs-des-designers/animMamie/mamie_07.png')]
+  astronome = [loadImage('designs-des-designers/astronome/astronome_01.png'), loadImage('designs-des-designers/astronome/astronome_02.png'), loadImage('designs-des-designers/astronome/astronome_03.png'),loadImage('designs-des-designers/astronome/astronome_04.png'),loadImage('designs-des-designers/astronome/astronome_05.png')]
+  mecanicien = [loadImage('designs-des-designers/mecanicien/mecanicien_01.png'), loadImage('designs-des-designers/mecanicien/mecanicien_02.png'),loadImage('designs-des-designers/mecanicien/mecanicien_03.png'),loadImage('designs-des-designers/mecanicien/mecanicien_04.png'),loadImage('designs-des-designers/mecanicien/mecanicien_05.png')]
 
   modeNuit = loadImage('designs-des-designers/nuit/mode_nuit2.png')
 
@@ -996,7 +996,7 @@ function preload() {
   buttonActifGarage = loadImage('mini-jeux/garage/bouton_actif.png');
   buttonNormalGarage = loadImage('mini-jeux/garage/bouton_normal.png');
   battery = loadImage('mini-jeux/garage/batterie.png');
-  gameEndImgMamie = loadImage('mini-jeux/garage/gagne.png')
+  gameEndImgMamie = loadImage('mini-jeux/maison-mamie/gagne.png')
   gameEndImgGarage = loadImage('mini-jeux/garage/gagne.png')
   gameEndImgAstro = loadImage('mini-jeux/garage/gagne.png')
 
@@ -1503,15 +1503,19 @@ const checkKeys = (currentMap) => {
   
 }
 
+
 function drawNPC(cW) {
   if (cW === 0) {
-    image(mamie, 4*world1TileSize,5*world1TileSize, 36*1.5,78*1.5);
+    let currentAnimMamie = mamie[Math.floor(currentFramePNJ / frameRatePNJ) % mamie.length];
+    image(currentAnimMamie, 4*world1TileSize,5*world1TileSize, 36*1.5,78*1.5);
   }
   if (cW === 3) {
-    image(astronome, 13*world1TileSize,5*world1TileSize,36*1.5,78*1.5);
+    let currentAnimAstro = astronome[Math.floor(currentFramePNJ / frameRatePNJ) % astronome.length];
+    image(currentAnimAstro, 13*world1TileSize,5*world1TileSize,36*1.5,78*1.5);
   }
   if (cW === 4) {
-    image(mecanicien, 2*world1TileSize,5*world1TileSize-32,36*1.5,78*1.5);
+    let currentAnimMecano = mecanicien[Math.floor(currentFramePNJ / frameRatePNJ) % mecanicien.length];
+    image(currentAnimMecano, 2*world1TileSize,5*world1TileSize-32,36*1.5,78*1.5);
   }
 }
 
@@ -1572,16 +1576,22 @@ function clickOnCats() {
         btClicked = true;
         cuisineIndex = 0;
         cuisineTarget = coodinatesOfCats[0][0] + 100;
+        meow2.play();
+
       }
       if (i === 1) {
         cmdClicked = true;
         canapeIndex = 0;
         canapeTarget = coodinatesOfCats[1][0] + 100;
+        meow2.play();
+
       }
       if (i === 2) {
         rdxClicked = true;
         lunettesIndex = 0;
-        lunettesTarget = coodinatesOfCats[2][0] + 150;        
+        lunettesTarget = coodinatesOfCats[2][0] + 150;  
+        meow2.play();
+      
       }
     } else {
     }
@@ -1757,6 +1767,8 @@ let star1;
 let star2;
 let currentFrameObervatoire = 0;
 let frameRateObervatoire = 5;
+let currentFramePNJ = 0;
+let frameRatePNJ = 10;
 
 let table; 
 let hasWonObervatoire = false;
@@ -1956,6 +1968,7 @@ function draw() {
     drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
     drawElements(worldsLayer2[currentWorld], tileDictionnariesLayer2[currentWorld], worldsTileSizes[currentWorld]);
     drawColisions(worldsLayer3[currentWorld], tileDictionnariesLayer3[currentWorld], worldsTileSizes[currentWorld]);
+    currentFramePNJ = frameCount;
     drawNPC(currentWorld)
     image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
     drawFront(worldsLayer4[currentWorld], tileDictionnariesLayer4[currentWorld], worldsTileSizes[currentWorld]);
@@ -2032,7 +2045,9 @@ function draw() {
     }
     if (mouseIsPressed) {
       clickOnCats();
-      meow2.play();
+      // if (pointIsInRect(mouseX, mouseY, currentCoords[0], currentCoords[1], currentCoords[2], currentCoords[3])) {
+      //   meow2.play();
+      // }
     }
     animateCat();
     // endGame();
