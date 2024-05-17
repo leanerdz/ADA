@@ -16,10 +16,14 @@ let modeNuit;
 let modeCrepuscule;
 let showNuit = false;
 let showCrepuscule = false;
+let showJour = true;
 let lampadaireNuit;
 let lampadaireCrepuscule;
 let pas;
 let fondObeservatoire;
+
+let randomDilogueSound;
+let dialogueSound = [];
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 1//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -880,6 +884,7 @@ function loadImages() {
 
 }
 function preload() {
+  dialogueSound = [loadSound('sons/sonsDialogue/sonDialogue1.mp3'),loadSound('sons/sonsDialogue/sonDialogue2.mp3'),loadSound('sons/sonsDialogue/sonDialogue3.mp3'),loadSound('sons/sonsDialogue/sonDialogue4.mp3'),loadSound('sons/sonsDialogue/sonDialogue5.mp3'),loadSound('sons/sonsDialogue/sonDialogue6.mp3'),loadSound('sons/sonsDialogue/sonDialogue7.mp3'),loadSound('sons/sonsDialogue/sonDialogue8.mp3'),loadSound('sons/sonsDialogue/sonDialogue9.mp3'),loadSound('sons/sonsDialogue/sonDialogue10.mp3'),loadSound('sons/sonsDialogue/sonDialogue11.mp3'),]
   pas = loadSound('sons/bruitDePas.mp3')
   // fondObeservatoire = loadSound('sons/observatoire/son-fond-observatoire.mp3')
   bgmamie = loadImage('mini-jeux/maison-mamie/interieur_maison_mamie.png')
@@ -932,7 +937,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
+  randomDialogueSound = selectRandomDialogueSound();
   inventaire =  [inventaire0,inventaire1,inventaire2,inventaire3]
   currentHeroImage = myHeroRight[0];
   worldsLayer1 = [world1BoardLayer1,world2BoardLayer1,world3BoardLayer1,world4BoardLayer1,world5BoardLayer1]
@@ -1204,6 +1209,10 @@ function dialogue(gameBoard, tileSize, idPNJ) {
 }
 let isPasPlaying = false;
 
+function selectRandomDialogueSound() {
+  let index = floor(random(dialogueSound.length)); 
+  return dialogueSound[index]; 
+}
 
 function keyReleased(){
   console.log("HelloWorld");
@@ -1236,22 +1245,30 @@ function keyReleased(){
     }  
   }
   if (keyCode === 32){
+    randomDialogueSound = selectRandomDialogueSound();
     if (dialogueMamieFlag) {
       currentDialogueMamieIndex++;
+      randomDilogueSound.play();
       if (currentDialogueMamieIndex === dialogueMamie.length) {
         dialogueMamieFlag = false;
+        randomDilogueSound.stop();
       }
     }
     if (dialogueMecanoFlag) {
       currentDialogueMecanoIndex++;
+      randomDilogueSound.play();
       if (currentDialogueMecanoIndex === dialogueMecanicien.length) {
         dialogueMecanoFlag = false;
+        randomDilogueSound.stop();
+
       }
     }
     if (dialogueAstroFlag) {
       currentDialogueAstroIndex++;
+      randomDilogueSound.play();
       if (currentDialogueAstroIndex === dialogueAstronome.length) {
         dialogueAstroFlag = false;
+        randomDilogueSound.stop();
       }
     }
   }
@@ -1912,16 +1929,17 @@ function draw() {
   endGame();
   if (showWorld) {
     background(255);
+    randomDilogueSound = random(dialogueSound);
     drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
     drawElements(worldsLayer2[currentWorld], tileDictionnariesLayer2[currentWorld], worldsTileSizes[currentWorld]);
     drawColisions(worldsLayer3[currentWorld], tileDictionnariesLayer3[currentWorld], worldsTileSizes[currentWorld]);
     currentFramePNJ = frameCount;
     drawNPC(currentWorld)
-    image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
     checkKeys(currentWorld);
     let currentImageIndex = 0; 
+      image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
     if (showCrepuscule) {
-      image(modeCrepuscule, 0,0);
+      showJour = false;
       if (currentWorld === 1) {
         image(lampadaireCrepuscule, 125-10, 250+40)
         image(lampadaireCrepuscule, 315-8, 250+40)
@@ -1938,10 +1956,11 @@ function draw() {
       if (currentWorld === 4) {
         image(lampadaireCrepuscule, 700-8, 186+45)
       }
+      image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
+      image(modeCrepuscule, 0,0);
     }
     if (showNuit) {
       showCrepuscule = false;
-      image(modeNuit, 0,0);
       if (currentWorld === 1) {
         image(lampadaireNuit, 125-10, 250+40)
         image(lampadaireNuit, 315-8, 250+40)
@@ -1958,6 +1977,8 @@ function draw() {
       if (currentWorld === 4) {
         image(lampadaireNuit, 700-8, 186+45)
       }
+      image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
+      image(modeNuit, 0,0);
     }
     if (hasWonMamie) {
       currentImageIndex = 1;
@@ -1990,6 +2011,7 @@ function draw() {
 //////////////////////Maison de la Mamie////////////////////////////
 ////////////////////////////////////////////////////////////////////
   if (showMamie) {
+    randomDilogueSound.stop();
     // background(bgmamie);
     image(bgmamie, posXMamie,posYMamie,widthImgMamie,height)
     noFill();
@@ -2019,6 +2041,7 @@ function draw() {
     // endGame();
   }
   if (showMecanicien) {
+    randomDilogueSound.stop();
     // background(bgGarage);
     image(bgGarage, posXMamie,posYMamie,widthImgMamie,height)
     console.log("Battery State:", batteryState);
@@ -2033,6 +2056,7 @@ function draw() {
   }
 
   if (showAstronome) {  
+    randomDilogueSound.stop();
     // if (!fondObservatoireIsPlayed) {
     //   fondObeservatoire.loop();
     //   fondObservatoireIsPlayed = true;
