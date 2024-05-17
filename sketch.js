@@ -24,6 +24,10 @@ let fondObeservatoire;
 
 let randomDilogueSound;
 let dialogueSound = [];
+
+let sonFondJour;
+let sonFondCrep;
+let sonFondNuit;
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 1//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -884,6 +888,9 @@ function loadImages() {
 
 }
 function preload() {
+  sonFondJour = loadSound('sons/musiqueMatin.mp3');
+  sonFondCrep = loadSound('sons/musiqueCrepuscule.mp3')
+  sonFondNuit = loadSound('sons/musiqueNuit.mp3')
   dialogueSound = [loadSound('sons/sonsDialogue/sonDialogue1.mp3'),loadSound('sons/sonsDialogue/sonDialogue2.mp3'),loadSound('sons/sonsDialogue/sonDialogue3.mp3'),loadSound('sons/sonsDialogue/sonDialogue4.mp3'),loadSound('sons/sonsDialogue/sonDialogue5.mp3'),loadSound('sons/sonsDialogue/sonDialogue6.mp3'),loadSound('sons/sonsDialogue/sonDialogue7.mp3'),loadSound('sons/sonsDialogue/sonDialogue8.mp3'),loadSound('sons/sonsDialogue/sonDialogue9.mp3'),loadSound('sons/sonsDialogue/sonDialogue10.mp3'),loadSound('sons/sonsDialogue/sonDialogue11.mp3'),]
   pas = loadSound('sons/bruitDePas.mp3')
   // fondObeservatoire = loadSound('sons/observatoire/son-fond-observatoire.mp3')
@@ -937,6 +944,8 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  sonFondJour.play();
   randomDialogueSound = selectRandomDialogueSound();
   inventaire =  [inventaire0,inventaire1,inventaire2,inventaire3]
   currentHeroImage = myHeroRight[0];
@@ -1260,6 +1269,7 @@ function keyReleased(){
       if (currentDialogueMecanoIndex === dialogueMecanicien.length) {
         dialogueMecanoFlag = false;
         randomDilogueSound.stop();
+        sonFondCrep.play();
 
       }
     }
@@ -1928,6 +1938,8 @@ function draw() {
   playGames();
   endGame();
   if (showWorld) {
+    if (showJour) {
+    }
     background(255);
     randomDilogueSound = random(dialogueSound);
     drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
@@ -1938,7 +1950,9 @@ function draw() {
     checkKeys(currentWorld);
     let currentImageIndex = 0; 
       image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
+      
     if (showCrepuscule) {
+      sonFondJour.stop();
       showJour = false;
       if (currentWorld === 1) {
         image(lampadaireCrepuscule, 125-10, 250+40)
