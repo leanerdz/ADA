@@ -13,9 +13,13 @@ let callReset = false;
 let currentDirPerso = "jour"
 
 let modeNuit;
+let modeCrepuscule;
 let showNuit = false;
-let lampadaireJour;
+let showCrepuscule = false;
 let lampadaireNuit;
+let lampadaireCrepuscule;
+let pas;
+let fondObeservatoire;
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 1//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -67,20 +71,6 @@ let world1BoardLayer3 = [
   [1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 ];
-let layer4Dictionnary = {};
-let world1BoardLayer4 = [
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-
-
-];
 
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 2//////////////////////////////////
@@ -131,18 +121,7 @@ let world2BoardLayer3 = [
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 
 ];
-let world2layer4Dictionnary = {};
-let world2BoardLayer4 = [
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-];
+
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 3//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -190,18 +169,7 @@ let world3BoardLayer3 = [
   [1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,5,5,1,1,1,1,1,1,1,1,1],
 ];
-let world3layer4Dictionnary = {};
-let world3BoardLayer4 = [
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-];
+
 
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 4//////////////////////////////////
@@ -250,18 +218,7 @@ let world4BoardLayer3 = [
   [1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
 ];
-let world4layer4Dictionnary = {};
-let world4BoardLayer4 = [
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-];
+
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 5//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -311,18 +268,7 @@ let world5BoardLayer3 = [
   [1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,8,8,1,1,1,1,1,1,1]
 ];
-let world5layer4Dictionnary = {};
-let world5BoardLayer4 = [
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-];
+
 
 
 
@@ -331,11 +277,9 @@ let currentWorld = 1;
 let worldsLayer1 = [] ;
 let worldsLayer2 = [] ;
 let worldsLayer3 = [] ;
-let worldsLayer4 = [] ;
 let tileDictionnariesLayer1 = [];
 let tileDictionnariesLayer2 = [];
 let tileDictionnariesLayer3 = [];
-let tileDictionnariesLayer4 = [];
 let worldsTileSizes = [];
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Hero//////////////////////////////////////
@@ -444,7 +388,6 @@ function loadImages() {
                       loadImage('animations/'+ currentDirPerso +'/diagonale_avant_03.png'),
                       loadImage('animations/'+ currentDirPerso +'/diagonale_avant_04.png'),]
 
-  lampadaireJour = loadImage('designs-des-designers/lampadaire/lampadaireJour.png')
   lampadaireNuit = loadImage('designs-des-designers/lampadaire/lampadaireNuit.png')
 
   mamie = [loadImage('designs-des-designers/animMamie/mamie_01.png'),loadImage('designs-des-designers/animMamie/mamie_02.png'),loadImage('designs-des-designers/animMamie/mamie_03.png'), loadImage('designs-des-designers/animMamie/mamie_04.png'), loadImage('designs-des-designers/animMamie/mamie_05.png'), loadImage('designs-des-designers/animMamie/mamie_06.png'), loadImage('designs-des-designers/animMamie/mamie_07.png')]
@@ -452,6 +395,8 @@ function loadImages() {
   mecanicien = [loadImage('designs-des-designers/mecanicien/mecanicien_01.png'), loadImage('designs-des-designers/mecanicien/mecanicien_02.png'),loadImage('designs-des-designers/mecanicien/mecanicien_03.png'),loadImage('designs-des-designers/mecanicien/mecanicien_04.png'),loadImage('designs-des-designers/mecanicien/mecanicien_05.png')]
 
   modeNuit = loadImage('designs-des-designers/nuit/mode_nuit2.png')
+  modeCrepuscule = loadImage('designs-des-designers/crepuscule/filtreCrepuscule.png')  
+  lampadaireCrepuscule = loadImage('designs-des-designers/crepuscule/lampadaireCrepuscule.png')
 
   layer1Dictionnary = { 
     0:loadImage('designs-des-designers/sols/herbe.png'),
@@ -556,10 +501,6 @@ function loadImages() {
                     10: createImage(1,1),
   }
 
-  layer4Dictionnary = { 
-                    0: createImage(1,1),
-  }
-
 
   world2layer1Dictionnary = { 
     0:loadImage('designs-des-designers/sols/herbe.png'),
@@ -620,12 +561,6 @@ function loadImages() {
     36:loadImage('designs-des-designers/pont/pont_06.png'),
     37:loadImage('designs-des-designers/pont/pont_07.png'),
     38:loadImage('designs-des-designers/pont/pont_08.png'),
-    41:loadImage('designs-des-designers/fusee_entière/fusee_1.png'),
-    42:loadImage('designs-des-designers/fusee_entière/fusee_2.png'),
-    43:loadImage('designs-des-designers/fusee_entière/fusee_3.png'),
-    44:loadImage('designs-des-designers/fusee_entière/fusee_4.png'),
-    45:loadImage('designs-des-designers/fusee_entière/fusee_5.png'),
-    46:loadImage('designs-des-designers/fusee_entière/fusee_6.png'),
     51:loadImage('designs-des-designers/atelier/atelier_01.png'),
     52:loadImage('designs-des-designers/atelier/atelier_02.png'),
     53:loadImage('designs-des-designers/atelier/atelier_03.png'),
@@ -652,9 +587,6 @@ function loadImages() {
                     12: createImage(1,1),
   }
 
-  world2layer4Dictionnary = { 
-                    0: createImage(1,1),
-  }
 
   world3layer1Dictionnary = { 
     0:loadImage('designs-des-designers/sols/herbe.png'),
@@ -715,32 +647,10 @@ function loadImages() {
     36:loadImage('designs-des-designers/pont/pont_06.png'),
     37:loadImage('designs-des-designers/pont/pont_07.png'),
     38:loadImage('designs-des-designers/pont/pont_08.png'),
-    41:loadImage('designs-des-designers/fusee_entière/fusee_1.png'),
-    42:loadImage('designs-des-designers/fusee_entière/fusee_2.png'),
-    43:loadImage('designs-des-designers/fusee_entière/fusee_3.png'),
-    44:loadImage('designs-des-designers/fusee_entière/fusee_4.png'),
-    45:loadImage('designs-des-designers/fusee_entière/fusee_5.png'),
-    46:loadImage('designs-des-designers/fusee_entière/fusee_6.png'),
-    51:loadImage('designs-des-designers/atelier/atelier_01.png'),
-    52:loadImage('designs-des-designers/atelier/atelier_02.png'),
-    53:loadImage('designs-des-designers/atelier/atelier_03.png'),
-    54:loadImage('designs-des-designers/atelier/atelier_04.png'),
-    55:loadImage('designs-des-designers/atelier/atelier_05.png'),
-    56:loadImage('designs-des-designers/atelier/atelier_06.png'),
     61:loadImage('designs-des-designers/elements_fixes/barque/barque-01.png'),
     62:loadImage('designs-des-designers/elements_fixes/barque/barque-02.png'),
     63:loadImage('designs-des-designers/elements_fixes/barque/barque-03.png'),
     64:loadImage('designs-des-designers/elements_fixes/barque/barque-04.png'),
-    71:loadImage('designs-des-designers/elements_fixes/voiture/voiture-01.png'),
-    72:loadImage('designs-des-designers/elements_fixes/voiture/voiture-02.png'),
-    73:loadImage('designs-des-designers/elements_fixes/voiture/voiture-03.png'),
-    74:loadImage('designs-des-designers/elements_fixes/voiture/voiture-04.png'),
-    75:loadImage('designs-des-designers/elements_fixes/voiture/voiture-05.png'),
-    76:loadImage('designs-des-designers/elements_fixes/voiture/voiture-06.png'),
-    77:loadImage('designs-des-designers/elements_fixes/voiture/voiture-07.png'),
-    78:loadImage('designs-des-designers/elements_fixes/voiture/voiture-08.png'),
-    79:loadImage('designs-des-designers/elements_fixes/buisson/buisson-01.png'),
-    80:loadImage('designs-des-designers/elements_fixes/buisson/buisson-02.png'),
     
   }
 
@@ -756,9 +666,6 @@ function loadImages() {
 
   }
 
-  world3layer4Dictionnary = { 
-                    0: createImage(1,1),
-  }
   world4layer1Dictionnary = { 
     0:loadImage('designs-des-designers/sols/herbe.png'),
     1:loadImage('designs-des-designers/sols/herbeMotif.png'),
@@ -855,9 +762,6 @@ function loadImages() {
                     12: createImage(1,1),
   }
 
-  world4layer4Dictionnary = { 
-                    0: createImage(1,1),
-  }
   world5layer1Dictionnary = { 
     0:loadImage('designs-des-designers/sols/herbe.png'),
     1:loadImage('designs-des-designers/sols/herbeMotif.png'),
@@ -972,14 +876,12 @@ function loadImages() {
                     13: createImage(1,1),
   }
 
-  world5layer4Dictionnary = { 
-                    0: createImage(1,1),
-  }
 
 
 }
 function preload() {
-
+  pas = loadSound('sons/bruitDePas.mp3')
+  // fondObeservatoire = loadSound('sons/observatoire/son-fond-observatoire.mp3')
   bgmamie = loadImage('mini-jeux/maison-mamie/interieur_maison_mamie.png')
   chatCuisine = [loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine1.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine2.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine5.png')]
   chatCanape = [loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape1.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape2.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape5.png')]
@@ -1036,11 +938,9 @@ function setup() {
   worldsLayer1 = [world1BoardLayer1,world2BoardLayer1,world3BoardLayer1,world4BoardLayer1,world5BoardLayer1]
   worldsLayer2 = [world1BoardLayer2,world2BoardLayer2,world3BoardLayer2,world4BoardLayer2,world5BoardLayer2]
   worldsLayer3 = [world1BoardLayer3,world2BoardLayer3,world3BoardLayer3,world4BoardLayer3,world5BoardLayer3]
-  worldsLayer4 = [world1BoardLayer4,world2BoardLayer4,world3BoardLayer4,world4BoardLayer4,world5BoardLayer4]
   tileDictionnariesLayer1 = [layer1Dictionnary,world2layer1Dictionnary,world3layer1Dictionnary,world4layer1Dictionnary, world5layer1Dictionnary]
   tileDictionnariesLayer2 = [layer2Dictionnary,world2layer2Dictionnary,world3layer2Dictionnary,world4layer2Dictionnary,world5layer2Dictionnary]
   tileDictionnariesLayer3 = [layer3Dictionnary,world2layer3Dictionnary,world3layer3Dictionnary,world4layer3Dictionnary,world5layer3Dictionnary]
-  tileDictionnariesLayer4 = [layer4Dictionnary,world2layer4Dictionnary,world3layer4Dictionnary,world4layer4Dictionnary,world5layer4Dictionnary]
   worldsTileSizes = [world1TileSize,world2TileSize, world3TileSize, world4TileSize, world5TileSize]
 
   //Mamie
@@ -1107,16 +1007,6 @@ function drawColisions(gameBoard,tileDictionnary,tileSize) {
   }
 }
 
-function drawFront(gameBoard,tileDictionnary,tileSize) {
-  for (let y = 0; y < gameBoard.length; y++) {
-    const currentLine = gameBoard[y];
-    for (let x = 0; x < currentLine.length; x++) {
-      const currentTileValue = currentLine[x];
-      let currentImageName = tileDictionnary[currentTileValue];
-      image(currentImageName, x*tileSize, y*tileSize, tileSize, tileSize);
-    }
-  }
-}
 
 function pointIsInRect(xP,yP,xR,yR,wR,hR){
 
@@ -1312,21 +1202,38 @@ function dialogue(gameBoard, tileSize, idPNJ) {
     }
   }
 }
+let isPasPlaying = false;
+
 
 function keyReleased(){
   console.log("HelloWorld");
   if (keyCode === RIGHT_ARROW){
     currentIndex = 0;
+    if (isPasPlaying) {
+      pas.stop();
+      isPasPlaying = false;
+    }
   }
   if (keyCode === LEFT_ARROW){
-    console.log('leftArrow');
     currentIndex = 0;
+    if (isPasPlaying) {
+      pas.stop();
+      isPasPlaying = false;
+    }
   }
   if (keyCode === UP_ARROW){
     currentIndex = 0;
+    if (isPasPlaying) {
+      pas.stop();
+      isPasPlaying = false;
+    }  
   }
   if (keyCode === DOWN_ARROW){
     currentIndex = 0;
+    if (isPasPlaying) {
+      pas.stop();
+      isPasPlaying = false;
+    }  
   }
   if (keyCode === 32){
     if (dialogueMamieFlag) {
@@ -1359,6 +1266,10 @@ const checkKeys = (currentMap) => {
   let path = 5;
  // if (currentMap ===0){
     if (keyIsDown(LEFT_ARROW)){
+      if (!isPasPlaying) {
+        pas.loop();
+        isPasPlaying = true;
+      }      
       movementCounter += 1;
       heroX -= path; 
       if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
@@ -1374,6 +1285,10 @@ const checkKeys = (currentMap) => {
       }
     } 
     if (keyIsDown(RIGHT_ARROW)){
+      if (!isPasPlaying) {
+        pas.loop();
+        isPasPlaying = true;
+      }      
       movementCounter += 1;
       heroX += path;
       if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
@@ -1389,6 +1304,10 @@ const checkKeys = (currentMap) => {
       }
     } 
     if (keyIsDown(UP_ARROW)){
+      if (!isPasPlaying) {
+        pas.loop();
+        isPasPlaying = true;
+      }      
       movementCounter += 1;
       heroY -= path; 
       if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
@@ -1404,6 +1323,10 @@ const checkKeys = (currentMap) => {
         }
       } 
       if (keyIsDown(DOWN_ARROW)){
+        if (!isPasPlaying) {
+          pas.loop();
+          isPasPlaying = true;
+        }
         movementCounter += 1;
         heroY += path;
         if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
@@ -1419,6 +1342,10 @@ const checkKeys = (currentMap) => {
       }
     }
     if (keyIsDown(UP_ARROW) && keyIsDown(LEFT_ARROW)){
+      if (!isPasPlaying) {
+        pas.loop();
+        isPasPlaying = true;
+      }
       movementCounter += 1;
       heroY += path;
       if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
@@ -1434,6 +1361,10 @@ const checkKeys = (currentMap) => {
       }
     } 
     if (keyIsDown(UP_ARROW) && keyIsDown(RIGHT_ARROW)){
+      if (!isPasPlaying) {
+        pas.loop();
+        isPasPlaying = true;
+      }      
       movementCounter += 1;
       heroY += path;
       if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
@@ -1449,6 +1380,10 @@ const checkKeys = (currentMap) => {
       } 
     }
     if (keyIsDown(DOWN_ARROW) && keyIsDown(RIGHT_ARROW)){
+      if (!isPasPlaying) {
+        pas.loop();
+        isPasPlaying = true;
+      }      
       movementCounter += 1;
       heroY += path;
       if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
@@ -1464,6 +1399,10 @@ const checkKeys = (currentMap) => {
       } 
     }
     if (keyIsDown(DOWN_ARROW) && keyIsDown(LEFT_ARROW)){
+      if (!isPasPlaying) {
+        pas.loop();
+        isPasPlaying = true;
+      }      
       movementCounter += 1;
       heroY += path;
       if(checkCollision(worldsLayer3[currentWorld],worldsTileSizes[currentWorld])){
@@ -1903,7 +1842,7 @@ function reset() {
   currentHeroImage = myHeroRight[0];
   movementCounter = 0;
   currentIndex = 0;
-
+  showNuit = false;
   showMenu = false;
   menuClickCounter = 0;
   hasWonMamie = false;
@@ -1959,6 +1898,14 @@ function reset() {
   redirectionDelay = 1000;
   currentMenu = 0;
 }
+let fondObservatoireIsPlaying = false;
+
+function playSound(){
+  if (showAstronome) {
+    fondObeservatoire.play();
+
+  }
+}
 
 function draw() {
   playGames();
@@ -1971,26 +1918,45 @@ function draw() {
     currentFramePNJ = frameCount;
     drawNPC(currentWorld)
     image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-    drawFront(worldsLayer4[currentWorld], tileDictionnariesLayer4[currentWorld], worldsTileSizes[currentWorld]);
     checkKeys(currentWorld);
     let currentImageIndex = 0; 
-    if (showNuit) {
-      image(modeNuit, 0,0);
+    if (showCrepuscule) {
+      image(modeCrepuscule, 0,0);
       if (currentWorld === 1) {
-        image(lampadaireNuit, 125, 250)
-        image(lampadaireNuit, 315, 250)
-        image(lampadaireNuit, 700, -70)
+        image(lampadaireCrepuscule, 125-10, 250+40)
+        image(lampadaireCrepuscule, 315-8, 250+40)
+        image(lampadaireCrepuscule, 700-7, -70+40)
       }
       if (currentWorld === 0) {
-        image(lampadaireNuit, -5, 376)
-        image(lampadaireNuit, 380, 250)
-        image(lampadaireNuit, 828, 250)
+        image(lampadaireCrepuscule, -5-8, 376+45)
+        image(lampadaireCrepuscule, 380-8, 250+45)
+        image(lampadaireCrepuscule, 828-8, 250+45)
       }
       if (currentWorld === 2) {
-        image(lampadaireNuit, 700, 56)
+        image(lampadaireCrepuscule, 700-8, 56+45)
       }
       if (currentWorld === 4) {
-        image(lampadaireNuit, 700, 186)
+        image(lampadaireCrepuscule, 700-8, 186+45)
+      }
+    }
+    if (showNuit) {
+      showCrepuscule = false;
+      image(modeNuit, 0,0);
+      if (currentWorld === 1) {
+        image(lampadaireNuit, 125-10, 250+40)
+        image(lampadaireNuit, 315-8, 250+40)
+        image(lampadaireNuit, 700-7, -70+40)
+      }
+      if (currentWorld === 0) {
+        image(lampadaireNuit, -5-8, 376+45)
+        image(lampadaireNuit, 380-8, 250+45)
+        image(lampadaireNuit, 828-8, 250+45)
+      }
+      if (currentWorld === 2) {
+        image(lampadaireNuit, 700-8, 56+45)
+      }
+      if (currentWorld === 4) {
+        image(lampadaireNuit, 700-8, 186+45)
       }
     }
     if (hasWonMamie) {
@@ -1998,6 +1964,7 @@ function draw() {
     }
     if (hasWonGarage) {
       currentImageIndex = 2;
+      showCrepuscule = true;
     }
     if (hasWonObervatoire) {
       showNuit = true; 
@@ -2018,7 +1985,6 @@ function draw() {
     } else if (dialogueAstroFlag && currentDialogueAstroIndex < dialogueAstronome.length) {
       image(dialogueAstronome[currentDialogueAstroIndex], 800, 200);
     }
-    
   }
 ////////////////////////////////////////////////////////////////////
 //////////////////////Maison de la Mamie////////////////////////////
@@ -2066,24 +2032,28 @@ function draw() {
     endGame();
   }
 
-  if (showAstronome) {
-  image(bgObervatoire, posXMamie,posYMamie,widthImgMamie,height)
+  if (showAstronome) {  
+    // if (!fondObservatoireIsPlayed) {
+    //   fondObeservatoire.loop();
+    //   fondObservatoireIsPlayed = true;
+    // }
+    image(bgObervatoire, posXMamie,posYMamie,widthImgMamie,height)
 
-  strokeWeight(3);
-  linkedStars();
+    strokeWeight(3);
+    linkedStars();
 
-  for (let i = 0; i < coordinatesOfStars.length; i++) {
-    let currentCoords = coordinatesOfStars[i];
-    let currentStar = currentFrameObervatoire % 2 === 0 ? star1 : star2;
-    image(currentStar, currentCoords[0], currentCoords[1], currentCoords[2], currentCoords[3]);
-  }
+    for (let i = 0; i < coordinatesOfStars.length; i++) {
+      let currentCoords = coordinatesOfStars[i];
+      let currentStar = currentFrameObervatoire % 2 === 0 ? star1 : star2;
+      image(currentStar, currentCoords[0], currentCoords[1], currentCoords[2], currentCoords[3]);
+    }
 
-  let currentTable = animTable[Math.floor(currentFrameObervatoire / frameRateObervatoire) % animTable.length];
-  image(currentTable, 500, 200, 5616/6, 3733/6);
-  // image(table, 500, 200, 5616/6, 3733/6);
+    let currentTable = animTable[Math.floor(currentFrameObervatoire / frameRateObervatoire) % animTable.length];
+    image(currentTable, 500, 200, 5616/6, 3733/6);
+    // image(table, 500, 200, 5616/6, 3733/6);
 
-  endGame();
-  currentFrameObervatoire = (currentFrameObervatoire + 1) % (frameRateObervatoire * 2 * animTable.length);
+    endGame();
+    currentFrameObervatoire = (currentFrameObervatoire + 1) % (frameRateObervatoire * 2 * animTable.length);
   }
 
   if (gameEndImgMamieFlag) {
@@ -2111,162 +2081,3 @@ function draw() {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// if (dialogueMamieFlag) {
-    //   currentDialogueMamieIndex ++
-    //   // currentDialogueMamieIndexApres = 0;
-    // }
-    // if (dialogueMecanoFlag) {
-    //   currentDialogueMecanoIndex ++
-    //   // currentDialogueMamieIndexApres = 0;
-    // }
-    // if (currentDialogueMamieIndex === dialogueMamie.length){
-    //   currentDialogueMamieIndex = dialogueMamie.length;
-    //   dialogueMamieFlag = false; 
-    //   dialogueMamieFlagApres = true; 
-    // }
-    // if(dialogueMamieFlagApres){
-    //   currentDialogueMamieIndexApres = 0;
-    //   currentDialogueMamieIndexApres ++;
-    // }
-// function dialogue(gameBoard,tileSize, idPNJ) {
-  //   for (let y = 0; y < gameBoard.length; y++) {
-  //     const currentLine = gameBoard[y];
-  //     for (let x = 0; x < currentLine.length; x++) {
-  //       const currentTileValue = currentLine[x];    
-  //       if (currentTileValue === idPNJ){
-  //         if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
-  //           console.log(idPNJ)
-  //             image(dialogueMamie[0], 0,0)
-  //           // for (let i = 0; i < dialogueMamie.length; i++) {
-  //           //   console.log("Hey")
-              
-  //           // }
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
-  
-  // function keyReleased(){
-  //   console.log("HelloWorld");
-  //   if (keyCode === RIGHT_ARROW){
-  //     currentIndex = 0;
-  //   }
-  //   if (keyCode === LEFT_ARROW){
-  //     console.log('leftArrow');
-  //     currentIndex = 0;
-  //   }
-  //   if (keyCode === UP_ARROW){
-  //     currentIndex = 0;
-  //   }
-  //   if (keyCode === DOWN_ARROW){
-  //     currentIndex = 0;
-  //   }
-  //   if (keyCode === 32){
-  //     if (currentWorld === 0) {
-  //       dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)
-  //     }
-  //   }
-    
-  //   return false;
-  // }
-// if(currentMap === 1){
-//   if (keyIsDown(LEFT_ARROW)){
-//     movementCounter += 1;
-//     heroX -= path; 
-//     if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
-//       heroX += path
-//     }
-//     if (movementCounter >= 15 / heroSpeed){
-//       currentIndex += 1;
-//       if (currentIndex === myHeroLeft.length){
-//           currentIndex = 0;
-//       }
-//       currentHeroImage = myHeroLeft[currentIndex];
-//       movementCounter = 0;
-//       print(currentIndex);
-//     }
-//   } 
-
-
-
-//   if (keyIsDown(RIGHT_ARROW)){
-//     movementCounter += 1;
-//     heroX += path;
-//     if(checkCollision(world1BoardLayer3,worldsTileSizes[currentWorld])){
-//       heroX -= path
-//     }
-//     if (movementCounter >= 15 / heroSpeed){
-//       currentIndex += 1;
-//       if (currentIndex === myHeroRight.length){
-//           currentIndex = 0;
-//       }
-//       currentHeroImage = myHeroRight[currentIndex];
-//       movementCounter = 0;
-//       print(currentIndex);
-//     }
-//   } 
-// }
