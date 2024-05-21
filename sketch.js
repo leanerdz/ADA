@@ -39,6 +39,10 @@ let click;
 let isSoundPlaying = true;
 let stopSounds = false;
 let currentSoundPlaying = sonFondJour;
+let fusee;
+
+let endDelay = 2000;
+let startTimeEndDelay;
 ////////////////////////////////////////////////////////////////////
 //////////////////////////Monde 1//////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -900,6 +904,7 @@ function preload() {
   intro.hide();
   fin = createVideo('cinématique-de-fin.mp4')
   fin.hide();
+  fusee = loadImage('designs-des-designers/fusee_entière/fusee1.png')
   boutonSonCoupe = loadImage('designs-des-designers/menu/sonOff.png')
   sonFondJour = loadSound('sons/musiqueMatin.mp3');
   sonFondCrep = loadSound('sons/musiqueCrepuscule.mp3')
@@ -2214,12 +2219,18 @@ function draw() {
   }
   if (hasWonMamie && hasWonGarage && hasWonObervatoire && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
     console.log("La Fin du jeu !!!");
-    if (isSoundPlaying) {
-      sonFondNuit.stop();
-    }
+    image(fusee, 10,10);
+    // startTime = millis();
+    // let currentTime = millis();
+    // let elapsedTime = currentTime - startTime;
+    // if (elapsedTime >= endDelay) {
+      if (isSoundPlaying) {
+        sonFondNuit.stop();
+      }
       showGameBoard = false;
       image(fin, 0,0, widthImgMamie, heightImgmamie)
-      fin.play();      
+      fin.play();       
+    // } 
   }else if (hasWonMamie === false && hasWonGarage === false && hasWonObervatoire === false && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
     image(plusTardFusee, 800, 50);
   }
