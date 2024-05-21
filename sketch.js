@@ -2219,7 +2219,7 @@ function draw() {
   }
   if (hasWonMamie && hasWonGarage && hasWonObervatoire && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
     console.log("La Fin du jeu !!!");
-    image(fusee, 10,10);
+    //image(fusee, 10,10);
     // startTime = millis();
     // let currentTime = millis();
     // let elapsedTime = currentTime - startTime;
