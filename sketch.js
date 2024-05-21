@@ -1,6 +1,8 @@
+let intro;
+let fin;
+let showGameBoard = false;
 let showWorld = true;
 let redirectionDelay = 1000;
-let cinemDebut;
 let cinemFin;
 
 let menu;
@@ -132,7 +134,7 @@ let world2BoardLayer3 = [
   [1,1,1,1,1,1,1,1,1,0,0,1,1,12,12,12,12,12,1,1],
   [1,1,1,1,1,1,1,1,1,0,0,1,12,12,12,12,12,12,1,1],
   [1,1,1,1,1,1,1,1,1,0,0,1,12,12,12,12,12,12,1,1],
-  [0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1,1],
+  [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
   [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
   [4,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -175,7 +177,7 @@ let world3BoardLayer2 = [
 
 let world3layer3Dictionnary = {};
 let world3BoardLayer3 = [
-  [1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
   [7,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1],
   [7,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0],
@@ -230,7 +232,7 @@ let world4BoardLayer3 = [
   [11,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
   [11,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
   [11,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-  [1,1,1,1,0,0,1,1,1,1,1,1,0,10,10,1,1,1,1,1],
+  [1,1,1,1,0,0,0,0,0,0,0,0,0,10,10,1,1,1,1,1],
   [1,1,1,1,0,0,0,0,0,0,0,0,0,10,10,1,1,1,1,1],
   [1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
@@ -892,11 +894,12 @@ function loadImages() {
                     12: createImage(1,1),
                     13: createImage(1,1),
   }
-
-
-
 }
 function preload() {
+  intro = createVideo('cinématique début.mp4')
+  intro.hide();
+  fin = createVideo('cinématique-de-fin.mp4')
+  fin.hide();
   boutonSonCoupe = loadImage('designs-des-designers/menu/sonOff.png')
   sonFondJour = loadSound('sons/musiqueMatin.mp3');
   sonFondCrep = loadSound('sons/musiqueCrepuscule.mp3')
@@ -905,7 +908,6 @@ function preload() {
   click = loadSound('sons/garage/boutonGarage.mp3');
   dialogueSound = [loadSound('sons/sonsDialogue/sonDialogue1.mp3'),loadSound('sons/sonsDialogue/sonDialogue2.mp3'),loadSound('sons/sonsDialogue/sonDialogue3.mp3'),loadSound('sons/sonsDialogue/sonDialogue4.mp3'),loadSound('sons/sonsDialogue/sonDialogue5.mp3'),loadSound('sons/sonsDialogue/sonDialogue6.mp3'),loadSound('sons/sonsDialogue/sonDialogue7.mp3'),loadSound('sons/sonsDialogue/sonDialogue8.mp3'),loadSound('sons/sonsDialogue/sonDialogue9.mp3'),loadSound('sons/sonsDialogue/sonDialogue10.mp3'),loadSound('sons/sonsDialogue/sonDialogue11.mp3'),]
   pas = loadSound('sons/bruitDePas.mp3')
-  // fondObeservatoire = loadSound('sons/observatoire/son-fond-observatoire.mp3')
   bgmamie = loadImage('mini-jeux/maison-mamie/interieur_maison_mamie.png')
   chatCuisine = [loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine1.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine2.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine3.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine4.png'),loadImage('mini-jeux/maison-mamie/chatCuisine/chatCuisine5.png')]
   chatCanape = [loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape1.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape2.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape3.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape4.png'),loadImage('mini-jeux/maison-mamie/chatCanape/chatCanape5.png')]
@@ -945,8 +947,7 @@ function preload() {
   dialogueMamieApres = [loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_07.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_08.png'),loadImage('designs-des-designers/dialogueMamieEtAda/apres/mamie-ada_09.png')]
   dialogueMecanicien = [loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_01.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_02.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_03.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_04.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_05.png'),loadImage('designs-des-designers/dialogueMecanoADA/avant/mécanicien-ada_06.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_07.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_08.png'),loadImage('designs-des-designers/dialogueMecanoADA/apres/mécanicien-ada_09.png')]
   dialogueAstronome = [loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_01.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_02.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_03.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_04.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_05.png'),loadImage('designs-des-designers/dialogueAstroADA/avant/astronaute-ada_06.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_07.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_08.png'),loadImage('designs-des-designers/dialogueAstroADA/apres/astronaute-ada_09.png')]
-  //cinemDebut;
-  //cinemFin = createVideo('');
+  
 
   menu =  [loadImage('designs-des-designers/menu/menu1.png'), loadImage('designs-des-designers/menu/menu2.png')];
   menuComplet = loadImage('designs-des-designers/menu/menuComplet.png');
@@ -956,9 +957,9 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-if (isSoundPlaying) {
-  sonFondJour.play();
-}
+  intro.play();
+  sonFondJour.loop();
+  sonFondJour.setVolume(0);
   randomDialogueSound = selectRandomDialogueSound();
   inventaire =  [inventaire0,inventaire1,inventaire2,inventaire3]
   currentHeroImage = myHeroRight[0];
@@ -1482,6 +1483,7 @@ const checkKeys = (currentMap) => {
       } 
     }
     if (keyIsDown(32)){
+      
       if (currentWorld === 0 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
         dialogueMamieFlag = true;
       }
@@ -2009,211 +2011,218 @@ function reset() {
   redirectionDelay = 1000;
   currentMenu = 0;
 }
-let fondObservatoireIsPlaying = false;
-
-function playSound(){
-  if (showAstronome) {
-    if (isSoundPlaying) {
-    fondObeservatoire.play();
-  }
-  }
-}
 
 function draw() {
-  playGames();
-  endGame();
-  if (showWorld) {
-    if (showJour) {
-    }
-    background(255);
-    randomDilogueSound = random(dialogueSound);
-    drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
-    drawElements(worldsLayer2[currentWorld], tileDictionnariesLayer2[currentWorld], worldsTileSizes[currentWorld]);
-    drawColisions(worldsLayer3[currentWorld], tileDictionnariesLayer3[currentWorld], worldsTileSizes[currentWorld]);
-    currentFramePNJ = frameCount;
-    drawNPC(currentWorld)
-    checkKeys(currentWorld);
-    let currentImageIndex = 0; 
+  image(intro, 0,0, widthImgMamie, heightImgmamie)
+  if(intro.time() === intro.duration()){
+    intro.stop()
+    intro.hide()
+    showGameBoard = true;
+    sonFondJour.setVolume(1);
+  }
+  if (showGameBoard) {
+    
+    playGames();
+    endGame();
+    if (showWorld) {
+      if (showJour) {
+      }
+      background(255);
+      randomDilogueSound = random(dialogueSound);
+      drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
+      drawElements(worldsLayer2[currentWorld], tileDictionnariesLayer2[currentWorld], worldsTileSizes[currentWorld]);
+      drawColisions(worldsLayer3[currentWorld], tileDictionnariesLayer3[currentWorld], worldsTileSizes[currentWorld]);
+      currentFramePNJ = frameCount;
+      drawNPC(currentWorld);
+      checkKeys(currentWorld);
+      let currentImageIndex = 0;
       image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-      
-    if (showCrepuscule) {
-      
-      showJour = false;
-      if (currentWorld === 1) {
-        image(lampadaireCrepuscule, 125-10, 250+40)
-        image(lampadaireCrepuscule, 315-8, 250+40)
-        image(lampadaireCrepuscule, 700-7, -70+40)
+
+      if (showCrepuscule) {
+        showJour = false;
+        if (currentWorld === 1) {
+          image(lampadaireCrepuscule, 125-10, 250+40);
+          image(lampadaireCrepuscule, 315-8, 250+40);
+          image(lampadaireCrepuscule, 700-7, -70+40);
+        }
+        if (currentWorld === 0) {
+          image(lampadaireCrepuscule, -5-8, 376+45);
+          image(lampadaireCrepuscule, 380-8, 250+45);
+          image(lampadaireCrepuscule, 828-8, 250+45);
+        }
+        if (currentWorld === 2) {
+          image(lampadaireCrepuscule, 700-8, 56+45);
+        }
+        if (currentWorld === 4) {
+          image(lampadaireCrepuscule, 700-8, 186+45);
+        }
+        image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
+        image(modeCrepuscule, 0,0);
       }
-      if (currentWorld === 0) {
-        image(lampadaireCrepuscule, -5-8, 376+45)
-        image(lampadaireCrepuscule, 380-8, 250+45)
-        image(lampadaireCrepuscule, 828-8, 250+45)
+      if (showNuit) {
+        showCrepuscule = false;
+        if (currentWorld === 1) {
+          image(lampadaireNuit, 125-10, 250+40);
+          image(lampadaireNuit, 315-8, 250+40);
+          image(lampadaireNuit, 700-7, -70+40);
+        }
+        if (currentWorld === 0) {
+          image(lampadaireNuit, -5-8, 376+45);
+          image(lampadaireNuit, 380-8, 250+45);
+          image(lampadaireNuit, 828-8, 250+45);
+        }
+        if (currentWorld === 2) {
+          image(lampadaireNuit, 700-8, 56+45);
+        }
+        if (currentWorld === 4) {
+          image(lampadaireNuit, 700-8, 186+45);
+        }
+        image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
+        image(modeNuit, 0,0);
       }
-      if (currentWorld === 2) {
-        image(lampadaireCrepuscule, 700-8, 56+45)
+      if (hasWonMamie) {
+        currentImageIndex = 1;
       }
-      if (currentWorld === 4) {
-        image(lampadaireCrepuscule, 700-8, 186+45)
+      if (hasWonGarage) {
+        currentImageIndex = 2;
+        showCrepuscule = true;
       }
-      image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-      image(modeCrepuscule, 0,0);
+      if (hasWonObervatoire) {
+        showNuit = true;
+        currentImageIndex = 3;
+      }
+
+      image(inventaire[currentImageIndex], 400, 560, 300 * 1.3, 100 * 1.6);
+      if (dialogueMamieFlag && currentDialogueMamieIndex < dialogueMamie.length) {
+        image(dialogueMamie[currentDialogueMamieIndex], 300, 200);
+      }
+      if (plusTardMecanoFlag === true && currentWorld === 4 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !hasWonMamie) {
+        image(plusTard, 200,150);
+      } else if (dialogueMecanoFlag && currentDialogueMecanoIndex < dialogueMecanicien.length) {
+        image(dialogueMecanicien[currentDialogueMecanoIndex], 200, 150);
+      }
+      if (plusTardAstroFlag === true && currentWorld === 3 &&dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !(hasWonMamie && hasWonGarage)) {
+        image(plusTard, 800, 200);
+      } else if (dialogueAstroFlag && currentDialogueAstroIndex < dialogueAstronome.length) {
+        image(dialogueAstronome[currentDialogueAstroIndex], 830, 200);
+      }
     }
-    if (showNuit) {
-      showCrepuscule = false;
-      if (currentWorld === 1) {
-        image(lampadaireNuit, 125-10, 250+40)
-        image(lampadaireNuit, 315-8, 250+40)
-        image(lampadaireNuit, 700-7, -70+40)
+    ////////////////////////////////////////////////////////////////////
+    //////////////////////Maison de la Mamie////////////////////////////
+    ////////////////////////////////////////////////////////////////////
+    if (showMamie) {
+      if (boutonSonCoupeFlag === false) {
+        sonFondJour.setVolume(0.5);
       }
-      if (currentWorld === 0) {
-        image(lampadaireNuit, -5-8, 376+45)
-        image(lampadaireNuit, 380-8, 250+45)
-        image(lampadaireNuit, 828-8, 250+45)
+      if (stopSounds) {
+        isSoundPlaying = false;
       }
-      if (currentWorld === 2) {
-        image(lampadaireNuit, 700-8, 56+45)
+      if (isSoundPlaying) {
+        randomDilogueSound.stop();
       }
-      if (currentWorld === 4) {
-        image(lampadaireNuit, 700-8, 186+45)
+      // background(bgmamie);
+      image(bgmamie, posXMamie,posYMamie,widthImgMamie,height);
+      noFill();
+      noStroke();
+      image(lunettes, 430, 400,202,202);
+      image(fixedCat1, 900, 350,364,363);
+      image(fixedCat21,600,530,532,393);
+      if (!btClicked) {
+        image(chatCuisine[0], coodinatesOfCats[0][0], coodinatesOfCats[0][1], coodinatesOfCats[0][2], coodinatesOfCats[0][3]);
       }
-      image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-      image(modeNuit, 0,0);
+      if (!cmdClicked) {
+        image(chatCanape[0], coodinatesOfCats[1][0], coodinatesOfCats[1][1], coodinatesOfCats[1][2], coodinatesOfCats[1][3]);
+      }
+      if (!rdxClicked) {
+        image(chatLunettes[0], coodinatesOfCats[2][0], coodinatesOfCats[2][1], coodinatesOfCats[2][2], coodinatesOfCats[2][2]);
+      }
+      if (mouseIsPressed) {
+        clickOnCats();
+      }
+      animateCat();
     }
-    if (hasWonMamie) {
-      currentImageIndex = 1;
+
+    ////////////////////////////////////////////////////////////////////
+    //////////////////////////////Mecanicien////////////////////////////
+    ////////////////////////////////////////////////////////////////////
+
+    if (showMecanicien) {
+      if (boutonSonCoupeFlag === false) {
+        sonFondJour.setVolume(0.5);
+      }
+      if (isSoundPlaying) {
+        randomDilogueSound.stop();
+      }
+      image(bgGarage, posXMamie,posYMamie,widthImgMamie,height);
+      console.log("Battery State:", batteryState);
+      // colorChange();
+      fill(139, 255, 50);
+      noStroke();
+      rect(rectXGarage, rectYGarage + rectHGarage, rectWGarage, batteryState);
+      image(battery, 400, 230, 550, 568);
+      image(boutonsGarage[currentBoutonGarage], 530, 100, 500, 500);
+      limitGarage();
+      endGame();
     }
-    if (hasWonGarage) {
-      currentImageIndex = 2;
-      showCrepuscule = true;
+
+    ////////////////////////////////////////////////////////////////////
+    ///////////////////////////Observatoire/////////////////////////////
+    ////////////////////////////////////////////////////////////////////
+
+    if (showAstronome) {
+      if (boutonSonCoupeFlag === false) {
+        sonFondCrep.setVolume(0.5);
+      }
+      if (isSoundPlaying) {
+        randomDilogueSound.stop();
+      }
+      image(bgObervatoire, posXMamie,posYMamie,widthImgMamie,height);
+
+      strokeWeight(3);
+      linkedStars();
+
+      for (let i = 0; i < coordinatesOfStars.length; i++) {
+        let currentCoords = coordinatesOfStars[i];
+        let currentStar = currentFrameObervatoire % 2 === 0 ? star1 : star2;
+        image(currentStar, currentCoords[0], currentCoords[1], currentCoords[2], currentCoords[3]);
+      }
+
+      let currentTable = animTable[Math.floor(currentFrameObervatoire / frameRateObervatoire) % animTable.length];
+      image(currentTable, 500, 200, 5616/6, 3733/6);
+
+      endGame();
+      currentFrameObervatoire = (currentFrameObervatoire + 1) % (frameRateObervatoire * 2 * animTable.length);
     }
-    if (hasWonObervatoire) {
-      showNuit = true; 
-      currentImageIndex = 3;
+
+    if (gameEndImgMamieFlag) {
+      image(gameEndImgMamie,80,50);
+
+    }
+    image(menu[currentMenu], 22, 22);
+    if (showMenu) {
+      image(menuComplet,0,0, widthImgMamie, heightImgmamie);
+      if (menuClickCounter === 2){
+        showMenu = false;
+        menuClickCounter = 0;
+      }
+      if (boutonSonCoupeFlag) {
+        image(boutonSonCoupe,603,398,75,70);
+      }
     }
     
-    image(inventaire[currentImageIndex], 400, 560, 300 * 1.5, 100 * 1.5);
-    if (dialogueMamieFlag && currentDialogueMamieIndex < dialogueMamie.length) {
-      image(dialogueMamie[currentDialogueMamieIndex], 300, 200);
-    }
-    if (plusTardMecanoFlag === true && currentWorld === 4 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !hasWonMamie) {
-      image(plusTard, 200,150)
-    } else if (dialogueMecanoFlag && currentDialogueMecanoIndex < dialogueMecanicien.length) {
-      image(dialogueMecanicien[currentDialogueMecanoIndex], 200, 150);
-    }
-    if (plusTardAstroFlag === true && currentWorld === 3 &&dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !(hasWonMamie && hasWonGarage)) {
-      image(plusTard, 800, 200)
-    } else if (dialogueAstroFlag && currentDialogueAstroIndex < dialogueAstronome.length) {
-      image(dialogueAstronome[currentDialogueAstroIndex], 830, 200);
-    }
+    
   }
-////////////////////////////////////////////////////////////////////
-//////////////////////Maison de la Mamie////////////////////////////
-////////////////////////////////////////////////////////////////////
-  if (showMamie) {
-    if (boutonSonCoupeFlag === false) {
-      sonFondJour.setVolume(0.5);
-    }
-    if (stopSounds) {
-      isSoundPlaying = false;
-    }
-    if (isSoundPlaying) {
-      randomDilogueSound.stop();
-    }
-    // background(bgmamie);
-    image(bgmamie, posXMamie,posYMamie,widthImgMamie,height)
-    noFill();
-    noStroke();
-    image(lunettes, 430, 400,202,202)
-    image(fixedCat1, 900, 350,364,363)
-    image(fixedCat21,600,530,532,393);
-    if (!btClicked) {
-      image(chatCuisine[0], coodinatesOfCats[0][0], coodinatesOfCats[0][1], coodinatesOfCats[0][2], coodinatesOfCats[0][3]);
-    }
-    if (!cmdClicked) {
-      image(chatCanape[0], coodinatesOfCats[1][0], coodinatesOfCats[1][1], coodinatesOfCats[1][2], coodinatesOfCats[1][3]);
-    }
-    if (!rdxClicked) {
-      image(chatLunettes[0], coodinatesOfCats[2][0], coodinatesOfCats[2][1], coodinatesOfCats[2][2], coodinatesOfCats[2][2]);
-    }
-    if (mouseIsPressed) {
-      clickOnCats();
-    }
-    animateCat();
-  }
-  if (showMecanicien) {
-if (boutonSonCoupeFlag === false) {
-      sonFondJour.setVolume(0.5);
-    }
-    if (isSoundPlaying) {
-      randomDilogueSound.stop();
-    }
-    image(bgGarage, posXMamie,posYMamie,widthImgMamie,height)
-    console.log("Battery State:", batteryState);
-    // colorChange();
-    fill(139, 255, 50);
-    noStroke();
-    rect(rectXGarage, rectYGarage + rectHGarage, rectWGarage, batteryState);
-    image(battery, 400, 230, 550, 568)
-    image(boutonsGarage[currentBoutonGarage], 530, 100, 500, 500);
-    limitGarage();
-    endGame();
-  }
-
-  if (showAstronome) {
-    if (boutonSonCoupeFlag === false) {
-      sonFondCrep.setVolume(0.5); 
-    }
-    if (isSoundPlaying) {
-      randomDilogueSound.stop();
-    }
-    image(bgObervatoire, posXMamie,posYMamie,widthImgMamie,height)
-
-    strokeWeight(3);
-    linkedStars();
-
-    for (let i = 0; i < coordinatesOfStars.length; i++) {
-      let currentCoords = coordinatesOfStars[i];
-      let currentStar = currentFrameObervatoire % 2 === 0 ? star1 : star2;
-      image(currentStar, currentCoords[0], currentCoords[1], currentCoords[2], currentCoords[3]);
-    }
-
-    let currentTable = animTable[Math.floor(currentFrameObervatoire / frameRateObervatoire) % animTable.length];
-    image(currentTable, 500, 200, 5616/6, 3733/6);
-    // image(table, 500, 200, 5616/6, 3733/6);
-
-    endGame();
-    currentFrameObervatoire = (currentFrameObervatoire + 1) % (frameRateObervatoire * 2 * animTable.length);
-  }
-
-  if (gameEndImgMamieFlag) {
-    image(gameEndImgMamie,80,50)
-
-  }
-  
   if (hasWonMamie && hasWonGarage && hasWonObervatoire && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
-    console.log("La Fin du jeu !!!")
+    console.log("La Fin du jeu !!!");
     if (isSoundPlaying) {
       sonFondNuit.stop();
     }
+      showGameBoard = false;
+      image(fin, 0,0, widthImgMamie, heightImgmamie)
+      fin.play();      
   }else if (hasWonMamie === false && hasWonGarage === false && hasWonObervatoire === false && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
-    image(plusTardFusee, 800, 50)
+    image(plusTardFusee, 800, 50);
   }
-
-  image(menu[currentMenu], 22, 22);
-  if (showMenu) {
-    image(menuComplet,0,0, widthImgMamie, heightImgmamie, )
-    // image(menuComplet,0,0, widthImgMamie, heightImgmamie, )
-    if (menuClickCounter === 2){
-      showMenu = false;
-      menuClickCounter = 0;
-    }
-    if (boutonSonCoupeFlag) {
-    image(boutonSonCoupe,603,398,75,70 )
-    }
-    // rect(590,385, 100,90)
-    // fill(255,0,0)
-    // rect(590,385, 100,90 )
-  }
-  // image(boutonSonCoupe,590,385)
 }
+
 
