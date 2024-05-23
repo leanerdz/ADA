@@ -3,7 +3,6 @@ let fin;
 let showGameBoard = false;
 let showWorld = true;
 let redirectionDelay = 1000;
-let cinemFin;
 
 let menu;
 let currentMenu = 0;
@@ -962,7 +961,7 @@ function preload() {
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  intro.play();
+  // intro.play();
   sonFondJour.loop();
   sonFondJour.setVolume(0);
   randomDialogueSound = selectRandomDialogueSound();
@@ -2018,7 +2017,7 @@ function reset() {
 }
 
 function draw() {
-  image(intro, 0,0, widthImgMamie, heightImgmamie)
+  // image(intro, 0,0, widthImgMamie, heightImgmamie)
   if(intro.time() === intro.duration()){
     intro.stop()
     intro.hide()
