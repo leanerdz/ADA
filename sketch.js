@@ -2125,7 +2125,7 @@ function draw() {
         randomDilogueSound.stop();
       }
       // background(bgmamie);
-      image(bgmamie, 0,0,1280,720);
+      image(bgmamie, 0,0,1280,768);
       noFill();
       noStroke();
       image(lunettes, 430, 400,202,202);
@@ -2157,7 +2157,7 @@ function draw() {
       if (isSoundPlaying) {
         randomDilogueSound.stop();
       }
-      image(bgGarage, posXMamie,posYMamie,widthImgMamie,height);
+      image(bgGarage, 0,0,1280,768);
       console.log("Battery State:", batteryState);
       // colorChange();
       fill(139, 255, 50);
@@ -2180,7 +2180,7 @@ function draw() {
       if (isSoundPlaying) {
         randomDilogueSound.stop();
       }
-      image(bgObervatoire, posXMamie,posYMamie,widthImgMamie,height);
+      image(bgObervatoire, 0,0,1280,768);
 
       strokeWeight(3);
       linkedStars();
