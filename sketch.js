@@ -960,7 +960,8 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  canvas = createCanvas(1280,768);
+  canvas.center();
   // intro.play();
   sonFondJour.loop();
   sonFondJour.setVolume(0);
