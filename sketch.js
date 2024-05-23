@@ -2203,13 +2203,13 @@ function draw() {
     }
     image(menu[currentMenu], 22, 22);
     if (showMenu) {
-      image(menuComplet,0,0, 1280,768);
+      image(menuComplet,0,0, 1280,world1BoardLayer1.length*world1TileSize);
       if (menuClickCounter === 2){
         showMenu = false;
         menuClickCounter = 0;
       }
       if (boutonSonCoupeFlag) {
-        image(boutonSonCoupe,603,398,75,70);
+        image(boutonSonCoupe,603, 433,75,70);
       }
     }
     
