@@ -2029,8 +2029,7 @@ function draw() {
     playGames();
     endGame();
     if (showWorld) {
-      if (showJour) {
-      }
+      if (showJour) {}
       background(255);
       randomDilogueSound = random(dialogueSound);
       drawWorld(worldsLayer1[currentWorld], tileDictionnariesLayer1[currentWorld], worldsTileSizes[currentWorld]);
@@ -2061,7 +2060,7 @@ function draw() {
           image(lampadaireCrepuscule, 700-8, 186+45);
         }
         image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-        image(modeCrepuscule, 0,0);
+        image(modeCrepuscule, 0,0,1280,768);
       }
       if (showNuit) {
         showCrepuscule = false;
@@ -2082,7 +2081,7 @@ function draw() {
           image(lampadaireNuit, 700-8, 186+45);
         }
         image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-        image(modeNuit, 0,0);
+        image(modeNuit, 0,0,1280,768);
       }
       if (hasWonMamie) {
         currentImageIndex = 1;
