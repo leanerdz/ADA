@@ -2204,7 +2204,7 @@ function draw() {
     }
     image(menu[currentMenu], 22, 22);
     if (showMenu) {
-      image(menuComplet,0,0, 1280,720);
+      image(menuComplet,0,0, 1280,768);
       if (menuClickCounter === 2){
         showMenu = false;
         menuClickCounter = 0;
