@@ -1,6 +1,6 @@
 let intro;
 let fin;
-let showGameBoard = false;
+let showGameBoard = true;
 let showWorld = true;
 let redirectionDelay = 1000;
 
