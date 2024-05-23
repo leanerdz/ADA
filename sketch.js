@@ -2017,7 +2017,7 @@ function reset() {
 }
 
 function draw() {
-  // image(intro, 0,0, widthImgMamie, heightImgmamie)
+  // image(intro, 0,0,1280,768)
   if(intro.time() === intro.duration()){
     intro.stop()
     intro.hide()
@@ -2191,7 +2191,7 @@ function draw() {
       }
 
       let currentTable = animTable[Math.floor(currentFrameObervatoire / frameRateObervatoire) % animTable.length];
-      image(currentTable, 500, 200, 5616/6, 3733/6);
+      image(currentTable, 565, 200, 5616/7, 3733/7);
 
       endGame();
       currentFrameObervatoire = (currentFrameObervatoire + 1) % (frameRateObervatoire * 2 * animTable.length);
@@ -2226,7 +2226,7 @@ function draw() {
         sonFondNuit.stop();
       }
       showGameBoard = false;
-      image(fin, 0,0, widthImgMamie, heightImgmamie)
+      image(fin, 0,0,1280,768)
       fin.play();       
     // } 
   }else if (hasWonMamie === false && hasWonGarage === false && hasWonObervatoire === false && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
