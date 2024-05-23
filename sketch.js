@@ -2125,7 +2125,7 @@ function draw() {
         randomDilogueSound.stop();
       }
       // background(bgmamie);
-      image(bgmamie, posXMamie,posYMamie,widthImgMamie,height);
+      image(bgmamie, 0,0,1280,720);
       noFill();
       noStroke();
       image(lunettes, 430, 400,202,202);
