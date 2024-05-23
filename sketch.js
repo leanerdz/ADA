@@ -1678,7 +1678,7 @@ function mousePressed() {
     if(pointIsInRect(mouseX, mouseY, 450,240, 330,120)){
       reset()
     }
-    if(pointIsInRect(mouseX, mouseY,590,385, 100,90 )){
+    if(pointIsInRect(mouseX, mouseY,590,435, 100,90 )){
   boutonSonCoupeFlag = !boutonSonCoupeFlag;
   if (boutonSonCoupeFlag) {
     sonEtoile.setVolume(0);
@@ -2209,7 +2209,7 @@ function draw() {
         menuClickCounter = 0;
       }
       if (boutonSonCoupeFlag) {
-        image(boutonSonCoupe,603, 433,75,70);
+        image(boutonSonCoupe,603, 428,75,75);
       }
     }
     
