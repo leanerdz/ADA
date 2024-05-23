@@ -2017,6 +2017,7 @@ function reset() {
 }
 
 function draw() {
+  background(0)
   // image(intro, 0,0,1280,768)
   if(intro.time() === intro.duration()){
     intro.stop()
