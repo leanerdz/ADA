@@ -9,4 +9,5 @@ html, body {
 
 canvas {
   display: block;
+  justify-content: center;
 }
