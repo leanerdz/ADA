@@ -988,9 +988,10 @@ function setup() {
   heightImgmamie = windowHeight;
   
  coodinatesOfCats = [
-    [800,130,310,310],//Dans la boite 
-    [50,460,413,412],//Sur la commode 
-    [350,280,424,424],//Derrière les rideaux
+    [800,100,310,310],//Dans la boite
+    [50,430,413,412],//Sur la commode 
+    [350,250,424,424],//Derrière les rideaux
+
   ];
 
 // Garage
