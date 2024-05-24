@@ -4,6 +4,8 @@ let showGameBoard = true;
 let showWorld = true;
 let redirectionDelay = 1000;
 
+let wW;
+let wH;
 let menu;
 let currentMenu = 0;
 let prevMenu = 0;
@@ -960,7 +962,9 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(1280,768);
+  canvas = createCanvas(1280,713);
+  wW = windowWidth;
+  wH = windowHeight;
   canvas.center();
   // intro.play();
   sonFondJour.loop();
@@ -2018,6 +2022,8 @@ function reset() {
 }
 
 function draw() {
+  console.log(wW);
+  console.log(wH);
   background(0)
   // image(intro, 0,0,1280,768)
   if(intro.time() === intro.duration()){
@@ -2126,7 +2132,7 @@ function draw() {
         randomDilogueSound.stop();
       }
       // background(bgmamie);
-      image(bgmamie, 0,0,1280,768);
+      image(bgmamie, 0,0,1280,713);
       noFill();
       noStroke();
       image(lunettes, 430, 400,202,202);
@@ -2158,7 +2164,7 @@ function draw() {
       if (isSoundPlaying) {
         randomDilogueSound.stop();
       }
-      image(bgGarage, 0,0,1280,768);
+      image(bgGarage, 0,0,1280,713);
       console.log("Battery State:", batteryState);
       // colorChange();
       fill(139, 255, 50);
@@ -2181,7 +2187,7 @@ function draw() {
       if (isSoundPlaying) {
         randomDilogueSound.stop();
       }
-      image(bgObervatoire, 0,0,1280,768);
+      image(bgObervatoire, 0,0,1280,713);
 
       strokeWeight(3);
       linkedStars();
@@ -2205,7 +2211,7 @@ function draw() {
     }
     image(menu[currentMenu], 22, 22);
     if (showMenu) {
-      image(menuComplet,0,0, 1280,world1BoardLayer1.length*world1TileSize);
+      image(menuComplet,0,0, 1280,713);
       if (menuClickCounter === 2){
         showMenu = false;
         menuClickCounter = 0;
