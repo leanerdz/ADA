@@ -962,7 +962,15 @@ function preload() {
 }
 
 function setup() {
-  canvas = createCanvas(1280,713);
+  canvasWidth = 1280; 
+  canvasHeight = 713; 
+  x = (windowWidth - canvasWidth) / 2;
+  y = (windowHeight - canvasHeight) / 2;
+  if (y < 0) {
+    y = 0;
+  }
+  canvas = createCanvas(canvasWidth,canvasHeight);
+  canvas.position(x, y);
   wW = windowWidth;
   wH = windowHeight;
   // canvas.center();
