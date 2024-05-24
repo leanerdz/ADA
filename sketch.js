@@ -2218,7 +2218,7 @@ function draw() {
         menuClickCounter = 0;
       }
       if (boutonSonCoupeFlag) {
-        image(boutonSonCoupe,603, 428,75,75);
+        image(boutonSonCoupe,603, 398,75,70);
       }
     }
     
