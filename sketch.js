@@ -984,9 +984,9 @@ function setup() {
   heightImgmamie = windowHeight;
   
  coodinatesOfCats = [
-    [800,100,310,310],//Dans la boite 
-    [50,430,413,412],//Sur la commode 
-    [350,250,424,424],//Derrière les rideaux
+    [800,130,310,310],//Dans la boite 
+    [50,460,413,412],//Sur la commode 
+    [350,280,424,424],//Derrière les rideaux
   ];
 
 // Garage
@@ -2167,7 +2167,7 @@ function draw() {
       image(battery, 400, 230, 550, 568);
       image(boutonsGarage[currentBoutonGarage], 530, 100, 500, 500);
       limitGarage();
-      endGame();
+      // endGame();
     }
 
     ////////////////////////////////////////////////////////////////////
@@ -2193,7 +2193,7 @@ function draw() {
       }
 
       let currentTable = animTable[Math.floor(currentFrameObervatoire / frameRateObervatoire) % animTable.length];
-      image(currentTable, 565, 200, 5616/7, 3733/7);
+      image(currentTable, 565, 200, 5616/6, 3733/6);
 
       endGame();
       currentFrameObervatoire = (currentFrameObervatoire + 1) % (frameRateObervatoire * 2 * animTable.length);
