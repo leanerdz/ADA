@@ -2027,7 +2027,7 @@ function draw() {
   // console.log(wW);
   // console.log(wH);
   background(0)
-  // image(intro, 0,0,1280,768)
+  image(intro, 0,0,1280,768)
   if(intro.time() === intro.duration()){
     intro.stop()
     intro.hide()
