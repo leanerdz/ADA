@@ -1,3 +1,6 @@
+let cliquez;
+let playIntro = false;
+let introPlayed = false;
 let intro;
 let fin;
 let showGameBoard = false;
@@ -970,6 +973,7 @@ function preload() {
 
 function setup() {
   startTime = millis();
+  cliquez = loadImage('cliquez-pour-jouer.png');
   canvasWidth = 1280; 
   canvasHeight = 713; 
   x = (windowWidth - canvasWidth) / 2;
@@ -981,7 +985,6 @@ function setup() {
   canvas.position(x, y);
   wW = windowWidth;
   wH = windowHeight;
-  intro.play();
   sonFondJour.loop();
   sonFondJour.setVolume(0);
   randomDialogueSound = selectRandomDialogueSound();
@@ -1680,6 +1683,11 @@ let showMecanicien = false;
 let showMenu = false;
 
 function mousePressed() {
+  if (!introPlayed) {
+    playIntro = true;
+    intro.play();
+    introPlayed = true;
+  }
   if(pointIsInRect(mouseX, mouseY, 22, 22, 67, 67)){
     currentMenu = 1;
     showMenu = true;
@@ -1709,7 +1717,6 @@ function mousePressed() {
     dialogueSound.forEach(sound => {sound.setVolume(1)});
     meow2.setVolume(1); 
     click.setVolume(1);
-
   }
 }
 
@@ -2026,16 +2033,20 @@ function reset() {
 function draw() {
   // console.log(wW);
   // console.log(wH);
-  background(0)
-  image(intro, 0,0,1280,768)
-  if(intro.time() === intro.duration()){
-    intro.stop()
-    intro.hide()
-    showGameBoard = true;
-    sonFondJour.setVolume(1);
+  if (playIntro) {
+    image(intro, 0,0,1280,768)
+      if(intro.time() === intro.duration()){
+      intro.stop()
+      intro.hide()
+      showGameBoard = true;
+      sonFondJour.setVolume(1);
+      // sonFondJour.playMode('restart');
+      playIntro = false;
+    }
+  }else{
+    image(cliquez, 0,0,canvasWidth,canvasHeight);
   }
   if (showGameBoard) {
-    
     playGames();
     endGame();
     if (showWorld) {
@@ -2226,14 +2237,12 @@ function draw() {
     
   }
   if (hasWonMamie && hasWonGarage && hasWonObervatoire && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
-    // console.log("La Fin du jeu !!!");
     image(fusee[currentFusee], 737,75, 300,300);
-    // currentFusee++;
-    if (currentFusee == fusee.length) {
-      currentFusee = fusee[16]
+    if (currentFusee < fusee.length - 1) { 
+      currentFusee++;
     }
     const elapsedTime = millis() - startTime;
-    if (elapsedTime >= 10000) { 
+    if (elapsedTime >= 10000) {
       if (isSoundPlaying) {
         sonFondNuit.stop();
       }
@@ -2244,6 +2253,7 @@ function draw() {
   } else if (!hasWonMamie && !hasWonGarage && !hasWonObervatoire && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
     image(plusTardFusee, 800, 50);
   }
+
   
 }
 
