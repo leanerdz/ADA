@@ -981,7 +981,6 @@ function setup() {
   canvas.position(x, y);
   wW = windowWidth;
   wH = windowHeight;
-  canvas.center();
   intro.play();
   sonFondJour.loop();
   sonFondJour.setVolume(0);
