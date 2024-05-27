@@ -1,7 +1,4 @@
-# Exercice en vue du projet de fin de première année de DN MADe Mention numérique. 
+# ADA 
+Voici notre jeu ADA. Pour jouer, suivre les instruction qui s'affichent a l'écran à la fin du chargement. 
 
-le projet déployé = https://ada-rho.vercel.app/
-
-la maison de la mamie =  https://maison-mamie.vercel.app/
-observatoire :  https://observatoire-chi.vercel.app/
-garage : https://garage-rosy.vercel.app/
+Le jeu : https://ada-rho.vercel.app/
