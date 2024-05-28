@@ -261,10 +261,10 @@ let world4BoardLayer3 = [
 let world5layer1Dictionnary = {};
 let world5BoardLayer1 = 
 [
-  [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 21, 28, 28, 28, 28, 28,34] ,
-  [0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 27, 42, 26, 26, 26, 26, 34],
-  [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27, 25, 0, 1, 0, 31, 50],
-  [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 27, 25, 0, 0, 0, 34, 30],
+  [1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 34] ,
+  [0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 1, 0, 21, 28, 28, 28, 28, 28, 34],
+  [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 27, 42, 26, 26, 26, 26, 34],
+  [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 27, 25, 0, 0, 0, 31, 50],
   [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 27, 25, 1, 0, 0, 34, 30],
   [0, 27, 25, 0, 0, 27, 25, 0, 0, 0, 0, 0, 0, 27, 25, 0, 1, 0, 34, 30],
   [1, 27, 41, 28, 28, 40, 41, 28, 28, 28, 28, 28, 28, 40, 25, 1, 0, 0, 34, 30],
@@ -279,9 +279,9 @@ let world5TileSize = 64;
 let world5layer2Dictionnary = {};
 let world5BoardLayer2 = 
 [
-  [0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 31, 32],
-  [0, 101, 102, 103, 104, 0, 0, 0, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 35, 36],
-  [12, 105, 106, 107, 108, 109, 110, 111, 112, 113, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 101, 102, 103, 104, 0, 0, 0, 5, 6, 0, 0, 0, 0, 0, 0, 0, 0, 31, 32],
+  [12, 105, 106, 107, 108, 109, 110, 111, 112, 113, 0, 0, 0, 0, 0, 0, 0, 0, 35, 36],
   [14, 114, 115, 116, 117, 118, 119, 120, 121, 122, 0, 21, 22, 0, 0, 0, 1, 2, 0, 0],
   [16, 123, 124, 125, 126, 127, 128, 129, 130, 131, 0, 23, 24, 0, 0, 0, 3, 4, 0, 0],
   [0, 132, 133, 134, 135, 136, 137, 138, 139, 140, 0, 25, 26, 0, 0, 0, 5, 6, 0, 0],
@@ -292,9 +292,9 @@ let world5BoardLayer2 =
 
 let world5layer3Dictionnary = {};
 let world5BoardLayer3 = [
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,13],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,13],
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1],
   [1,0,10,10,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1],
@@ -1202,7 +1202,7 @@ function checkCollision(gameBoard,tileSize) {
         if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
           currentWorld = 4;
           heroX = 17*world1TileSize;
-          heroY = 0*world1TileSize;
+          heroY = 1.1*world1TileSize;
         }
       }
       if (currentTileValue === 8){
@@ -2025,7 +2025,7 @@ function draw() {
   // console.log(wW);
   // console.log(wH);
   if (playIntro) {
-    image(intro, 0,0,1280,768)
+    image(intro, 0,0,canvasWidth,canvasHeight)
       if(intro.time() === intro.duration()){
       intro.stop()
       intro.hide()
@@ -2072,7 +2072,7 @@ function draw() {
           image(lampadaireCrepuscule, 700-8, 186+45);
         }
         image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-        image(modeCrepuscule, 0,0,1280,768);
+        image(modeCrepuscule, 0,0,canvasWidth,canvasHeight);
       }
       if (showNuit) {
         showCrepuscule = false;
@@ -2093,7 +2093,7 @@ function draw() {
           image(lampadaireNuit, 700-8, 186+45);
         }
         image(currentHeroImage, heroX,heroY,heroWidth,heroHeight);
-        image(modeNuit, 0,0,1280,768);
+        image(modeNuit, 0,0,canvasWidth,canvasHeight);
       }
       if (hasWonMamie) {
         currentImageIndex = 1;
@@ -2136,7 +2136,7 @@ function draw() {
         randomDilogueSound.stop();
       }
       // background(bgmamie);
-      image(bgmamie, 0,0,1280,713);
+      image(bgmamie, 0,0,canvasWidth,canvasHeight);
       noFill();
       noStroke();
       image(lunettes, 430, 400,202,202);
@@ -2168,7 +2168,7 @@ function draw() {
       if (isSoundPlaying) {
         randomDilogueSound.stop();
       }
-      image(bgGarage, 0,0,1280,713);
+      image(bgGarage, 0,0,canvasWidth,canvasHeight);
       // console.log("Battery State:", batteryState);
       // colorChange();
       fill(139, 255, 50);
@@ -2191,7 +2191,7 @@ function draw() {
       if (isSoundPlaying) {
         randomDilogueSound.stop();
       }
-      image(bgObervatoire, 0,0,1280,713);
+      image(bgObervatoire, 0,0,canvasWidth,canvasHeight);
 
       strokeWeight(3);
       linkedStars();
@@ -2215,7 +2215,7 @@ function draw() {
     }
     image(menu[currentMenu], 22, 22);
     if (showMenu) {
-      image(menuComplet,0,0, 1280,713);
+      image(menuComplet,0,0, canvasWidth,canvasHeight);
       if (menuClickCounter === 2){
         showMenu = false;
         menuClickCounter = 0;
@@ -2237,7 +2237,7 @@ function draw() {
     if (isFinished) {
       sonFondNuit.stop();
       showGameBoard = false;
-      image(fin, 0,0,1280,768)
+      image(fin, 0,0,canvasWidth,canvasHeight)
       fin.play();
     }
   } else if (!hasWonMamie && !hasWonGarage && !hasWonObervatoire && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
