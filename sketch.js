@@ -2108,15 +2108,15 @@ function draw() {
       }
 
       image(inventaire[currentImageIndex], 400, 560, 300 * 1.3, 100 * 1.6);
-      if (dialogueMamieFlag && currentDialogueMamieIndex < dialogueMamie.length) {
+      if (dialogueMamieFlag && currentDialogueMamieIndex < dialogueMamie.length && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
         image(dialogueMamie[currentDialogueMamieIndex], 300, 200);
       }
-      if (plusTardMecanoFlag === true && currentWorld === 4 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !hasWonMamie) {
+      if (plusTardMecanoFlag === true && currentWorld === 4 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !hasWonMamie && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
         image(plusTard, 200,150);
       } else if (dialogueMecanoFlag && currentDialogueMecanoIndex < dialogueMecanicien.length) {
         image(dialogueMecanicien[currentDialogueMecanoIndex], 200, 150);
       }
-      if (plusTardAstroFlag === true && currentWorld === 3 &&dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !(hasWonMamie && hasWonGarage)) {
+      if (plusTardAstroFlag === true && currentWorld === 3 &&dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !(hasWonMamie && hasWonGarage) && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
         image(plusTard, 800, 200);
       } else if (dialogueAstroFlag && currentDialogueAstroIndex < dialogueAstronome.length) {
         image(dialogueAstronome[currentDialogueAstroIndex], 830, 200);
