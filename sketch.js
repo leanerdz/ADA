@@ -9,6 +9,7 @@ let redirectionDelay = 1000;
 let startTime;
 let endGameDelay = 2000;
 let finishTime = null;
+let isFinished = false
 
 let wW;
 let wH;
@@ -916,6 +917,7 @@ function preload() {
   fin = createVideo('cinématique-de-fin.mp4');
   fin.hide();
   fusee = [loadImage('designs-des-designers/constructionFusee/construction_fusee_1.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_2.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_3.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_4.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_5.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_6.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_7.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_8.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_9.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_10.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_11.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_12.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_13.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_14.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_15.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_16.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_17.png'),]
+  // fusee = [loadImage('designs-des-designers/constructionFusee/construction-fusee.gif')]
   boutonSonCoupe = loadImage('designs-des-designers/menu/sonOff.png')
   sonFondJour = loadSound('sons/musiqueMatin.mp3');
   sonFondCrep = loadSound('sons/musiqueCrepuscule.mp3')
@@ -1867,28 +1869,21 @@ function linkedStars (){
 }
 
 function endGame(){
-  const imageDisplayDelay = 1000; // 1 seconde
+  const imageDisplayDelay = 1000;
 
   if (hasWonMamie) {
-    // currentDirPerso = "nuit"
-    // loadImages();
     if (!gameEndTimemamie) {
       gameEndTimemamie = millis() + gameEndDelayMamie;
     }
     if (millis() >= gameEndTimemamie) {
-      // console.log("You won !")
       gameEndImgMamieFlag = true;
-      //image(gameEndImgMamie,80,50);
       if (boutonSonCoupeFlag === false) {
         sonFondJour.setVolume(1);
       }
-      showMamie = false;
-
       if (millis() >= gameEndTimemamie + redirectionDelay + imageDisplayDelay) {
         gameEndImgMamieFlag = false;
         showWorld = true;
         showMamie = false;
-        // console.log('Mamie',hasWonMamie)
       }
     }
   }
@@ -1897,15 +1892,11 @@ function endGame(){
       gameEndTimeGarage = millis() + gameEndDelayGarage;
     }
     if (millis() >= gameEndTimeGarage) {
-      // console.log("You won !")
       gameEndImgMamieFlag = true;
-      // image(gameEndImgGarage,80,50)
-
       if (millis() >= gameEndTimeGarage + redirectionDelay + imageDisplayDelay) {
         gameEndImgMamieFlag = false;
         showWorld = true;
         showMecanicien = false;
-        // console.log('Garage',hasWonGarage)
         if (boutonSonCoupeFlag === false) {
           sonFondJour.setVolume(1);
         }
@@ -2238,14 +2229,13 @@ function draw() {
   }
   if (hasWonMamie && hasWonGarage && hasWonObervatoire && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
     image(fusee[currentFusee], 737,75, 300,300);
-    if (currentFusee < fusee.length - 1) { 
-      currentFusee++;
+    currentFusee = (currentFusee + 1) % fusee.length;
+    if (currentFusee === fusee.length -1) {
+      currentFusee = 16;
+      isFinished = true;
     }
-    const elapsedTime = millis() - startTime;
-    if (elapsedTime >= 10000) {
-      if (isSoundPlaying) {
-        sonFondNuit.stop();
-      }
+    if (isFinished) {
+      sonFondNuit.stop();
       showGameBoard = false;
       image(fin, 0,0,1280,768)
       fin.play();
