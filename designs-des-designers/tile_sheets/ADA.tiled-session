@@ -57,7 +57,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 641.5798781685988,
-                "y": 288.8583218707015
+                "y": 289.8408331695815
             }
         },
         "world4.tmx": {
@@ -72,8 +72,16 @@
             "scale": 0.5445,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 507.8053259871442,
-                "y": 260.7897153351699
+                "x": 581.267217630854,
+                "y": 414.14141414141415
+            }
+        },
+        "world6.tmx": {
+            "scale": 0.57,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 637.719298245614,
+                "y": 360.52631578947376
             }
         }
     },
@@ -95,11 +103,11 @@
     ],
     "project": "ADA.tiled-project",
     "recentFiles": [
+        "tilesheet_garage.tsx",
         "world1.tmx",
         "world2.tmx",
         "world3.tmx",
         "world4.tmx",
-        "tilesheet_garage.tsx",
         "world5.tmx",
         "tile-sheet-fusee-atelier.tsx",
         "tile-sheet-obersevatoire.tsx",

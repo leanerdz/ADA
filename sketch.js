@@ -3,6 +3,7 @@ let playIntro = false;
 let introPlayed = false;
 let intro;
 let fin;
+let merci;
 let showGameBoard = false;
 let showWorld = true;
 let redirectionDelay = 1000;
@@ -186,14 +187,14 @@ let world3BoardLayer2 = [
 [61,62,0,0,11,12,0,0,0,0,0,25,26,0,0,0,0,0,0,0],
 [63,64,0,0,13,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
 [0,0,0,0,15,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,0,0,0,0],
-[0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,4,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,65,66,1,2,0,0,0,0],
+[0,0,0,0,0,0,0,0,0,0,0,0,67,68,3,4,0,0,0,0],
 [0,0,0,0,0,0,0,0,0,0,0,0,0,0,5,6,0,0,0,0]
 ];
 
 let world3layer3Dictionnary = {};
 let world3BoardLayer3 = [
-  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,15,15,1,1,1,1,1,1,1,1,1],
   [7,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1],
   [7,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0],
@@ -302,6 +303,55 @@ let world5BoardLayer3 = [
   [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1],
   [1,1,1,1,1,1,1,1,1,1,1,8,8,1,1,1,1,1,1,1]
+];
+////////////////////////////////////////////////////////////////////
+//////////////////////////Monde 6//////////////////////////////////
+////////////////////////////////////////////////////////////////////
+
+let world6layer1Dictionnary = {};
+let world6BoardLayer1 = 
+[
+  [30, 30, 30, 30, 30, 30, 30, 30, 35, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0],
+  [30, 30, 30, 30, 30, 30, 30, 30, 35, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0],
+  [30, 30, 30, 30, 30, 30, 30, 30, 35, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [30, 30, 30, 30, 30, 30, 30, 30, 35, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1],
+  [30, 30, 30, 30, 30, 30, 30, 30, 35, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 0],
+  [30, 30, 30, 30, 30, 52, 37, 37, 38, 21, 28, 28, 28, 28, 28, 20, 0, 0, 1, 0],
+  [30, 30, 30, 30, 30, 35, 0, 1, 0, 27, 42, 26, 26, 26, 26, 24, 0, 1, 0, 1],
+  [30, 30, 30, 30, 30, 35, 0, 0, 0, 27, 25, 1, 0, 1, 0, 0, 0, 0, 0, 0],
+  [30, 30, 30, 30, 30, 35, 1, 0, 0, 27, 25, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+  [30, 30, 30, 30, 30, 35, 0, 0, 1, 27, 25, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+  [52, 37, 37, 37, 37, 38, 1, 0, 0, 27, 25, 0, 0, 1, 0, 1, 0, 0, 0, 0],
+  [35, 0, 0, 0, 0, 0, 1, 0, 0, 27, 25, 0, 0, 1, 0, 1, 0, 0, 0, 0]
+];
+let world6TileSize = 64;
+
+let world6layer2Dictionnary = {};
+let world6BoardLayer2 = 
+[
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 101, 102, 103, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 1, 2, 104, 105, 106, 0, 1, 2, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 3, 4, 107, 108, 109, 0, 3, 4, 0],
+  [0, 0, 0, 0, 0, 0, 0, 61, 62, 0, 0, 5, 6, 110, 111, 112, 0, 5, 6, 0],
+  [0, 0, 0, 0, 0, 0, 0, 63, 64, 0, 0, 0, 0, 113, 114, 115, 1, 2, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 116, 0, 3, 4, 1, 2],
+  [0, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 5, 6, 3, 4],
+  [0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 65, 66, 0, 0, 0, 0, 5, 6],
+  [0, 0, 0, 0, 0, 0, 5, 6, 0, 0, 0, 0, 67, 68, 0, 0, 0, 0, 0, 0]
+];
+
+let world6layer3Dictionnary = {};
+let world6BoardLayer3 = [
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,0,0,1,1,1,1,1,1,1,1,1],
+  [1,1,1,1,1,1,1,1,1,14,14,1,1,1,1,1,1,1,1,1]
 ];
 
 
@@ -686,6 +736,11 @@ function loadImages() {
     62:loadImage('designs-des-designers/elements_fixes/barque/barque-02.png'),
     63:loadImage('designs-des-designers/elements_fixes/barque/barque-03.png'),
     64:loadImage('designs-des-designers/elements_fixes/barque/barque-04.png'),
+    64:loadImage('designs-des-designers/elements_fixes/barque/barque-04.png'),
+    65:loadImage('designs-des-designers/puit/puit-01.png'),
+    66:loadImage('designs-des-designers/puit/puit-02.png'),
+    67:loadImage('designs-des-designers/puit/puit-03.png'),
+    68:loadImage('designs-des-designers/puit/puit-04.png'),
     
   }
 
@@ -698,6 +753,7 @@ function loadImages() {
                     7: createImage(1,1),
                     10: createImage(1,1),
                     12: createImage(1,1),
+                    15: createImage(1,1),
 
   }
 
@@ -910,12 +966,91 @@ function loadImages() {
                     12: createImage(1,1),
                     13: createImage(1,1),
   }
+  world6layer1Dictionnary = { 
+    0:loadImage('designs-des-designers/sols/herbe.png'),
+    1:loadImage('designs-des-designers/sols/herbeMotif.png'),
+    20:loadImage('designs-des-designers/sols/chemin11.png'),
+    21:loadImage('designs-des-designers/sols/chemin12.png'),
+    23:loadImage('designs-des-designers/sols/chemin13.png'),
+    24:loadImage('designs-des-designers/sols/chemin14.png'),
+    25:loadImage('designs-des-designers/sols/chemin15.png'),
+    26:loadImage('designs-des-designers/sols/chemin16.png'),
+    27:loadImage('designs-des-designers/sols/chemin17.png'),
+    28:loadImage('designs-des-designers/sols/chemin18.png'),
+    29:loadImage('designs-des-designers/sols/chemin19.png'),
+    40:loadImage('designs-des-designers/sols/chemin20.png'),
+    41:loadImage('designs-des-designers/sols/chemin21.png'),
+    42:loadImage('designs-des-designers/sols/chemin22.png'),
+    43:loadImage('designs-des-designers/sols/chemin23.png'),
+    30:loadImage('designs-des-designers/eau/eau1.png'),
+    31:loadImage('designs-des-designers/eau/eau2.png'),
+    32:loadImage('designs-des-designers/eau/eau3.png'),
+    33:loadImage('designs-des-designers/eau/eau4.png'),
+    34:loadImage('designs-des-designers/eau/eau5.png'),
+    35:loadImage('designs-des-designers/eau/eau6.png'),
+    36:loadImage('designs-des-designers/eau/eau7.png'),
+    37:loadImage('designs-des-designers/eau/eau8.png'),
+    38:loadImage('designs-des-designers/eau/eau9.png'),
+    39:loadImage('designs-des-designers/eau/eau10.png'),
+    50:loadImage('designs-des-designers/eau/eau12.png'),
+    51:loadImage('designs-des-designers/eau/eau13.png'),
+    52:loadImage('designs-des-designers/eau/eau11.png'),
+  }
+
+  world6layer2Dictionnary = { 
+    0: createImage(1,1),
+    1:loadImage('designs-des-designers/arbre/arbe_1.png'),
+    2:loadImage('designs-des-designers/arbre/arbe_2.png'),
+    3:loadImage('designs-des-designers/arbre/arbe_3.png'),
+    4:loadImage('designs-des-designers/arbre/arbe_4.png'),
+    5:loadImage('designs-des-designers/arbre/arbe_5.png'),
+    6:loadImage('designs-des-designers/arbre/arbe_6.png'),
+    101:loadImage('designs-des-designers/maison-vide/maison-inhabitee_01.png'),
+    102:loadImage('designs-des-designers/maison-vide/maison-inhabitee_02.png'),
+    103:loadImage('designs-des-designers/maison-vide/maison-inhabitee_03.png'),
+    104:loadImage('designs-des-designers/maison-vide/maison-inhabitee_04.png'),
+    105:loadImage('designs-des-designers/maison-vide/maison-inhabitee_05.png'),
+    106:loadImage('designs-des-designers/maison-vide/maison-inhabitee_06.png'),
+    107:loadImage('designs-des-designers/maison-vide/maison-inhabitee_07.png'),
+    108:loadImage('designs-des-designers/maison-vide/maison-inhabitee_08.png'),
+    109:loadImage('designs-des-designers/maison-vide/maison-inhabitee_09.png'),
+    110:loadImage('designs-des-designers/maison-vide/maison-inhabitee_10.png'),
+    111:loadImage('designs-des-designers/maison-vide/maison-inhabitee_11.png'),
+    112:loadImage('designs-des-designers/maison-vide/maison-inhabitee_12.png'),
+    113:loadImage('designs-des-designers/maison-vide/maison-inhabitee_13.png'),
+    114:loadImage('designs-des-designers/maison-vide/maison-inhabitee_14.png'),
+    115:loadImage('designs-des-designers/maison-vide/maison-inhabitee_15.png'),
+    116:loadImage('designs-des-designers/maison-vide/maison-inhabitee_16.png'),
+    61:loadImage('designs-des-designers/elements_fixes/barque/barque-01.png'),
+    62:loadImage('designs-des-designers/elements_fixes/barque/barque-02.png'),
+    63:loadImage('designs-des-designers/elements_fixes/barque/barque-03.png'),
+    64:loadImage('designs-des-designers/elements_fixes/barque/barque-04.png'),
+    65:loadImage('designs-des-designers/puit/puit-01.png'),
+    66:loadImage('designs-des-designers/puit/puit-02.png'),
+    67:loadImage('designs-des-designers/puit/puit-03.png'),
+    68:loadImage('designs-des-designers/puit/puit-04.png'),
+    
+  }
+
+  world6layer3Dictionnary = { 
+                    0: createImage(1,1),
+                    1: createImage(1,1),
+                    2: createImage(1,1),
+                    4: createImage(1,1),
+                    5: createImage(1,1),
+                    8: createImage(1,1),
+                    10: createImage(1,1),
+                    12: createImage(1,1),
+                    13: createImage(1,1),
+                    14: createImage(1,1),
+  }
 }
 function preload() {
   intro = createVideo('cinématique début.mp4')
   intro.hide();
   fin = createVideo('cinématique-de-fin.mp4');
   fin.hide();
+  merci = loadImage('merci.png');
   fusee = [loadImage('designs-des-designers/constructionFusee/construction_fusee_1.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_2.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_3.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_4.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_5.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_6.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_7.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_8.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_9.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_10.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_11.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_12.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_13.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_14.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_15.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_16.png'),loadImage('designs-des-designers/constructionFusee/construction_fusee_17.png'),]
   // fusee = [loadImage('designs-des-designers/constructionFusee/construction-fusee.gif')]
   boutonSonCoupe = loadImage('designs-des-designers/menu/sonOff.png')
@@ -992,13 +1127,13 @@ function setup() {
   randomDialogueSound = selectRandomDialogueSound();
   inventaire =  [inventaire0,inventaire1,inventaire2,inventaire3]
   currentHeroImage = myHeroRight[0];
-  worldsLayer1 = [world1BoardLayer1,world2BoardLayer1,world3BoardLayer1,world4BoardLayer1,world5BoardLayer1]
-  worldsLayer2 = [world1BoardLayer2,world2BoardLayer2,world3BoardLayer2,world4BoardLayer2,world5BoardLayer2]
-  worldsLayer3 = [world1BoardLayer3,world2BoardLayer3,world3BoardLayer3,world4BoardLayer3,world5BoardLayer3]
-  tileDictionnariesLayer1 = [layer1Dictionnary,world2layer1Dictionnary,world3layer1Dictionnary,world4layer1Dictionnary, world5layer1Dictionnary]
-  tileDictionnariesLayer2 = [layer2Dictionnary,world2layer2Dictionnary,world3layer2Dictionnary,world4layer2Dictionnary,world5layer2Dictionnary]
-  tileDictionnariesLayer3 = [layer3Dictionnary,world2layer3Dictionnary,world3layer3Dictionnary,world4layer3Dictionnary,world5layer3Dictionnary]
-  worldsTileSizes = [world1TileSize,world2TileSize, world3TileSize, world4TileSize, world5TileSize]
+  worldsLayer1 = [world1BoardLayer1,world2BoardLayer1,world3BoardLayer1,world4BoardLayer1,world5BoardLayer1,world6BoardLayer1]
+  worldsLayer2 = [world1BoardLayer2,world2BoardLayer2,world3BoardLayer2,world4BoardLayer2,world5BoardLayer2,world6BoardLayer2]
+  worldsLayer3 = [world1BoardLayer3,world2BoardLayer3,world3BoardLayer3,world4BoardLayer3,world5BoardLayer3,world6BoardLayer3]
+  tileDictionnariesLayer1 = [layer1Dictionnary,world2layer1Dictionnary,world3layer1Dictionnary,world4layer1Dictionnary, world5layer1Dictionnary,world6layer1Dictionnary]
+  tileDictionnariesLayer2 = [layer2Dictionnary,world2layer2Dictionnary,world3layer2Dictionnary,world4layer2Dictionnary,world5layer2Dictionnary,world6layer2Dictionnary]
+  tileDictionnariesLayer3 = [layer3Dictionnary,world2layer3Dictionnary,world3layer3Dictionnary,world4layer3Dictionnary,world5layer3Dictionnary,world6layer3Dictionnary]
+  worldsTileSizes = [world1TileSize,world2TileSize, world3TileSize, world4TileSize, world5TileSize,world6TileSize]
 
   //Mamie
 
@@ -1231,6 +1366,20 @@ function checkCollision(gameBoard,tileSize) {
           currentWorld = 2;
           heroX = 2*world1TileSize;
           heroY = 1.1*world1TileSize;
+        }
+      }
+      if (currentTileValue === 14){
+        if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
+          currentWorld = 2;
+          heroX = 10*world1TileSize;
+          heroY = 1*world1TileSize;
+        }
+      }
+      if (currentTileValue === 15){
+        if(rectIsInRect(heroX,heroY,heroWidth,heroHeight,tileSize*x+1,tileSize*y+1,tileSize,tileSize)){
+          currentWorld = 5;
+          heroX = 10*world1TileSize;
+          heroY = 7*world1TileSize;
         }
       }
     }
@@ -2111,14 +2260,14 @@ function draw() {
       if (dialogueMamieFlag && currentDialogueMamieIndex < dialogueMamie.length && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
         image(dialogueMamie[currentDialogueMamieIndex], 300, 200);
       }
-      if (plusTardMecanoFlag === true && currentWorld === 4 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !hasWonMamie && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
+      if (plusTardMecanoFlag === true && currentWorld === 4 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !hasWonMamie) {
         image(plusTard, 200,150);
-      } else if (dialogueMecanoFlag && currentDialogueMecanoIndex < dialogueMecanicien.length) {
+      } else if (dialogueMecanoFlag && currentDialogueMecanoIndex < dialogueMecanicien.length && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
         image(dialogueMecanicien[currentDialogueMecanoIndex], 200, 150);
       }
-      if (plusTardAstroFlag === true && currentWorld === 3 &&dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !(hasWonMamie && hasWonGarage) && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
+      if (plusTardAstroFlag === true && currentWorld === 3 && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10) && !(hasWonMamie && hasWonGarage)) {
         image(plusTard, 800, 200);
-      } else if (dialogueAstroFlag && currentDialogueAstroIndex < dialogueAstronome.length) {
+      } else if (dialogueAstroFlag && currentDialogueAstroIndex < dialogueAstronome.length && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 10)) {
         image(dialogueAstronome[currentDialogueAstroIndex], 830, 200);
       }
     }
@@ -2239,6 +2388,9 @@ function draw() {
       showGameBoard = false;
       image(fin, 0,0,canvasWidth,canvasHeight)
       fin.play();
+      if(fin.time() === fin.duration()){
+        image(merci, 0,0, canvasWidth, canvasHeight)
+      }
     }
   } else if (!hasWonMamie && !hasWonGarage && !hasWonObervatoire && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
     image(plusTardFusee, 800, 50);
@@ -2246,60 +2398,3 @@ function draw() {
 
   
 }
-
-
-
-
-
-
-
-
-
-
-
-// if (!hasPlayedFuseeAnimation && hasWonMamie && hasWonGarage && hasWonObervatoire && dialogue(worldsLayer3[currentWorld], worldsTileSizes[currentWorld], 12)) {
-//   lastFuseeTime = millis();
-//   hasPlayedFuseeAnimation = true;
-// }
-
-// if (lastFuseeTime !== 0) {
-//   const elapsedTime = millis() - lastFuseeTime;
-
-//   if (elapsedTime >= 300) {
-//     currentFusee = (currentFusee + 1) % fusee.length;
-//     lastFuseeTime = millis();
-
-//     if (currentFusee === 0) {
-//       if (isSoundPlaying) {
-//         sonFondNuit.stop();
-//       }
-//       showGameBoard = false;
-//       image(fin, 0, 0, 1280, 768);
-//       fin.play();
-//     }
-//   }
-
-//   image(fusee[currentFusee], 737, 75, 300, 300);
-// } else if (!hasWonMamie && !hasWonGarage && !hasWonObervatoire && dialogue(worldsLayer3[currentWorld], worldsTileSizes[currentWorld], 12)) {
-//   image(plusTardFusee, 800, 50);
-// }
-
-// currentFusee++;
-// if (currentFusee == fusee.length) {
-  //   currentFusee = fusee[16]
-  // }
-  // if (hasWonMamie && hasWonGarage && hasWonObervatoire && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
-  //   // console.log("La Fin du jeu !!!");
-  //   image(fusee[currentFusee], 737,75, 300,300);
-  //   const elapsedTime = millis() - startTime;
-  //   if (elapsedTime >= 5000) { 
-  //     if (isSoundPlaying) {
-  //       sonFondNuit.stop();
-  //     }
-  //     showGameBoard = false;
-  //     image(fin, 0,0,1280,768)
-  //     fin.play();
-  //   }
-  // } else if (!hasWonMamie && !hasWonGarage && !hasWonObervatoire && dialogue(worldsLayer3[currentWorld],worldsTileSizes[currentWorld], 12)) {
-  //   image(plusTardFusee, 800, 50);
-  // }
